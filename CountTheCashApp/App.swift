@@ -33,7 +33,6 @@ struct ContentView: View {
 					.shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.40) ,radius: 6)
 				})
 				
-				
 				NavigationLink(destination: CashRegisterView(), label: {
 					VStack {
 						Image(systemName: "dollarsign.circle.fill")
