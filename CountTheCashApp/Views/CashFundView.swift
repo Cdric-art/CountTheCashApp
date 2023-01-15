@@ -9,37 +9,14 @@ import SwiftUI
 
 struct CashFundView: View {
 	
-	@State private var cashFund: Float?
-	
-	@State private var fiftyBill: Int = 0
-	@State private var twentyBill: Int = 0
-	@State private var tenBill: Int = 0
-	@State private var fiveBill: Int = 0
-	@State private var twoCoin: Int = 0
-	@State private var oneCoin: Int = 0
-	@State private var fiftyCentCoin: Int = 0
-	@State private var twentyCentCoin: Int = 0
-	@State private var tenCentCoin: Int = 0
-	
-	@State private var resultFiftyBill: Float = 0
-	@State private var resultTwentyBill: Float = 0
-	@State private var resultTenBill: Float = 0
-	@State private var resultFiveBill: Float = 0
-	@State private var resultTwoCoin: Float = 0
-	@State private var resultOneCoin: Float = 0
-	@State private var resultFiftyCentCoin: Float = 0
-	@State private var resultTwentyCentCoin: Float = 0
-	@State private var resultTenCentCoin: Float = 0
-	
-	@State private var total: Float = 0
-	@State private var difference: Float = 0
+	@ObservedObject var cashFund: CashFund
 
 	private func totalAddition() {
-		self.total = resultFiftyBill + resultTwentyBill + resultTenBill + resultFiveBill + resultTwoCoin + resultOneCoin + resultFiftyCentCoin + resultTwentyCentCoin + resultTenCentCoin
+		cashFund.total = cashFund.resultFiftyBill + cashFund.resultTwentyBill + cashFund.resultTenBill + cashFund.resultFiveBill + cashFund.resultTwoCoin + cashFund.resultOneCoin + cashFund.resultFiftyCentCoin + cashFund.resultTwentyCentCoin + cashFund.resultTenCentCoin
 	}
-	private func differenceCalcul() -> Float {
-		if cashFund != nil {
-			return total - cashFund!
+	private func differenceCalcul() -> Double {
+		if cashFund.textFieldCashFund != nil {
+			return cashFund.total - cashFund.textFieldCashFund!
 		}
 		return 0
 	}
@@ -50,7 +27,7 @@ struct CashFundView: View {
 				Text("Cash Fund")
 					.font(.largeTitle)
 					.padding(.bottom, -10)
-				TextField("Amount", value: $cashFund, format: .number)
+				TextField("Amount", value: $cashFund.textFieldCashFund, format: .number)
 					.textFieldStyle(.roundedBorder)
 					.multilineTextAlignment(.center)
 					.frame(maxWidth: 100)
@@ -59,13 +36,13 @@ struct CashFundView: View {
 			
 			List {
 				HStack {
-					TextField("0", value: $fiftyBill, format: .number)
-						.onChange(of: fiftyBill)  { _ in
-							if fiftyBill == 0 {
-								resultFiftyBill = 0
+					TextField("0", value: $cashFund.fiftyBill, format: .number)
+						.onChange(of: cashFund.fiftyBill)  { _ in
+							if cashFund.fiftyBill == 0 {
+								cashFund.resultFiftyBill = 0
 								totalAddition()
 							} else {
-								resultFiftyBill = Float(fiftyBill) * 50.0
+								cashFund.resultFiftyBill = Double(cashFund.fiftyBill) * 50.0
 								totalAddition()
 							}
 						}
@@ -77,18 +54,18 @@ struct CashFundView: View {
 					Spacer()
 					Text("=")
 					Spacer()
-					Text(resultFiftyBill.formatted())
+					Text(cashFund.resultFiftyBill.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $twentyBill, format: .number)
-						.onChange(of: twentyBill)  { _ in
-							if twentyBill == 0 {
-								resultTwentyBill = 0
+					TextField("0", value: $cashFund.twentyBill, format: .number)
+						.onChange(of: cashFund.twentyBill)  { _ in
+							if cashFund.twentyBill == 0 {
+								cashFund.resultTwentyBill = 0
 								totalAddition()
 							} else {
-								resultTwentyBill = Float(twentyBill) * 20.0
+								cashFund.resultTwentyBill = Double(cashFund.twentyBill) * 20.0
 								totalAddition()
 							}
 						}
@@ -100,18 +77,18 @@ struct CashFundView: View {
 					Spacer()
 					Text("=")
 					Spacer()
-					Text(resultTwentyBill.formatted())
+					Text(cashFund.resultTwentyBill.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $tenBill, format: .number)
-						.onChange(of: tenBill)  { _ in
-							if tenBill == 0 {
-								resultTenBill = 0
+					TextField("0", value: $cashFund.tenBill, format: .number)
+						.onChange(of: cashFund.tenBill)  { _ in
+							if cashFund.tenBill == 0 {
+								cashFund.resultTenBill = 0
 								totalAddition()
 							} else {
-								resultTenBill = Float(tenBill) * 10.0
+								cashFund.resultTenBill = Double(cashFund.tenBill) * 10.0
 								totalAddition()
 							}
 						}
@@ -123,18 +100,18 @@ struct CashFundView: View {
 					Spacer()
 					Text("=")
 					Spacer()
-					Text(resultTenBill.formatted())
+					Text(cashFund.resultTenBill.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $fiveBill, format: .number)
-						.onChange(of: fiveBill)  { _ in
-							if fiveBill == 0 {
-								resultFiveBill = 0
+					TextField("0", value: $cashFund.fiveBill, format: .number)
+						.onChange(of: cashFund.fiveBill)  { _ in
+							if cashFund.fiveBill == 0 {
+								cashFund.resultFiveBill = 0
 								totalAddition()
 							} else {
-								resultFiveBill = Float(fiveBill) * 5.0
+								cashFund.resultFiveBill = Double(cashFund.fiveBill) * 5.0
 								totalAddition()
 							}
 						}
@@ -146,18 +123,18 @@ struct CashFundView: View {
 					Spacer()
 					Text("=")
 					Spacer()
-					Text(resultFiveBill.formatted())
+					Text(cashFund.resultFiveBill.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $twoCoin, format: .number)
-						.onChange(of: twoCoin)  { _ in
-							if twoCoin == 0 {
-								resultTwoCoin = 0
+					TextField("0", value: $cashFund.twoCoin, format: .number)
+						.onChange(of: cashFund.twoCoin)  { _ in
+							if cashFund.twoCoin == 0 {
+								cashFund.resultTwoCoin = 0
 								totalAddition()
 							} else {
-								resultTwoCoin = Float(twoCoin) * 2.0
+								cashFund.resultTwoCoin = Double(cashFund.twoCoin) * 2.0
 								totalAddition()
 							}
 						}
@@ -169,18 +146,18 @@ struct CashFundView: View {
 					Spacer()
 					Text("=")
 					Spacer()
-					Text(resultTwoCoin.formatted())
+					Text(cashFund.resultTwoCoin.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $oneCoin, format: .number)
-						.onChange(of: oneCoin)  { _ in
-							if oneCoin == 0 {
-								resultOneCoin = 0
+					TextField("0", value: $cashFund.oneCoin, format: .number)
+						.onChange(of: cashFund.oneCoin)  { _ in
+							if cashFund.oneCoin == 0 {
+								cashFund.resultOneCoin = 0
 								totalAddition()
 							} else {
-								resultOneCoin = Float(oneCoin) * 1.0
+								cashFund.resultOneCoin = Double(cashFund.oneCoin) * 1.0
 								totalAddition()
 							}
 						}
@@ -192,18 +169,18 @@ struct CashFundView: View {
 					Spacer()
 					Text("=")
 					Spacer()
-					Text(resultOneCoin.formatted())
+					Text(cashFund.resultOneCoin.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $fiftyCentCoin, format: .number)
-						.onChange(of: fiftyCentCoin)  { _ in
-							if fiftyCentCoin == 0 {
-								resultFiftyCentCoin = 0
+					TextField("0", value: $cashFund.fiftyCentCoin, format: .number)
+						.onChange(of: cashFund.fiftyCentCoin)  { _ in
+							if cashFund.fiftyCentCoin == 0 {
+								cashFund.resultFiftyCentCoin = 0
 								totalAddition()
 							} else {
-								resultFiftyCentCoin = Float(fiftyCentCoin) * 0.5
+								cashFund.resultFiftyCentCoin = Double(cashFund.fiftyCentCoin) * 0.5
 								totalAddition()
 							}
 						}
@@ -215,18 +192,18 @@ struct CashFundView: View {
 						.padding(.trailing, 30)
 					Text("=")
 					Spacer()
-					Text(resultFiftyCentCoin.formatted())
+					Text(cashFund.resultFiftyCentCoin.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $twentyCentCoin, format: .number)
-						.onChange(of: twentyCentCoin)  { _ in
-							if twentyCentCoin == 0 {
-								resultTwentyCentCoin = 0
+					TextField("0", value: $cashFund.twentyCentCoin, format: .number)
+						.onChange(of: cashFund.twentyCentCoin)  { _ in
+							if cashFund.twentyCentCoin == 0 {
+								cashFund.resultTwentyCentCoin = 0
 								totalAddition()
 							} else {
-								resultTwentyCentCoin = Float(twentyCentCoin) * 0.2
+								cashFund.resultTwentyCentCoin = Double(cashFund.twentyCentCoin) * 0.2
 								totalAddition()
 							}
 						}
@@ -238,18 +215,18 @@ struct CashFundView: View {
 						.padding(.trailing, 30)
 					Text("=")
 					Spacer()
-					Text(resultTwentyCentCoin.formatted())
+					Text(cashFund.resultTwentyCentCoin.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
-					TextField("0", value: $tenCentCoin, format: .number)
-						.onChange(of: tenCentCoin)  { _ in
-							if tenCentCoin == 0 {
-								resultTenCentCoin = 0
+					TextField("0", value: $cashFund.tenCentCoin, format: .number)
+						.onChange(of: cashFund.tenCentCoin)  { _ in
+							if cashFund.tenCentCoin == 0 {
+								cashFund.resultTenCentCoin = 0
 								totalAddition()
 							} else {
-								resultTenCentCoin = Float(tenCentCoin) * 0.1
+								cashFund.resultTenCentCoin = Double(cashFund.tenCentCoin) * 0.1
 								totalAddition()
 							}
 						}
@@ -261,7 +238,7 @@ struct CashFundView: View {
 						.padding(.trailing, 30)
 					Text("=")
 					Spacer()
-					Text(resultTenCentCoin.formatted())
+					Text(cashFund.resultTenCentCoin.formatted())
 						.frame(width: 50, alignment: .trailing)
 				}
 				.padding(2)
@@ -274,7 +251,7 @@ struct CashFundView: View {
 			VStack(spacing: 4) {
 				HStack {
 					Text("Total :")
-					Text(total.formatted())
+					Text(cashFund.total.formatted())
 					Spacer()
 				}
 				.font(.headline)
@@ -294,6 +271,6 @@ struct CashFundView: View {
 
 struct CashFundView_Previews: PreviewProvider {
 	static var previews: some View {
-		CashFundView()
+		CashFundView(cashFund: CashFund())
 	}
 }

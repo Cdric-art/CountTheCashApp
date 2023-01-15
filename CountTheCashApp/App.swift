@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+	
+	@ObservedObject var cashFund: CashFund
+	
     var body: some View {
 		NavigationStack {
 			
@@ -16,7 +19,7 @@ struct ContentView: View {
 			Spacer()
 			
 			VStack(spacing: 32) {
-				NavigationLink(destination: CashFundView(), label: {
+				NavigationLink(destination: CashFundView(cashFund: cashFund), label: {
 					VStack {
 						Image(systemName: "dollarsign.circle.fill")
 							.resizable()
@@ -58,6 +61,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+		ContentView(cashFund: CashFund())
     }
 }
