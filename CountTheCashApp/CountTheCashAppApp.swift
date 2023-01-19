@@ -11,7 +11,7 @@ import SwiftUI
 struct CountTheCashAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(cashFund: CashFund())
+            ContentView(cashFund: CashFund(), cashRegister: CashRegister())
         }
     }
 }

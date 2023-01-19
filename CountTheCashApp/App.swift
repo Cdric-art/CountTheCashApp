@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
 	
 	@ObservedObject var cashFund: CashFund
+	@ObservedObject var cashRegister: CashRegister
 	
     var body: some View {
 		NavigationStack {
@@ -36,7 +37,7 @@ struct ContentView: View {
 					.shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.40) ,radius: 6)
 				})
 				
-				NavigationLink(destination: CashRegisterView(), label: {
+				NavigationLink(destination: CashRegisterView(cashRegister: cashRegister), label: {
 					VStack {
 						Image(systemName: "dollarsign.circle.fill")
 							.resizable()
@@ -55,12 +56,11 @@ struct ContentView: View {
 			}
 			
 			Spacer()
-		}
-    }
+		}    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-		ContentView(cashFund: CashFund())
+		ContentView(cashFund: CashFund(), cashRegister: CashRegister())
     }
 }

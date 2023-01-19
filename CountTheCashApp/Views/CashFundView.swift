@@ -28,6 +28,7 @@ struct CashFundView: View {
 					.font(.largeTitle)
 					.padding(.bottom, -10)
 				TextField("Amount", value: $cashFund.textFieldCashFund, format: .number)
+					.keyboardType(.numberPad)
 					.textFieldStyle(.roundedBorder)
 					.multilineTextAlignment(.center)
 					.frame(maxWidth: 100)
@@ -46,6 +47,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -69,6 +71,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -92,6 +95,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -115,6 +119,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -138,6 +143,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -161,6 +167,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -184,6 +191,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -207,6 +215,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -230,6 +239,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
+						.keyboardType(.numberPad)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -243,8 +253,6 @@ struct CashFundView: View {
 				}
 				.padding(2)
 			}
-			.padding(.top, -20)
-			.cornerRadius(10)
 			
 			Spacer()
 			
@@ -263,9 +271,9 @@ struct CashFundView: View {
 					Spacer()
 				}
 			}
-			
 		}
-		.padding(16)
+		.scrollContentBackground(.hidden)
+		.padding()
 	}
 }
 
