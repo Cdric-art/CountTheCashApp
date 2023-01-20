@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CashFundView: View {
+	@Environment(\.colorScheme) var colorScheme
 	
 	@ObservedObject var cashFund: CashFund
 
@@ -24,11 +25,12 @@ struct CashFundView: View {
 	var body: some View {
 		VStack {
 			VStack {
-				Text("Cash Fund")
-					.font(.largeTitle)
+				Text("Fond de caisse")
+					.font(.title)
+					.fontWeight(.heavy)
 					.padding(.bottom, -10)
-				TextField("Amount", value: $cashFund.textFieldCashFund, format: .number)
-					.keyboardType(.numberPad)
+				TextField("Montant", value: $cashFund.textFieldCashFund, format: .number)
+					.keyboardType(.numbersAndPunctuation)
 					.textFieldStyle(.roundedBorder)
 					.multilineTextAlignment(.center)
 					.frame(maxWidth: 100)
@@ -47,7 +49,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -71,7 +73,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -95,7 +97,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -119,7 +121,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -143,7 +145,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -167,7 +169,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -191,7 +193,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -215,7 +217,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -239,7 +241,7 @@ struct CashFundView: View {
 								totalAddition()
 							}
 						}
-						.keyboardType(.numberPad)
+						.keyboardType(.numbersAndPunctuation)
 						.textFieldStyle(.roundedBorder)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 50)
@@ -254,7 +256,8 @@ struct CashFundView: View {
 				.padding(2)
 			}
 			
-			Spacer()
+			Divider()
+				.background(colorScheme == .dark ? .white : .black)
 			
 			VStack(spacing: 4) {
 				HStack {
@@ -271,9 +274,9 @@ struct CashFundView: View {
 					Spacer()
 				}
 			}
+			.frame(minHeight: 50)
+			.padding()
 		}
-		.scrollContentBackground(.hidden)
-		.padding()
 	}
 }
 
