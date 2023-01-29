@@ -41,7 +41,7 @@ struct ContentView: View {
 					.shadow(color: shadowTheme ,radius: 6)
 				})
 				
-				NavigationLink(destination: CashRegisterView(cashRegister: cashRegister), label: {
+				NavigationLink(destination: CashRegisterView(cashRegisterData: cashRegister), label: {
 					VStack {
 						Image(systemName: "dollarsign.square.fill")
 							.resizable()
