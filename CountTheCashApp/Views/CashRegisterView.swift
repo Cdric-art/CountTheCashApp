@@ -17,12 +17,30 @@ struct CashRegisterView: View {
 					.font(.title)
 					.fontWeight(.heavy)
 					.padding(.bottom, -10)
-				TextField("Montant", value: $cashRegisterData.textFieldCashRegister, format: .number)
-					.keyboardType(.numbersAndPunctuation)
-					.textFieldStyle(.roundedBorder)
-					.multilineTextAlignment(.center)
-					.frame(maxWidth: 100)
-					.padding()
+				HStack {
+					VStack {
+						Text("Flash :")
+							.font(/*@START_MENU_TOKEN@*/.caption2/*@END_MENU_TOKEN@*/)
+						
+						TextField("Montant", value: $cashRegisterData.textFieldCashRegister, format: .number)
+							.keyboardType(.numbersAndPunctuation)
+							.textFieldStyle(.roundedBorder)
+						.multilineTextAlignment(.center)
+					}
+					.padding(.horizontal, 30)
+					
+					VStack {
+						Text("Couverts :")
+							.font(/*@START_MENU_TOKEN@*/.caption2/*@END_MENU_TOKEN@*/)
+							
+						TextField("Nombre", value: $cashRegisterData.textFieldCouverts, format: .number)
+							.keyboardType(.numbersAndPunctuation)
+							.textFieldStyle(.roundedBorder)
+						.multilineTextAlignment(.center)
+					}
+					.padding(.horizontal, 30)
+				}
+				.padding(.top, 18)
 			}
 			
 			VStack(alignment: .leading) {
@@ -37,24 +55,31 @@ struct CashRegisterView: View {
 				.listStyle(.insetGrouped)
 				.padding(.top, 16)
 				
-				VStack(spacing: 4) {
-					HStack {
-						Text("Total :")
-						Text(cashRegisterData.resultTotal().formatted())
-						Spacer()
+				HStack {
+					VStack(spacing: 4) {
+						HStack {
+							Text("Total :")
+							Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
+							Spacer()
+						}
+						.font(.headline)
+						
+						HStack {
+							Text("Difference :")
+								.font(.callout)
+							Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
+							Spacer()
+						}
+						.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .gray)
 					}
-					.font(.headline)
-					
-					HStack {
-						Text("Difference :")
-							.font(.callout)
-						Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted())" : cashRegisterData.diff().formatted())
-						Spacer()
+					VStack(spacing: 4) {
+						Text("Ticket Moyen")
+						Text(cashRegisterData.ticketMoyen().formatted(.currency(code: "EUR")))
 					}
-					.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .gray)
+					.font(.footnote)
 				}
-				.frame(minHeight: 50)
-				.padding()
+				.padding(.horizontal, 16)
+				.padding(.top, 16)
 			}
 		}
 	}
