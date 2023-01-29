@@ -12,6 +12,7 @@ enum TYPE_PAYEMENT {
 	case CBLESS
 	case AMEX
 	case AMEXLESS
+	case TICKETRESTAURANT
 	case CASH
 }
 
@@ -23,12 +24,14 @@ class CashRegister: ObservableObject {
 	@Published var cb_less: [String] = [""]
 	@Published var amex: [String] = [""]
 	@Published var amex_less: [String] = [""]
+	@Published var ticketRestaurant: [String] = [""]
 	@Published var cash: [String] = [""]
 	
 	@Published var totalCbEmv: Double = 0
 	@Published var totalCbLess: Double = 0
 	@Published var totalAmex: Double = 0
 	@Published var totalAmexLess: Double = 0
+	@Published var totalTicketRestaurant: Double = 0
 	@Published var totalCash: Double = 0
 	
 	@Published var total: Double = 0
@@ -43,13 +46,15 @@ class CashRegister: ObservableObject {
 				totalAmex = formattedArrayDouble(arrayString: amex)
 			case .AMEXLESS:
 				totalAmexLess = formattedArrayDouble(arrayString: amex_less)
+			case .TICKETRESTAURANT:
+				totalTicketRestaurant = formattedArrayDouble(arrayString: ticketRestaurant)
 			case .CASH:
 				totalCash = formattedArrayDouble(arrayString: cash)
 		}
 	}
 	
 	func resultTotal() -> Double {
-		return totalCbEmv + totalCbLess + totalAmex + totalAmexLess + totalCash
+		return totalCbEmv + totalCbLess + totalAmex + totalAmexLess + totalTicketRestaurant + totalCash
 	}
 	
 	func diff() -> Double {

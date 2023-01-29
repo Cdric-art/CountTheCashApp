@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CashFundView: View {
-	@Environment(\.colorScheme) var colorScheme
-	
 	@ObservedObject var cashFund: CashFund
 
 	private func totalAddition() {
@@ -255,9 +253,6 @@ struct CashFundView: View {
 				}
 				.padding(2)
 			}
-			
-			Divider()
-				.background(colorScheme == .dark ? .white : .black)
 			
 			VStack(spacing: 4) {
 				HStack {

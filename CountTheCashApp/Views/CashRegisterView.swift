@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct CashRegisterView: View {
-	@Environment(\.colorScheme) var colorScheme
-	
 	@ObservedObject var cashRegister: CashRegister
 	
 	var body: some View {
@@ -130,6 +128,30 @@ struct CashRegisterView: View {
 						Text("Total: \(cashRegister.totalAmexLess.formatted())")
 					}
 					Section {
+						ForEach(cashRegister.ticketRestaurant.indices, id: \.self) { i in
+							HStack {
+								TextField("Montant", text: $cashRegister.ticketRestaurant[i])
+									.keyboardType(.numbersAndPunctuation)
+									.onChange(of: cashRegister.ticketRestaurant[i]) { value in
+										cashRegister.ticketRestaurant[i] = value
+										cashRegister.saveTotal(type: .TICKETRESTAURANT)
+									}
+								Button {
+									if cashRegister.ticketRestaurant[0] != "" {
+										cashRegister.ticketRestaurant.append("")
+									}
+								} label: {
+									Image(systemName: "plus.circle.fill")
+										.foregroundColor(.gray)
+								}
+							}
+						}
+					} header: {
+						Text("Ticket Restaurant")
+					} footer: {
+						Text("Total: \(cashRegister.totalTicketRestaurant.formatted())")
+					}
+					Section {
 						HStack {
 							TextField("Montant", text: $cashRegister.cash[0])
 								.keyboardType(.numbersAndPunctuation)
@@ -146,9 +168,6 @@ struct CashRegisterView: View {
 				}
 				.listStyle(.insetGrouped)
 				.padding(.top, 16)
-				
-				Divider()
-					.background(colorScheme == .dark ? .white : .black)
 				
 				VStack(spacing: 4) {
 					HStack {
