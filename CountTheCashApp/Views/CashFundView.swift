@@ -55,9 +55,8 @@ struct CashFundView: View {
 					Text("50")
 					Spacer()
 					Text("=")
-					Spacer()
-					Text(cashFund.resultFiftyBill.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text(cashFund.resultFiftyBill.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -79,9 +78,8 @@ struct CashFundView: View {
 					Text("20")
 					Spacer()
 					Text("=")
-					Spacer()
-					Text(cashFund.resultTwentyBill.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text(cashFund.resultTwentyBill.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -103,9 +101,8 @@ struct CashFundView: View {
 					Text("10")
 					Spacer()
 					Text("=")
-					Spacer()
-					Text(cashFund.resultTenBill.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text(cashFund.resultTenBill.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -127,9 +124,8 @@ struct CashFundView: View {
 					Text(" 5")
 					Spacer()
 					Text("=")
-					Spacer()
-					Text(cashFund.resultFiveBill.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text(cashFund.resultFiveBill.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -151,9 +147,8 @@ struct CashFundView: View {
 					Text(" 2")
 					Spacer()
 					Text("=")
-					Spacer()
-					Text(cashFund.resultTwoCoin.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text(cashFund.resultTwoCoin.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -175,9 +170,8 @@ struct CashFundView: View {
 					Text(" 1")
 					Spacer()
 					Text("=")
-					Spacer()
-					Text(cashFund.resultOneCoin.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text(cashFund.resultOneCoin.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -197,11 +191,10 @@ struct CashFundView: View {
 						.frame(maxWidth: 50)
 					Text("x")
 					Text("0.50")
-						.padding(.trailing, 30)
-					Text("=")
 					Spacer()
-					Text(cashFund.resultFiftyCentCoin.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text("=")
+					Text(cashFund.resultFiftyCentCoin.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -221,11 +214,10 @@ struct CashFundView: View {
 						.frame(maxWidth: 50)
 					Text("x")
 					Text("0.20")
-						.padding(.trailing, 30)
-					Text("=")
 					Spacer()
-					Text(cashFund.resultTwentyCentCoin.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text("=")
+					Text(cashFund.resultTwentyCentCoin.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 				HStack {
@@ -245,11 +237,10 @@ struct CashFundView: View {
 						.frame(maxWidth: 50)
 					Text("x")
 					Text("0.10")
-						.padding(.trailing, 30)
-					Text("=")
 					Spacer()
-					Text(cashFund.resultTenCentCoin.formatted())
-						.frame(width: 50, alignment: .trailing)
+					Text("=")
+					Text(cashFund.resultTenCentCoin.formatted(.currency(code: "EUR")))
+						.frame(width: 100, alignment: .trailing)
 				}
 				.padding(2)
 			}
@@ -257,7 +248,7 @@ struct CashFundView: View {
 			VStack(spacing: 4) {
 				HStack {
 					Text("Total :")
-					Text(cashFund.total.formatted())
+					Text(cashFund.total.formatted(.currency(code: "EUR")))
 					Spacer()
 				}
 				.font(.headline)
@@ -265,7 +256,7 @@ struct CashFundView: View {
 				HStack {
 					Text("Difference :")
 						.font(.callout)
-					Text(differenceCalcul().formatted())
+					Text(differenceCalcul().formatted(.currency(code: "EUR")))
 					Spacer()
 				}
 			}
