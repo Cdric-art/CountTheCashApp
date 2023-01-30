@@ -34,4 +34,14 @@ class CashFund: ObservableObject {
 	@Published var total: Double = 0
 	@Published var difference: Double = 0
 	
+	func totalAddition() {
+		total = resultFiftyBill + resultTwentyBill + resultTenBill + resultFiveBill + resultTwoCoin + resultOneCoin + resultFiftyCentCoin + resultTwentyCentCoin + resultTenCentCoin
+	}
+	func differenceCalcul() -> Double {
+		if textFieldCashFund != nil {
+			return total - textFieldCashFund!
+		}
+		return 0
+	}
+	
 }

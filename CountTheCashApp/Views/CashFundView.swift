@@ -9,16 +9,6 @@ import SwiftUI
 
 struct CashFundView: View {
 	@ObservedObject var cashFund: CashFund
-
-	private func totalAddition() {
-		cashFund.total = cashFund.resultFiftyBill + cashFund.resultTwentyBill + cashFund.resultTenBill + cashFund.resultFiveBill + cashFund.resultTwoCoin + cashFund.resultOneCoin + cashFund.resultFiftyCentCoin + cashFund.resultTwentyCentCoin + cashFund.resultTenCentCoin
-	}
-	private func differenceCalcul() -> Double {
-		if cashFund.textFieldCashFund != nil {
-			return cashFund.total - cashFund.textFieldCashFund!
-		}
-		return 0
-	}
 	
 	var body: some View {
 		VStack {
@@ -41,10 +31,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.fiftyBill)  { _ in
 							if cashFund.fiftyBill == 0 {
 								cashFund.resultFiftyBill = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultFiftyBill = Double(cashFund.fiftyBill) * 50.0
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -64,10 +54,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.twentyBill)  { _ in
 							if cashFund.twentyBill == 0 {
 								cashFund.resultTwentyBill = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultTwentyBill = Double(cashFund.twentyBill) * 20.0
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -87,10 +77,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.tenBill)  { _ in
 							if cashFund.tenBill == 0 {
 								cashFund.resultTenBill = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultTenBill = Double(cashFund.tenBill) * 10.0
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -110,10 +100,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.fiveBill)  { _ in
 							if cashFund.fiveBill == 0 {
 								cashFund.resultFiveBill = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultFiveBill = Double(cashFund.fiveBill) * 5.0
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -133,10 +123,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.twoCoin)  { _ in
 							if cashFund.twoCoin == 0 {
 								cashFund.resultTwoCoin = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultTwoCoin = Double(cashFund.twoCoin) * 2.0
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -156,10 +146,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.oneCoin)  { _ in
 							if cashFund.oneCoin == 0 {
 								cashFund.resultOneCoin = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultOneCoin = Double(cashFund.oneCoin) * 1.0
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -179,10 +169,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.fiftyCentCoin)  { _ in
 							if cashFund.fiftyCentCoin == 0 {
 								cashFund.resultFiftyCentCoin = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultFiftyCentCoin = Double(cashFund.fiftyCentCoin) * 0.5
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -202,10 +192,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.twentyCentCoin)  { _ in
 							if cashFund.twentyCentCoin == 0 {
 								cashFund.resultTwentyCentCoin = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultTwentyCentCoin = Double(cashFund.twentyCentCoin) * 0.2
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -225,10 +215,10 @@ struct CashFundView: View {
 						.onChange(of: cashFund.tenCentCoin)  { _ in
 							if cashFund.tenCentCoin == 0 {
 								cashFund.resultTenCentCoin = 0
-								totalAddition()
+								cashFund.totalAddition()
 							} else {
 								cashFund.resultTenCentCoin = Double(cashFund.tenCentCoin) * 0.1
-								totalAddition()
+								cashFund.totalAddition()
 							}
 						}
 						.keyboardType(.numbersAndPunctuation)
@@ -256,7 +246,7 @@ struct CashFundView: View {
 				HStack {
 					Text("Difference :")
 						.font(.callout)
-					Text(differenceCalcul().formatted(.currency(code: "EUR")))
+					Text(cashFund.differenceCalcul().formatted(.currency(code: "EUR")))
 					Spacer()
 				}
 			}
