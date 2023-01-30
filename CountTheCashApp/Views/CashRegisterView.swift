@@ -117,6 +117,7 @@ struct CbEmvView: View {
 			}
 		} header: {
 			Text("CB EMV")
+				.foregroundColor(.teal)
 		} footer: {
 			Text("Total: \(cashRegister.totalCbEmv.formatted())")
 		}
@@ -149,6 +150,7 @@ struct CbLessView: View {
 			}
 		} header: {
 			Text("CB LESS")
+				.foregroundColor(.purple)
 		} footer: {
 			Text("Total: \(cashRegister.totalCbLess.formatted())")
 		}
@@ -180,6 +182,7 @@ struct AmexView: View {
 			}
 		} header: {
 			Text("AMEX")
+				.foregroundColor(.brown)
 		} footer: {
 			Text("Total: \(cashRegister.totalAmex.formatted())")
 		}
@@ -211,6 +214,7 @@ struct AmexLessView: View {
 			}
 		} header: {
 			Text("AMEX LESS")
+				.foregroundColor(.orange)
 		} footer: {
 			Text("Total: \(cashRegister.totalAmexLess.formatted())")
 		}
@@ -241,6 +245,7 @@ struct TicketRestaurantView: View {
 			}
 		} header: {
 			Text("Ticket Restaurant")
+				.foregroundColor(.mint)
 		} footer: {
 			Text("Total: \(cashRegister.totalTicketRestaurant.formatted())")
 		}
@@ -261,6 +266,7 @@ struct CashView: View {
 			}
 		} header: {
 			Text("CASH")
+				.foregroundColor(.red)
 		} footer: {
 			Text("Total: \(cashRegister.totalCash.formatted())")
 		}
