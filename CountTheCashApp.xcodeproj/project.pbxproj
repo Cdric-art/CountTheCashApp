@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A72C805329882640009E0EA4 /* CircleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72C805229882640009E0EA4 /* CircleBackground.swift */; };
 		A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD2692973572B006B48BD /* CashFundView.swift */; };
 		A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26B297358DC006B48BD /* CashRegisterView.swift */; };
 		A72CD26F297364DD006B48BD /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26E297364DD006B48BD /* TitleView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A72C805229882640009E0EA4 /* CircleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleBackground.swift; sourceTree = "<group>"; };
 		A72CD2692973572B006B48BD /* CashFundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundView.swift; sourceTree = "<group>"; };
 		A72CD26B297358DC006B48BD /* CashRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRegisterView.swift; sourceTree = "<group>"; };
 		A72CD26E297364DD006B48BD /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				A72CD26E297364DD006B48BD /* TitleView.swift */,
+				A72C805229882640009E0EA4 /* CircleBackground.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */,
 				A74A019F29785B2500E1FD5A /* CashRegisterModel.swift in Sources */,
 				A79A2E592972069C00C1CEFB /* App.swift in Sources */,
+				A72C805329882640009E0EA4 /* CircleBackground.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
 				A72CD26F297364DD006B48BD /* TitleView.swift in Sources */,
@@ -329,6 +333,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -367,6 +372,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

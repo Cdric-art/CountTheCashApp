@@ -26,6 +26,8 @@ struct TitleView: View {
 				.scaledToFit()
 				.cornerRadius(25)
 				.frame(maxWidth: 150)
+				.shadow(color: Color(.sRGBLinear, white: 0.1, opacity: 0.1) ,radius: 6)
 		}
+		.foregroundColor(.white)
     }
 }

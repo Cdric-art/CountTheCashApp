@@ -12,6 +12,6 @@ struct CountTheCashAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(cashFund: CashFund(), cashRegister: CashRegister())
-        }
-    }
+		}
+	}
 }
