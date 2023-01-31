@@ -22,7 +22,7 @@ struct CashFundView: View {
 						.fontWeight(.heavy)
 						.foregroundColor(.white)
 					TextField("Montant", value: $cashFund.textFieldCashFund, format: .number)
-						.keyboardType(.numbersAndPunctuation)
+						.keyboardType(.decimalPad)
 						.multilineTextAlignment(.center)
 						.frame(maxWidth: 100, minHeight: 36)
 						.background(RoundedRectangle(cornerRadius: 10).fill(.white).opacity(0.6))
@@ -41,7 +41,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -66,7 +66,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -91,7 +91,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -116,7 +116,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -141,7 +141,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -166,7 +166,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -191,7 +191,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -216,7 +216,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
@@ -241,7 +241,7 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")

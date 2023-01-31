@@ -24,7 +24,7 @@ struct CashRegisterView: View {
 						VStack {
 							Text("Flash :")
 							TextField("Montant", value: $cashRegisterData.textFieldCashRegister, format: .number)
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.frame(maxWidth: 100, minHeight: 36)
 								.background(RoundedRectangle(cornerRadius: 10).fill(.white).opacity(0.6))
 						}
@@ -33,7 +33,7 @@ struct CashRegisterView: View {
 						VStack {
 							Text("Couverts :")
 							TextField("Nombre", value: $cashRegisterData.textFieldCouverts, format: .number)
-								.keyboardType(.numbersAndPunctuation)
+								.keyboardType(.decimalPad)
 								.frame(maxWidth: 100, minHeight: 36)
 								.background(RoundedRectangle(cornerRadius: 10).fill(.white).opacity(0.6))
 						}
@@ -106,7 +106,7 @@ struct CbEmvView: View {
 			ForEach(cashRegister.cb_emv.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.cb_emv[i])
-						.keyboardType(.numbersAndPunctuation)
+						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.cb_emv[i]) { value in
 							cashRegister.cb_emv[i] = value
 							cashRegister.saveTotal(type: .CBEMV)
@@ -139,7 +139,7 @@ struct CbLessView: View {
 			ForEach(cashRegister.cb_less.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.cb_less[i])
-						.keyboardType(.numbersAndPunctuation)
+						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.cb_less[i]) { value in
 							cashRegister.cb_less[i] = value
 							cashRegister.saveTotal(type: .CBLESS)
@@ -171,7 +171,7 @@ struct AmexView: View {
 			ForEach(cashRegister.amex.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.amex[i])
-						.keyboardType(.numbersAndPunctuation)
+						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.amex[i]) { value in
 							cashRegister.amex[i] = value
 							cashRegister.saveTotal(type: .AMEX)
@@ -203,7 +203,7 @@ struct AmexLessView: View {
 			ForEach(cashRegister.amex_less.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.amex_less[i])
-						.keyboardType(.numbersAndPunctuation)
+						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.amex_less[i]) { value in
 							cashRegister.amex_less[i] = value
 							cashRegister.saveTotal(type: .AMEXLESS)
@@ -235,7 +235,7 @@ struct TicketRestaurantView: View {
 			ForEach(cashRegister.ticketRestaurant.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.ticketRestaurant[i])
-						.keyboardType(.numbersAndPunctuation)
+						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.ticketRestaurant[i]) { value in
 							cashRegister.ticketRestaurant[i] = value
 							cashRegister.saveTotal(type: .TICKETRESTAURANT)
@@ -265,7 +265,7 @@ struct CashView: View {
 		Section {
 			HStack {
 				TextField("Montant", text: $cashRegister.cash[0])
-					.keyboardType(.numbersAndPunctuation)
+					.keyboardType(.decimalPad)
 					.onChange(of: cashRegister.cash[0]) { value in
 						cashRegister.cash[0] = value
 						cashRegister.saveTotal(type: .CASH)
