@@ -35,7 +35,6 @@ class CashRegister: ObservableObject {
 	@Published var totalTicketRestaurant: Double = 0
 	@Published var totalCash: Double = 0
 	
-	@Published var total: Double = 0
 	
 	func saveTotal(type: TYPE_PAYEMENT) {
 		switch type {

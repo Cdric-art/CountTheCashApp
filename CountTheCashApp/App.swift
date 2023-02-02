@@ -14,8 +14,6 @@ struct ContentView: View {
 	
 	var body: some View {
 		
-		let shadow = Color(.sRGBLinear, white: 0.1, opacity: 0.1)
-			
 		NavigationStack {
 			ZStack {
 				
@@ -29,37 +27,11 @@ struct ContentView: View {
 					
 					VStack(spacing: 32) {
 						NavigationLink(destination: CashFundView(cashFund: cashFund), label: {
-							VStack {
-								Image(systemName: "dollarsign.arrow.circlepath")
-									.resizable()
-									.scaledToFit()
-									.foregroundColor(Color("secondaryColor"))
-								Text("Fond de caisse")
-									.font(.subheadline)
-									.foregroundColor(.black)
-							}
-							.frame(width: 120, height: 80)
-							.padding()
-							.background(.white)
-							.cornerRadius(12)
-							.shadow(color: shadow ,radius: 6)
+							NavigationLinkLabel(imageName: "dollarsign.arrow.circlepath", color: "secondaryColor", title: "Fond de caisse")
 						})
 						
 						NavigationLink(destination: CashRegisterView(cashRegisterData: cashRegister), label: {
-							VStack {
-								Image(systemName: "dollarsign.square.fill")
-									.resizable()
-									.scaledToFit()
-									.foregroundColor(Color("primaryColor"))
-								Text("Caisse")
-									.font(.subheadline)
-									.foregroundColor(.black)
-							}
-							.frame(width: 120, height: 80)
-							.padding()
-							.background(.white)
-							.cornerRadius(12)
-							.shadow(color: shadow, radius: 6)
+							NavigationLinkLabel(imageName: "dollarsign.square.fill", color: "primaryColor", title: "Caisse")
 						})
 					}
 					
@@ -68,6 +40,7 @@ struct ContentView: View {
 			}
 		}
 		.accentColor(.white)
+		.scrollDismissesKeyboard(.interactively)
 	}
 }
 

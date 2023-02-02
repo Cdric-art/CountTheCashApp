@@ -9,17 +9,17 @@ import Foundation
 
 class CashFund: ObservableObject {
 	
-	@Published var textFieldCashFund: Double?
+	@Published var textFieldCashFund: Int?
 	
-	@Published var fiftyBill: Int = 0
-	@Published var twentyBill: Int = 0
-	@Published var tenBill: Int = 0
-	@Published var fiveBill: Int = 0
-	@Published var twoCoin: Int = 0
-	@Published var oneCoin: Int = 0
-	@Published var fiftyCentCoin: Int = 0
-	@Published var twentyCentCoin: Int = 0
-	@Published var tenCentCoin: Int = 0
+	@Published var fiftyBill: Int?
+	@Published var twentyBill: Int?
+	@Published var tenBill: Int?
+	@Published var fiveBill: Int?
+	@Published var twoCoin: Int?
+	@Published var oneCoin: Int?
+	@Published var fiftyCentCoin: Int?
+	@Published var twentyCentCoin: Int?
+	@Published var tenCentCoin: Int?
 	
 	@Published var resultFiftyBill: Double = 0
 	@Published var resultTwentyBill: Double = 0
@@ -39,7 +39,7 @@ class CashFund: ObservableObject {
 	}
 	func differenceCalcul() -> Double {
 		if textFieldCashFund != nil {
-			return total - textFieldCashFund!
+			return total - (Double(textFieldCashFund ?? 0))
 		}
 		return 0
 	}
