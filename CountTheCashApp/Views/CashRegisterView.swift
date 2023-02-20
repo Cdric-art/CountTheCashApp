@@ -99,7 +99,6 @@ struct CashRegisterView: View {
 					}
 					.frame(height: 60)
 					.padding(.horizontal, 16)
-					.padding(.top, 16)
 				}
 			}
 		}
