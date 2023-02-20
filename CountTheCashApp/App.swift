@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 	
-	@ObservedObject var cashFund: CashFund
-	@ObservedObject var cashRegister: CashRegister
+	@StateObject var cashFund = CashFund()
+	@StateObject var cashRegister = CashRegister()
 	
 	var body: some View {
 		
