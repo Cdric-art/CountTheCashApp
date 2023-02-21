@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 	
-	@StateObject var cashFund = CashFund()
+	@StateObject var cashFund = CashFundViewModel()
 	@StateObject var cashRegister = CashRegister()
 	
 	var body: some View {
@@ -46,6 +46,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView(cashFund: CashFund(), cashRegister: CashRegister())
+		ContentView(cashFund: CashFundViewModel(), cashRegister: CashRegister())
 	}
 }
