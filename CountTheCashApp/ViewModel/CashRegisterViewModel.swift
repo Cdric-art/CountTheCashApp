@@ -39,17 +39,17 @@ class CashRegister: ObservableObject {
 	func saveTotal(type: TYPE_PAYEMENT) {
 		switch type {
 			case .CBEMV:
-				totalCbEmv = formattedArrayDouble(arrayString: cb_emv)
+				totalCbEmv = arrayStringToDouble(from: cb_emv)
 			case .CBLESS:
-				totalCbLess = formattedArrayDouble(arrayString: cb_less)
+				totalCbLess = arrayStringToDouble(from: cb_less)
 			case .AMEX:
-				totalAmex = formattedArrayDouble(arrayString: amex)
+				totalAmex = arrayStringToDouble(from: amex)
 			case .AMEXLESS:
-				totalAmexLess = formattedArrayDouble(arrayString: amex_less)
+				totalAmexLess = arrayStringToDouble(from: amex_less)
 			case .TICKETRESTAURANT:
-				totalTicketRestaurant = formattedArrayDouble(arrayString: ticketRestaurant)
+				totalTicketRestaurant = arrayStringToDouble(from: ticketRestaurant)
 			case .CASH:
-				totalCash = formattedArrayDouble(arrayString: cash)
+				totalCash = arrayStringToDouble(from: cash)
 		}
 	}
 	
@@ -68,17 +68,17 @@ class CashRegister: ObservableObject {
 		return resultTotal() - (textFieldCashRegister ?? 0)
 	}
 	
-	func formattedArrayDouble(arrayString: [String]) -> Double {
+	func isPositiveDiff()  -> Bool {
+		return diff() > 0
+	}
+	
+	private func arrayStringToDouble(from: [String]) -> Double {
 		var arrDouble: [Double] = []
 		
-		for i in arrayString.indices {
-			arrDouble.append(Double(arrayString[i]) ?? 0)
+		for i in from.indices {
+			arrDouble.append(Double(from[i]) ?? 0)
 		}
 		
 		return arrDouble.reduce(0, +)
-	}
-	
-	func isPositiveDiff()  -> Bool {
-		return diff() > 0
 	}
 }
