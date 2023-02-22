@@ -16,7 +16,7 @@ enum TYPE_PAYEMENT {
 	case CASH
 }
 
-class CashRegister: ObservableObject {
+class CashRegisterViewModel: ObservableObject {
 	
 	@Published var textFieldCashRegister: Double?
 	@Published var textFieldCouverts: Double?

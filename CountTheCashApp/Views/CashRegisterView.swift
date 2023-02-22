@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CashRegisterView: View {
-	@ObservedObject var cashRegisterData: CashRegister
+	@ObservedObject var cashRegisterData: CashRegisterViewModel
 	@FocusState var isInputActive: Bool
 	
 	var body: some View {
@@ -108,12 +108,12 @@ struct CashRegisterView: View {
 
 struct CashRegisterView_Previews: PreviewProvider {
 	static var previews: some View {
-		CashRegisterView(cashRegisterData: CashRegister())
+		CashRegisterView(cashRegisterData: CashRegisterViewModel())
 	}
 }
 
 struct CbEmvView: View {
-	@ObservedObject var cashRegister: CashRegister
+	@ObservedObject var cashRegister: CashRegisterViewModel
 	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
@@ -161,7 +161,7 @@ struct CbEmvView: View {
 }
 
 struct CbLessView: View {
-	@ObservedObject var cashRegister: CashRegister
+	@ObservedObject var cashRegister: CashRegisterViewModel
 	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
@@ -207,7 +207,7 @@ struct CbLessView: View {
 }
 
 struct AmexView: View {
-	@ObservedObject var cashRegister: CashRegister
+	@ObservedObject var cashRegister: CashRegisterViewModel
 	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
@@ -253,7 +253,7 @@ struct AmexView: View {
 }
 
 struct AmexLessView: View {
-	@ObservedObject var cashRegister: CashRegister
+	@ObservedObject var cashRegister: CashRegisterViewModel
 	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
@@ -300,13 +300,13 @@ struct AmexLessView: View {
 }
 
 struct TicketRestaurantView: View {
-	@ObservedObject var cashRegister: CashRegister
+	@ObservedObject var cashRegister: CashRegisterViewModel
 	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
 		VStack(alignment: .leading) {
 			
-			Text("Ticket Restaurant")
+			Text("T. RESTAURANT")
 				.foregroundColor(.mint)
 				.font(.caption)
 			
@@ -347,7 +347,7 @@ struct TicketRestaurantView: View {
 }
 
 struct CashView: View {
-	@ObservedObject var cashRegister: CashRegister
+	@ObservedObject var cashRegister: CashRegisterViewModel
 	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {

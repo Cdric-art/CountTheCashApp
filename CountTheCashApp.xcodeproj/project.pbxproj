@@ -127,7 +127,6 @@
 		A79E84CD29A58D750068D95A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A79E84D329A58ED80068D95A /* CashRegisterModel */,
 				A79E84D229A58EB60068D95A /* CashFundModel */,
 			);
 			path = Model;
@@ -136,18 +135,11 @@
 		A79E84D229A58EB60068D95A /* CashFundModel */ = {
 			isa = PBXGroup;
 			children = (
+				A79E84D429A58F3D0068D95A /* AdditionResults.swift */,
 				A79E84CE29A58D910068D95A /* CoinsModel.swift */,
 				A79E84D029A58DBD0068D95A /* BillsModel.swift */,
-				A79E84D429A58F3D0068D95A /* AdditionResults.swift */,
 			);
 			path = CashFundModel;
-			sourceTree = "<group>";
-		};
-		A79E84D329A58ED80068D95A /* CashRegisterModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CashRegisterModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
