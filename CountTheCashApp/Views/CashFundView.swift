@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CashFundView: View {
 	@ObservedObject var cashFund: CashFundViewModel
-	@FocusState var isInputActive: Bool
+	@FocusState private var isInputActive: Bool
 	
 	var body: some View {
 		ZStack {
@@ -29,7 +29,7 @@ struct CashFundView: View {
 							ToolbarItemGroup(placement: .keyboard) {
 								Spacer()
 								Button(action: {
-									isInputActive = !isInputActive
+									isInputActive.toggle()
 								}) {
 									Image(systemName: "chevron.down")
 										.foregroundColor(Color("primaryColor"))

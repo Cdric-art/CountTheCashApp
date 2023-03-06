@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CashRegisterView: View {
 	@ObservedObject var cashRegisterData: CashRegisterViewModel
-	@FocusState var isInputActive: Bool
+	@FocusState private var isInputActive: Bool
 	
 	var body: some View {
 		ZStack {
