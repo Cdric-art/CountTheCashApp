@@ -32,7 +32,7 @@ struct CashRegisterView: View {
 									ToolbarItemGroup(placement: .keyboard) {
 										Spacer()
 										Button(action: {
-											isInputActive = !isInputActive
+											isInputActive.toggle()
 										}) {
 											Image(systemName: "chevron.down")
 												.foregroundColor(Color("primaryColor"))
@@ -132,15 +132,17 @@ struct CbEmvView: View {
 							cashRegister.saveTotal(type: .CBEMV)
 						}
 						.focused(isInputActive)
-					Button {
-						if cashRegister.cb_emv[0] != "" {
-							cashRegister.cb_emv.append("")
+					if i == 0 {
+						Button {
+							if cashRegister.cb_emv[0] != "" {
+								cashRegister.cb_emv.append("")
+							}
+						} label: {
+							Image(systemName: "plus.circle.fill")
+								.foregroundColor(Color("primaryColor"))
+								.opacity(0.8)
 						}
-					} label: {
-						Image(systemName: "plus.circle.fill")
-							.foregroundColor(.gray)
 					}
-					
 				}
 				.padding(6)
 				.background(.white.opacity(0.9))
@@ -180,13 +182,16 @@ struct CbLessView: View {
 							cashRegister.saveTotal(type: .CBLESS)
 						}
 						.focused(isInputActive)
-					Button {
-						if cashRegister.cb_less[0] != "" {
-							cashRegister.cb_less.append("")
+					if i == 0 {
+						Button {
+							if cashRegister.cb_less[0] != "" {
+								cashRegister.cb_less.append("")
+							}
+						} label: {
+							Image(systemName: "plus.circle.fill")
+								.foregroundColor(Color("primaryColor"))
+								.opacity(0.8)
 						}
-					} label: {
-						Image(systemName: "plus.circle.fill")
-							.foregroundColor(.gray)
 					}
 				}
 				.padding(6)
@@ -226,13 +231,16 @@ struct AmexView: View {
 							cashRegister.saveTotal(type: .AMEX)
 						}
 						.focused(isInputActive)
-					Button {
-						if cashRegister.amex[0] != "" {
-							cashRegister.amex.append("")
+					if i == 0 {
+						Button {
+							if cashRegister.amex[0] != "" {
+								cashRegister.amex.append("")
+							}
+						} label: {
+							Image(systemName: "plus.circle.fill")
+								.foregroundColor(Color("primaryColor"))
+								.opacity(0.8)
 						}
-					} label: {
-						Image(systemName: "plus.circle.fill")
-							.foregroundColor(.gray)
 					}
 				}
 				.padding(6)
@@ -272,13 +280,16 @@ struct AmexLessView: View {
 							cashRegister.saveTotal(type: .AMEXLESS)
 						}
 						.focused(isInputActive)
-					Button {
-						if cashRegister.amex_less[0] != "" {
-							cashRegister.amex_less.append("")
+					if i == 0 {
+						Button {
+							if cashRegister.amex_less[0] != "" {
+								cashRegister.amex_less.append("")
+							}
+						} label: {
+							Image(systemName: "plus.circle.fill")
+								.foregroundColor(Color("primaryColor"))
+								.opacity(0.8)
 						}
-					} label: {
-						Image(systemName: "plus.circle.fill")
-							.foregroundColor(.gray)
 					}
 				}
 				.padding(6)
@@ -319,13 +330,16 @@ struct TicketRestaurantView: View {
 							cashRegister.saveTotal(type: .TICKETRESTAURANT)
 						}
 						.focused(isInputActive)
-					Button {
-						if cashRegister.ticketRestaurant[0] != "" {
-							cashRegister.ticketRestaurant.append("")
+					if i == 0 {
+						Button {
+							if cashRegister.ticketRestaurant[0] != "" {
+								cashRegister.ticketRestaurant.append("")
+							}
+						} label: {
+							Image(systemName: "plus.circle.fill")
+								.foregroundColor(Color("primaryColor"))
+								.opacity(0.8)
 						}
-					} label: {
-						Image(systemName: "plus.circle.fill")
-							.foregroundColor(.gray)
 					}
 				}
 				.padding(6)
