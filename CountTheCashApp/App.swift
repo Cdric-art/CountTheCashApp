@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
 	
+	@StateObject var login = LoginViewModel()
 	@StateObject var cashFund = CashFundViewModel()
 	@StateObject var cashRegister = CashRegisterViewModel()
 	
@@ -20,7 +21,7 @@ struct ContentView: View {
 				CircleBackground()
 				
 				VStack {
-					TitleView(title: "Compte ta caisse", icon: "cashIcon")
+					TitleView(title: "Compte ta caisse", icon: "cashIcon", color: .white)
 					
 					Spacer()
 						.frame(height: 100.0)
@@ -38,6 +39,15 @@ struct ContentView: View {
 					Spacer()
 				}
 			}
+			.toolbar(content: {
+				ToolbarItem(placement: .navigationBarTrailing, content: {
+					NavigationLink(destination: LoginView(login: LoginViewModel()), label: {
+						Image(systemName: "person.circle")
+							.foregroundColor(Color("primaryColor"))
+							.opacity(0.7)
+					})
+				})
+			})
 		}
 		.accentColor(.white)
 		.scrollDismissesKeyboard(.interactively)
