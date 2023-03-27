@@ -22,10 +22,10 @@ struct NavigationLinkLabel: View {
 				.scaledToFit()
 				.foregroundColor(Color(color))
 			Text(title)
-				.font(.subheadline)
+				.font(.caption)
 				.foregroundColor(.black)
 		}
-		.frame(width: 120, height: 80)
+		.frame(width: 100, height: 60)
 		.padding()
 		.background(.white)
 		.cornerRadius(12)

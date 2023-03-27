@@ -52,8 +52,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text("50")
@@ -83,8 +81,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text("20")
@@ -114,8 +110,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text("10")
@@ -145,8 +139,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text(" 5")
@@ -176,8 +168,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text(" 2")
@@ -207,8 +197,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text(" 1")
@@ -238,8 +226,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text("0.50")
@@ -269,8 +255,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text("0.20")
@@ -300,8 +284,6 @@ struct CashFundView: View {
 										cashFund.totalAddition()
 									}
 								}
-								.keyboardType(.decimalPad)
-								.multilineTextAlignment(.center)
 								.frame(maxWidth: 50)
 							Text("x")
 							Text("0.10")
@@ -319,6 +301,7 @@ struct CashFundView: View {
 								.stroke(Color.gray, lineWidth: 1)
 						)
 					}
+					.keyboardType(.decimalPad)
 					.padding()
 				}
 				.scrollContentBackground(.hidden)
@@ -342,8 +325,7 @@ struct CashFundView: View {
 					}
 				}
 				.foregroundColor(.black).opacity(0.8)
-				.frame(minHeight: 50)
-				.padding()
+				.padding(.horizontal)
 			}
 			
 		}

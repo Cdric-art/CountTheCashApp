@@ -24,7 +24,6 @@ struct CashRegisterView: View {
 							Text("Flash :")
 								.foregroundColor(.white)
 							TextField("Montant", value: $cashRegisterData.textFieldCashRegister, format: .number)
-								.keyboardType(.decimalPad)
 								.frame(maxWidth: 100, minHeight: 36)
 								.background(RoundedRectangle(cornerRadius: 10).fill(.white).opacity(0.8))
 								.focused($isInputActive)
@@ -46,7 +45,6 @@ struct CashRegisterView: View {
 							Text("Couverts :")
 								.foregroundColor(.white)
 							TextField("Nombre", value: $cashRegisterData.textFieldCouverts, format: .number)
-								.keyboardType(.decimalPad)
 								.frame(maxWidth: 100, minHeight: 36)
 								.background(RoundedRectangle(cornerRadius: 10).fill(.white).opacity(0.8))
 								.focused($isInputActive)
@@ -72,35 +70,37 @@ struct CashRegisterView: View {
 					.background(RoundedRectangle(cornerRadius: 12).fill(.white).opacity(0.6))
 					.padding(6)
 					
-					HStack {
-						VStack(spacing: 4) {
-							HStack {
-								Text("Total :")
-								Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
-								Spacer()
+					VStack {
+						HStack {
+							VStack(spacing: 2) {
+								HStack {
+									Text("Total :")
+									Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
+									Spacer()
+								}
+								.font(.headline)
+								.foregroundColor(.black).opacity(0.8)
+								
+								HStack {
+									Text("Difference :")
+										.font(.callout)
+									Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
+									Spacer()
+								}
+								.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .gray)
 							}
-							.font(.headline)
+							VStack(spacing: 2) {
+								Text("Ticket Moyen")
+								Text(cashRegisterData.ticketMoyen().formatted(.currency(code: "EUR")))
+							}
+							.font(.footnote)
 							.foregroundColor(.black).opacity(0.8)
-							
-							HStack {
-								Text("Difference :")
-									.font(.callout)
-								Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
-								Spacer()
-							}
-							.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .gray)
 						}
-						VStack(spacing: 4) {
-							Text("Ticket Moyen")
-							Text(cashRegisterData.ticketMoyen().formatted(.currency(code: "EUR")))
-						}
-						.font(.footnote)
-						.foregroundColor(.black).opacity(0.8)
 					}
-					.frame(height: 60)
 					.padding(.horizontal, 16)
 				}
 			}
+			.keyboardType(.decimalPad)
 		}
 		.accentColor(.black)
 	}
@@ -126,7 +126,6 @@ struct CbEmvView: View {
 			ForEach(cashRegister.cb_emv.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.cb_emv[i])
-						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.cb_emv[i]) { value in
 							cashRegister.cb_emv[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .CBEMV)
@@ -176,7 +175,6 @@ struct CbLessView: View {
 			ForEach(cashRegister.cb_less.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.cb_less[i])
-						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.cb_less[i]) { value in
 							cashRegister.cb_less[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .CBLESS)
@@ -225,7 +223,6 @@ struct AmexView: View {
 			ForEach(cashRegister.amex.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.amex[i])
-						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.amex[i]) { value in
 							cashRegister.amex[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .AMEX)
@@ -274,7 +271,6 @@ struct AmexLessView: View {
 			ForEach(cashRegister.amex_less.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.amex_less[i])
-						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.amex_less[i]) { value in
 							cashRegister.amex_less[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .AMEXLESS)
@@ -324,7 +320,6 @@ struct TicketRestaurantView: View {
 			ForEach(cashRegister.ticketRestaurant.indices, id: \.self) { i in
 				HStack {
 					TextField("Montant", text: $cashRegister.ticketRestaurant[i])
-						.keyboardType(.decimalPad)
 						.onChange(of: cashRegister.ticketRestaurant[i]) { value in
 							cashRegister.ticketRestaurant[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .TICKETRESTAURANT)
@@ -373,7 +368,6 @@ struct CashView: View {
 			
 			HStack {
 				TextField("Montant", text: $cashRegister.cash[0])
-					.keyboardType(.decimalPad)
 					.onChange(of: cashRegister.cash[0]) { value in
 						cashRegister.cash[0] = value.replacingOccurrences(of: ",", with: ".")
 						cashRegister.saveTotal(type: .CASH)

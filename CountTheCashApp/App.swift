@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-	
-	@StateObject var login = LoginViewModel()
 	@StateObject var cashFund = CashFundViewModel()
 	@StateObject var cashRegister = CashRegisterViewModel()
 	
@@ -26,7 +24,8 @@ struct ContentView: View {
 					Spacer()
 						.frame(height: 100.0)
 					
-					VStack(spacing: 32) {
+					VStack(spacing: 22) {
+						
 						NavigationLink(destination: CashFundView(cashFund: cashFund), label: {
 							NavigationLinkLabel(imageName: "dollarsign.arrow.circlepath", color: "secondaryColor", title: "Fond de caisse")
 						})
@@ -34,20 +33,14 @@ struct ContentView: View {
 						NavigationLink(destination: CashRegisterView(cashRegisterData: cashRegister), label: {
 							NavigationLinkLabel(imageName: "dollarsign.square.fill", color: "primaryColor", title: "Caisse")
 						})
+						
 					}
 					
 					Spacer()
+						.frame(height: 100.0)
+					
 				}
 			}
-			.toolbar(content: {
-				ToolbarItem(placement: .navigationBarTrailing, content: {
-					NavigationLink(destination: LoginView(login: LoginViewModel()), label: {
-						Image(systemName: "person.circle")
-							.foregroundColor(Color("primaryColor"))
-							.opacity(0.7)
-					})
-				})
-			})
 		}
 		.accentColor(.white)
 		.scrollDismissesKeyboard(.interactively)

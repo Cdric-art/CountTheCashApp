@@ -16,17 +16,16 @@ struct TitleView: View {
     var body: some View {
 		VStack {
 			Text(title)
-				.font(.system(size: 40))
+				.font(.system(size: 38))
 				.fontWeight(.black)
-				.frame(minWidth: 10, maxWidth: 250)
+				.frame(maxWidth: 300)
 				.multilineTextAlignment(.center)
-				.padding(.top, 32)
 			
 			Image(icon)
 				.resizable()
 				.scaledToFit()
 				.cornerRadius(110)
-				.frame(maxWidth: 110)
+				.frame(width: 110)
 				.shadow(color: Color(.sRGBLinear, white: 0.1, opacity: 0.1) ,radius: 1)
 		}
 		.foregroundColor(color)
