@@ -9,7 +9,7 @@ import Foundation
 
 class CashFundViewModel: ObservableObject {
 	
-	@Published var textFieldCashFund: Int? = 200
+	@Published var textFieldCashFund: Int?
 	
 	@Published var coins = Coins()
 	@Published var bills = Bills()

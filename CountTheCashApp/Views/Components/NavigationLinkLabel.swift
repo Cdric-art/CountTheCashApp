@@ -10,26 +10,27 @@ import SwiftUI
 struct NavigationLinkLabel: View {
 	
 	@State var imageName: String
-	@State var color: String
 	@State var title: String
-	
-	let shadow = Color(.sRGBLinear, white: 0.1, opacity: 0.1)
 	
     var body: some View {
 		VStack {
 			Image(systemName: imageName)
 				.resizable()
 				.scaledToFit()
-				.foregroundColor(Color(color))
+				.frame(height: 40)
+				.opacity(0.7)
 			Text(title)
-				.font(.caption)
-				.foregroundColor(.black)
+				.font(.subheadline)
 		}
-		.frame(width: 100, height: 60)
+		.frame(width: 140, height: 80)
 		.padding()
-		.background(.white)
-		.cornerRadius(12)
-		.shadow(color: shadow ,radius: 6)
+		.foregroundColor(.black)
+		.cornerRadius(24)
+		.overlay(content: {
+			RoundedRectangle(cornerRadius: 10)
+				.stroke(Color.black.opacity(0.1), lineWidth: 1)
+				.shadow(color: .black.opacity(0.2), radius: 3, x: 2, y: 4)
+		})
     }
 }
 

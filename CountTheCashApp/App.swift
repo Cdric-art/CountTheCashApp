@@ -12,37 +12,21 @@ struct ContentView: View {
 	@StateObject var cashRegister = CashRegisterViewModel()
 	
 	var body: some View {
-		
-		NavigationStack {
-			ZStack {
-				
-				CircleBackground()
-				
-				VStack {
-					TitleView(title: "Compte ta caisse", icon: "cashIcon", color: .white)
-					
-					Spacer()
-						.frame(height: 100.0)
-					
-					VStack(spacing: 22) {
-						
-						NavigationLink(destination: CashFundView(cashFund: cashFund), label: {
-							NavigationLinkLabel(imageName: "dollarsign.arrow.circlepath", color: "secondaryColor", title: "Fond de caisse")
-						})
-						
-						NavigationLink(destination: CashRegisterView(cashRegisterData: cashRegister), label: {
-							NavigationLinkLabel(imageName: "dollarsign.square.fill", color: "primaryColor", title: "Caisse")
-						})
-						
-					}
-					
-					Spacer()
-						.frame(height: 100.0)
-					
+		TabView {
+			HomeView()
+				.tabItem {
+					Label("Accueil", systemImage: "house.fill")
 				}
-			}
+			CashFundView(cashFund: cashFund)
+				.tabItem {
+					Label("Fond de caisse", systemImage: "tray.fill")
+				}
+			CashRegisterView(cashRegisterData: cashRegister)
+				.tabItem {
+					Label("Caisse", systemImage: "tray.and.arrow.up.fill")
+				}
 		}
-		.accentColor(.white)
+		.accentColor(.black)
 		.scrollDismissesKeyboard(.interactively)
 	}
 }

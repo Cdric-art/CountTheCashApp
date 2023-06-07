@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A72C805329882640009E0EA4 /* CircleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72C805229882640009E0EA4 /* CircleBackground.swift */; };
 		A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD2692973572B006B48BD /* CashFundView.swift */; };
 		A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26B297358DC006B48BD /* CashRegisterView.swift */; };
 		A72CD26F297364DD006B48BD /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26E297364DD006B48BD /* TitleView.swift */; };
@@ -22,10 +21,10 @@
 		A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84CE29A58D910068D95A /* CoinsModel.swift */; };
 		A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D029A58DBD0068D95A /* BillsModel.swift */; };
 		A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D429A58F3D0068D95A /* AdditionResults.swift */; };
+		A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA7F262A28D30C0000C983 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A72C805229882640009E0EA4 /* CircleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleBackground.swift; sourceTree = "<group>"; };
 		A72CD2692973572B006B48BD /* CashFundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundView.swift; sourceTree = "<group>"; };
 		A72CD26B297358DC006B48BD /* CashRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRegisterView.swift; sourceTree = "<group>"; };
 		A72CD26E297364DD006B48BD /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -41,6 +40,7 @@
 		A79E84CE29A58D910068D95A /* CoinsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsModel.swift; sourceTree = "<group>"; };
 		A79E84D029A58DBD0068D95A /* BillsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsModel.swift; sourceTree = "<group>"; };
 		A79E84D429A58F3D0068D95A /* AdditionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionResults.swift; sourceTree = "<group>"; };
+		A7CA7F262A28D30C0000C983 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +60,7 @@
 				A72CD26D297364BC006B48BD /* Components */,
 				A72CD2692973572B006B48BD /* CashFundView.swift */,
 				A72CD26B297358DC006B48BD /* CashRegisterView.swift */,
+				A7CA7F262A28D30C0000C983 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -68,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				A72CD26E297364DD006B48BD /* TitleView.swift */,
-				A72C805229882640009E0EA4 /* CircleBackground.swift */,
 				A7903738298995C2005EC365 /* TitleSecondaryView.swift */,
 				A790373A29899748005EC365 /* NavigationLinkLabel.swift */,
 			);
@@ -178,7 +178,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					A79A2E522972069C00C1CEFB = {
 						CreatedOnToolsVersion = 14.2;
@@ -187,7 +187,7 @@
 			};
 			buildConfigurationList = A79A2E4E2972069C00C1CEFB /* Build configuration list for PBXProject "CountTheCashApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -225,10 +225,10 @@
 			files = (
 				A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */,
 				A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */,
+				A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */,
 				A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */,
 				A74A019F29785B2500E1FD5A /* CashRegisterViewModel.swift in Sources */,
 				A79A2E592972069C00C1CEFB /* App.swift in Sources */,
-				A72C805329882640009E0EA4 /* CircleBackground.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
 				A72CD26F297364DD006B48BD /* TitleView.swift in Sources */,
@@ -246,6 +246,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -307,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

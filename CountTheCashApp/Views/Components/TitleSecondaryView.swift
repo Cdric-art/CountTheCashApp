@@ -10,13 +10,11 @@ import SwiftUI
 struct TitleSecondaryView: View {
 	
 	@State var title: String
-	@State var color: Color = Color.black
 	
     var body: some View {
         Text(title)
 			.font(.largeTitle)
 			.fontWeight(.heavy)
-			.foregroundColor(color)
     }
 }
 

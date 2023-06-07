@@ -12,97 +12,70 @@ struct CashRegisterView: View {
 	@FocusState private var isInputActive: Bool
 	
 	var body: some View {
-		ZStack {
+		VStack {
 			
-			CircleBackground()
+			TitleSecondaryView(title: "Caisse")
+			
+			HStack {
+				TextField("Rapport Z", value: $cashRegisterData.textFieldCashRegister, format: .number)
+					.frame(maxWidth: 100, minHeight: 36)
+					.background(RoundedRectangle(cornerRadius: 10).fill(.white))
+					.focused($isInputActive)
+					.overlay(content: {
+						RoundedRectangle(cornerRadius: 10)
+							.stroke(Color.gray, lineWidth: 1)
+					})
+					.toolbar {
+						ToolbarItemGroup(placement: .keyboard) {
+							Spacer()
+							Button(action: {
+								isInputActive.toggle()
+							}) {
+								Image(systemName: "chevron.down")
+							}
+						}
+					}
+			}
+			.multilineTextAlignment(.center)
+			
+			Divider()
+			
+			ScrollView {
+				CbEmvView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
+				CbLessView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
+				AmexView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
+				AmexLessView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
+				TicketRestaurantView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
+				CashView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
+			}
+			.padding(.horizontal, 24)
+			.padding(.top, 12)
+			
+			Divider()
 			
 			VStack {
-				VStack {
-					TitleSecondaryView(title: "Caisse", color: .white)
-					HStack {
-						VStack {
-							Text("Flash :")
-								.foregroundColor(.white)
-							TextField("Montant", value: $cashRegisterData.textFieldCashRegister, format: .number)
-								.frame(maxWidth: 100, minHeight: 36)
-								.background(RoundedRectangle(cornerRadius: 10).fill(.white).opacity(0.8))
-								.focused($isInputActive)
-								.toolbar {
-									ToolbarItemGroup(placement: .keyboard) {
-										Spacer()
-										Button(action: {
-											isInputActive.toggle()
-										}) {
-											Image(systemName: "chevron.down")
-												.foregroundColor(Color("primaryColor"))
-										}
-									}
-								}
-						}
-						.padding(.horizontal, 30)
-						
-						VStack {
-							Text("Couverts :")
-								.foregroundColor(.white)
-							TextField("Nombre", value: $cashRegisterData.textFieldCouverts, format: .number)
-								.frame(maxWidth: 100, minHeight: 36)
-								.background(RoundedRectangle(cornerRadius: 10).fill(.white).opacity(0.8))
-								.focused($isInputActive)
-						}
-						.padding(.horizontal, 30)
-					}
-					.padding(.top, 1)
-					.multilineTextAlignment(.center)
-				}
-				.foregroundColor(.black)
-				
-				VStack {
-					ScrollView {
-						CbEmvView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-						CbLessView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-						AmexView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-						AmexLessView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-						TicketRestaurantView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-						CashView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-					}
-					.scrollContentBackground(.hidden)
-					.scrollIndicators(.hidden)
-					.background(RoundedRectangle(cornerRadius: 12).fill(.white).opacity(0.6))
-					.padding(6)
-					
-					VStack {
+				HStack {
+					VStack(spacing: 2) {
 						HStack {
-							VStack(spacing: 2) {
-								HStack {
-									Text("Total :")
-									Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
-									Spacer()
-								}
-								.font(.headline)
-								.foregroundColor(.black).opacity(0.8)
-								
-								HStack {
-									Text("Difference :")
-										.font(.callout)
-									Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
-									Spacer()
-								}
-								.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .gray)
-							}
-							VStack(spacing: 2) {
-								Text("Ticket Moyen")
-								Text(cashRegisterData.ticketMoyen().formatted(.currency(code: "EUR")))
-							}
-							.font(.footnote)
-							.foregroundColor(.black).opacity(0.8)
+							Text("Total :")
+							Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
+							Spacer()
 						}
+						.font(.headline)
+						
+						HStack {
+							Text("Difference :")
+								.font(.callout)
+							Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
+							Spacer()
+						}
+						.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .black.opacity(0.6))
 					}
-					.padding(.horizontal, 16)
 				}
 			}
-			.keyboardType(.decimalPad)
+			.padding(.horizontal, 16)
 		}
-		.accentColor(.black)
+		.keyboardType(.decimalPad)
 	}
 }
 
@@ -121,7 +94,7 @@ struct CbEmvView: View {
 			
 			Text("CB EMV")
 				.font(.caption)
-				.foregroundColor(.teal)
+				.foregroundColor(.purple)
 			
 			ForEach(cashRegister.cb_emv.indices, id: \.self) { i in
 				HStack {
@@ -138,22 +111,20 @@ struct CbEmvView: View {
 							}
 						} label: {
 							Image(systemName: "plus.circle.fill")
-								.foregroundColor(Color("primaryColor"))
-								.opacity(0.8)
 						}
 					}
 				}
 				.padding(6)
-				.background(.white.opacity(0.9))
 				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
-						.stroke(Color.teal, lineWidth: 1)
+						.stroke(Color.purple, lineWidth: 1)
 				)
 			}
 			
 			Text("Total: \(cashRegister.totalCbEmv.formatted(.currency(code: "EUR")))")
 				.font(.caption2)
+				.foregroundColor(Color.purple)
 		}
 		.padding(.horizontal)
 		.padding(.top, 12)
@@ -170,7 +141,7 @@ struct CbLessView: View {
 			
 			Text("CB LESS")
 				.font(.caption)
-				.foregroundColor(.purple)
+				.foregroundColor(.teal)
 			
 			ForEach(cashRegister.cb_less.indices, id: \.self) { i in
 				HStack {
@@ -187,22 +158,20 @@ struct CbLessView: View {
 							}
 						} label: {
 							Image(systemName: "plus.circle.fill")
-								.foregroundColor(Color("primaryColor"))
-								.opacity(0.8)
 						}
 					}
 				}
 				.padding(6)
-				.background(.white.opacity(0.9))
 				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
-						.stroke(Color.purple, lineWidth: 1)
+						.stroke(Color.teal, lineWidth: 1)
 				)
 			}
 			
 			Text("Total: \(cashRegister.totalCbLess.formatted(.currency(code: "EUR")))")
 				.font(.caption2)
+				.foregroundColor(Color.teal)
 		}
 		.padding(.horizontal)
 		.padding(.vertical, 4)
@@ -235,13 +204,10 @@ struct AmexView: View {
 							}
 						} label: {
 							Image(systemName: "plus.circle.fill")
-								.foregroundColor(Color("primaryColor"))
-								.opacity(0.8)
 						}
 					}
 				}
 				.padding(6)
-				.background(.white.opacity(0.9))
 				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
@@ -251,6 +217,7 @@ struct AmexView: View {
 			
 			Text("Total: \(cashRegister.totalAmex.formatted(.currency(code: "EUR")))")
 				.font(.caption2)
+				.foregroundColor(Color.brown)
 		}
 		.padding(.horizontal)
 		.padding(.vertical, 4)
@@ -283,13 +250,10 @@ struct AmexLessView: View {
 							}
 						} label: {
 							Image(systemName: "plus.circle.fill")
-								.foregroundColor(Color("primaryColor"))
-								.opacity(0.8)
 						}
 					}
 				}
 				.padding(6)
-				.background(.white.opacity(0.9))
 				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
@@ -299,6 +263,7 @@ struct AmexLessView: View {
 			
 			Text("Total: \(cashRegister.totalAmexLess.formatted(.currency(code: "EUR")))")
 				.font(.caption2)
+				.foregroundColor(Color.orange)
 			
 		}
 		.padding(.horizontal)
@@ -332,13 +297,10 @@ struct TicketRestaurantView: View {
 							}
 						} label: {
 							Image(systemName: "plus.circle.fill")
-								.foregroundColor(Color("primaryColor"))
-								.opacity(0.8)
 						}
 					}
 				}
 				.padding(6)
-				.background(.white.opacity(0.9))
 				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
@@ -348,7 +310,7 @@ struct TicketRestaurantView: View {
 			
 			Text("Total: \(cashRegister.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
 				.font(.caption2)
-			
+				.foregroundColor(Color.mint)
 		}
 		.padding(.horizontal)
 		.padding(.vertical, 4)
@@ -374,7 +336,6 @@ struct CashView: View {
 					}
 					.focused(isInputActive)
 					.padding(6)
-					.background(.white.opacity(0.9))
 					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
@@ -384,7 +345,7 @@ struct CashView: View {
 			
 			Text("Total: \(cashRegister.totalCash.formatted(.currency(code: "EUR")))")
 				.font(.caption2)
-			
+				.foregroundColor(Color.red)
 		}
 		.padding(.horizontal)
 		.padding(.top, 4)
