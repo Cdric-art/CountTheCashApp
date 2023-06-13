@@ -18,7 +18,8 @@ enum TYPE_PAYEMENT {
 
 class CashRegisterViewModel: ObservableObject {
 	
-	@Published var textFieldCashRegister: Double?
+	@Published var firstRapport: Double?
+	@Published var secondRapport: Double?
 	
 	@Published var cb_emv: [String] = [""]
 	@Published var cb_less: [String] = [""]
@@ -56,8 +57,14 @@ class CashRegisterViewModel: ObservableObject {
 		return totalCbEmv + totalCbLess + totalAmex + totalAmexLess + totalTicketRestaurant + totalCash
 	}
 	
+	func totalRapport() -> Double {
+		let totalRapport = (firstRapport ?? 0) + (secondRapport ?? 0)
+		return totalRapport
+	}
+	
 	func diff() -> Double {
-		return resultTotal() - (textFieldCashRegister ?? 0)
+		let total = resultTotal() - totalRapport()
+		return total
 	}
 	
 	func isPositiveDiff()  -> Bool {

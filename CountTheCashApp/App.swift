@@ -27,7 +27,7 @@ struct ContentView: View {
 				}
 		}
 		.accentColor(.black)
-		.scrollDismissesKeyboard(.interactively)
+		.scrollDismissesKeyboard(.immediately)
 	}
 }
 

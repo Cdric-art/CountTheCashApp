@@ -16,27 +16,33 @@ struct CashRegisterView: View {
 			
 			TitleSecondaryView(title: "Caisse")
 			
-			HStack {
-				TextField("Rapport Z", value: $cashRegisterData.textFieldCashRegister, format: .number)
-					.frame(maxWidth: 100, minHeight: 36)
-					.background(RoundedRectangle(cornerRadius: 10).fill(.white))
-					.focused($isInputActive)
-					.overlay(content: {
-						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
-					})
-					.toolbar {
-						ToolbarItemGroup(placement: .keyboard) {
-							Spacer()
-							Button(action: {
-								isInputActive.toggle()
-							}) {
-								Image(systemName: "chevron.down")
-							}
-						}
-					}
+			VStack(spacing: 12) {
+				HStack(spacing: 24) {
+					TextField("Rapport", value: $cashRegisterData.firstRapport, format: .number)
+						.frame(maxWidth: 100, minHeight: 36)
+						.background(RoundedRectangle(cornerRadius: 10).fill(.white))
+						.focused($isInputActive)
+						.overlay(content: {
+							RoundedRectangle(cornerRadius: 10)
+								.stroke(Color.gray.opacity(0.5), lineWidth: 1)
+						})
+					TextField("Rapport", value: $cashRegisterData.secondRapport, format: .number)
+						.frame(maxWidth: 100, minHeight: 36)
+						.background(RoundedRectangle(cornerRadius: 10).fill(.white))
+						.focused($isInputActive)
+						.overlay(content: {
+							RoundedRectangle(cornerRadius: 10)
+								.stroke(Color.gray.opacity(0.5), lineWidth: 1)
+						})
+				}
+				.multilineTextAlignment(.center)
+				
+				HStack {
+					Text("CA total :")
+					Text(cashRegisterData.totalRapport().formatted(.currency(code: "EUR")))
+				}
+				.font(.caption2)
 			}
-			.multilineTextAlignment(.center)
 			
 			Divider()
 			
@@ -76,6 +82,16 @@ struct CashRegisterView: View {
 			.padding(.horizontal, 16)
 		}
 		.keyboardType(.decimalPad)
+		.toolbar {
+			ToolbarItemGroup(placement: .keyboard) {
+				Spacer()
+				Button(action: {
+					isInputActive.toggle()
+				}) {
+					Image(systemName: "chevron.down")
+				}
+			}
+		}
 	}
 }
 

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CashFundView: View {
 	@ObservedObject var cashFund: CashFundViewModel
-	@FocusState private var isInputActive: Bool
 	
 	var body: some View {
 		VStack {
@@ -19,21 +18,10 @@ struct CashFundView: View {
 					.keyboardType(.decimalPad)
 					.multilineTextAlignment(.center)
 					.frame(maxWidth: 100, minHeight: 36)
-					.focused($isInputActive)
 					.overlay(content: {
 						RoundedRectangle(cornerRadius: 10)
 							.stroke(Color.gray, lineWidth: 1)
 					})
-					.toolbar {
-						ToolbarItemGroup(placement: .keyboard) {
-							Spacer()
-							Button(action: {
-								isInputActive.toggle()
-							}) {
-								Image(systemName: "chevron.down")
-							}
-						}
-					}
 			}
 			
 			Divider()
@@ -42,7 +30,6 @@ struct CashFundView: View {
 				VStack(spacing: 16) {
 					HStack {
 						TextField("0", value: $cashFund.bills.fifty, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.bills.fifty)  { _ in
 								if cashFund.bills.fifty == 0 {
 									cashFund.additionResults.fiftyBill = 0
@@ -70,7 +57,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.bills.twenty, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.bills.twenty)  { _ in
 								if cashFund.bills.twenty == 0 {
 									cashFund.additionResults.twentyBill = 0
@@ -98,7 +84,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.bills.ten, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.bills.ten)  { _ in
 								if cashFund.bills.ten == 0 {
 									cashFund.additionResults.tenBill = 0
@@ -126,7 +111,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.bills.five, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.bills.five)  { _ in
 								if cashFund.bills.five == 0 {
 									cashFund.additionResults.fiveBill = 0
@@ -154,7 +138,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.coins.two, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.coins.two)  { _ in
 								if cashFund.coins.two == 0 {
 									cashFund.additionResults.twoCoin = 0
@@ -182,7 +165,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.coins.one, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.coins.one)  { _ in
 								if cashFund.coins.one == 0 {
 									cashFund.additionResults.oneCoin = 0
@@ -210,7 +192,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.coins.fifty, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.coins.fifty)  { _ in
 								if cashFund.coins.fifty == 0 {
 									cashFund.additionResults.fiftyCentCoin = 0
@@ -238,7 +219,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.coins.twenty, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.coins.twenty)  { _ in
 								if cashFund.coins.twenty == 0 {
 									cashFund.additionResults.twentyCentCoin = 0
@@ -266,7 +246,6 @@ struct CashFundView: View {
 					
 					HStack {
 						TextField("0", value: $cashFund.coins.ten, format: .number)
-							.focused($isInputActive)
 							.onChange(of: cashFund.coins.ten)  { _ in
 								if cashFund.coins.ten == 0 {
 									cashFund.additionResults.tenCentCoin = 0
