@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CashRegisterView: View {
 	@ObservedObject var cashRegisterData: CashRegisterViewModel
-	@FocusState private var isInputActive: Bool
 	
 	var body: some View {
 		VStack {
@@ -21,7 +20,6 @@ struct CashRegisterView: View {
 					TextField("Rapport", value: $cashRegisterData.firstRapport, format: .number)
 						.frame(maxWidth: 100, minHeight: 36)
 						.background(RoundedRectangle(cornerRadius: 10).fill(.white))
-						.focused($isInputActive)
 						.overlay(content: {
 							RoundedRectangle(cornerRadius: 10)
 								.stroke(Color.gray.opacity(0.5), lineWidth: 1)
@@ -29,7 +27,6 @@ struct CashRegisterView: View {
 					TextField("Rapport", value: $cashRegisterData.secondRapport, format: .number)
 						.frame(maxWidth: 100, minHeight: 36)
 						.background(RoundedRectangle(cornerRadius: 10).fill(.white))
-						.focused($isInputActive)
 						.overlay(content: {
 							RoundedRectangle(cornerRadius: 10)
 								.stroke(Color.gray.opacity(0.5), lineWidth: 1)
@@ -47,15 +44,16 @@ struct CashRegisterView: View {
 			Divider()
 			
 			ScrollView {
-				CbEmvView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-				CbLessView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-				AmexView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-				AmexLessView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-				TicketRestaurantView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
-				CashView(cashRegister: cashRegisterData, isInputActive: $isInputActive)
+				CbEmvView(cashRegister: cashRegisterData)
+				CbLessView(cashRegister: cashRegisterData)
+				AmexView(cashRegister: cashRegisterData)
+				AmexLessView(cashRegister: cashRegisterData)
+				TicketRestaurantView(cashRegister: cashRegisterData)
+				CashView(cashRegister: cashRegisterData)
 			}
 			.padding(.horizontal, 24)
 			.padding(.top, 12)
+			.scrollDismissesKeyboard(.interactively)
 			
 			Divider()
 			
@@ -82,16 +80,7 @@ struct CashRegisterView: View {
 			.padding(.horizontal, 16)
 		}
 		.keyboardType(.decimalPad)
-		.toolbar {
-			ToolbarItemGroup(placement: .keyboard) {
-				Spacer()
-				Button(action: {
-					isInputActive.toggle()
-				}) {
-					Image(systemName: "chevron.down")
-				}
-			}
-		}
+
 	}
 }
 
@@ -103,7 +92,6 @@ struct CashRegisterView_Previews: PreviewProvider {
 
 struct CbEmvView: View {
 	@ObservedObject var cashRegister: CashRegisterViewModel
-	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -119,7 +107,6 @@ struct CbEmvView: View {
 							cashRegister.cb_emv[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .CBEMV)
 						}
-						.focused(isInputActive)
 					if i == 0 {
 						Button {
 							if cashRegister.cb_emv[0] != "" {
@@ -150,7 +137,6 @@ struct CbEmvView: View {
 
 struct CbLessView: View {
 	@ObservedObject var cashRegister: CashRegisterViewModel
-	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -166,7 +152,6 @@ struct CbLessView: View {
 							cashRegister.cb_less[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .CBLESS)
 						}
-						.focused(isInputActive)
 					if i == 0 {
 						Button {
 							if cashRegister.cb_less[0] != "" {
@@ -196,7 +181,6 @@ struct CbLessView: View {
 
 struct AmexView: View {
 	@ObservedObject var cashRegister: CashRegisterViewModel
-	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -212,7 +196,6 @@ struct AmexView: View {
 							cashRegister.amex[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .AMEX)
 						}
-						.focused(isInputActive)
 					if i == 0 {
 						Button {
 							if cashRegister.amex[0] != "" {
@@ -242,7 +225,6 @@ struct AmexView: View {
 
 struct AmexLessView: View {
 	@ObservedObject var cashRegister: CashRegisterViewModel
-	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -258,7 +240,6 @@ struct AmexLessView: View {
 							cashRegister.amex_less[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .AMEXLESS)
 						}
-						.focused(isInputActive)
 					if i == 0 {
 						Button {
 							if cashRegister.amex_less[0] != "" {
@@ -289,7 +270,6 @@ struct AmexLessView: View {
 
 struct TicketRestaurantView: View {
 	@ObservedObject var cashRegister: CashRegisterViewModel
-	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -305,7 +285,6 @@ struct TicketRestaurantView: View {
 							cashRegister.ticketRestaurant[i] = value.replacingOccurrences(of: ",", with: ".")
 							cashRegister.saveTotal(type: .TICKETRESTAURANT)
 						}
-						.focused(isInputActive)
 					if i == 0 {
 						Button {
 							if cashRegister.ticketRestaurant[0] != "" {
@@ -335,7 +314,6 @@ struct TicketRestaurantView: View {
 
 struct CashView: View {
 	@ObservedObject var cashRegister: CashRegisterViewModel
-	var isInputActive: FocusState<Bool>.Binding
 	
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -350,7 +328,6 @@ struct CashView: View {
 						cashRegister.cash[0] = value.replacingOccurrences(of: ",", with: ".")
 						cashRegister.saveTotal(type: .CASH)
 					}
-					.focused(isInputActive)
 					.padding(6)
 					.cornerRadius(10)
 					.overlay(

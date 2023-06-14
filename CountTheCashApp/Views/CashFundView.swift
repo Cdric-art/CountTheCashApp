@@ -276,6 +276,8 @@ struct CashFundView: View {
 			}
 			.padding(.horizontal, 24)
 			.padding(.top, 12)
+			.scrollDismissesKeyboard(.interactively)
+
 			
 			Divider()
 			
