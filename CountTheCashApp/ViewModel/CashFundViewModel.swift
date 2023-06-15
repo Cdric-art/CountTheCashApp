@@ -20,7 +20,7 @@ class CashFundViewModel: ObservableObject {
 	@Published var difference: Double = 0
 	
 	func totalAddition() {
-		total = additionResults.fiftyBill + additionResults.twentyBill + additionResults.tenBill + additionResults.fiveBill + additionResults.twoCoin + additionResults.oneCoin + additionResults.fiftyCentCoin + additionResults.twentyCentCoin + additionResults.tenCentCoin
+		total = additionResults.twentyBill + additionResults.tenBill + additionResults.fiveBill + additionResults.twoCoin + additionResults.oneCoin + additionResults.fiftyCentCoin + additionResults.twentyCentCoin + additionResults.tenCentCoin
 	}
 	
 	func differenceCalcul() -> Double {

@@ -27,34 +27,7 @@ struct CashFundView: View {
 			Divider()
 			
 			ScrollView {
-				VStack(spacing: 16) {
-					HStack {
-						TextField("0", value: $cashFund.bills.fifty, format: .number)
-							.onChange(of: cashFund.bills.fifty)  { _ in
-								if cashFund.bills.fifty == 0 {
-									cashFund.additionResults.fiftyBill = 0
-									cashFund.totalAddition()
-								} else {
-									cashFund.additionResults.fiftyBill = Double(cashFund.bills.fifty ?? 0) * 50.0
-									cashFund.totalAddition()
-								}
-							}
-							.frame(maxWidth: 50)
-						Text("x")
-						Text("50")
-						Spacer()
-						Text("=")
-						Text(cashFund.additionResults.fiftyBill.formatted(.currency(code: "EUR")))
-							.frame(width: 100, alignment: .trailing)
-					}
-					.padding(.horizontal, 16)
-					.padding(.vertical, 12)
-					.cornerRadius(10)
-					.overlay(
-						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
-					)
-					
+				VStack(spacing: 18) {
 					HStack {
 						TextField("0", value: $cashFund.bills.twenty, format: .number)
 							.onChange(of: cashFund.bills.twenty)  { _ in
@@ -275,28 +248,13 @@ struct CashFundView: View {
 				.padding()
 			}
 			.padding(.horizontal, 24)
-			.padding(.top, 12)
+			.padding(.top, 8)
 			.scrollDismissesKeyboard(.interactively)
 
 			
 			Divider()
 			
-			VStack(spacing: 4) {
-				HStack {
-					Text("Total :")
-					Text(cashFund.total.formatted(.currency(code: "EUR")))
-					Spacer()
-				}
-				.font(.headline)
-				
-				HStack {
-					Text("Difference :")
-						.font(.callout)
-					Text(cashFund.differenceCalcul().formatted(.currency(code: "EUR")))
-					Spacer()
-				}
-			}
-			.padding(.horizontal)
+			FooterCashFundView(cashFund: cashFund)
 		}
 	}
 }

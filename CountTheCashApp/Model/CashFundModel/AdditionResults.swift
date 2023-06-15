@@ -9,7 +9,6 @@ import Foundation
 
 class AdditionResults {
 	
-	var fiftyBill: Double = 0
 	var twentyBill: Double = 0
 	var tenBill: Double = 0
 	var fiveBill: Double = 0

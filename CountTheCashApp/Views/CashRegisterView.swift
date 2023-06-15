@@ -57,27 +57,8 @@ struct CashRegisterView: View {
 			
 			Divider()
 			
-			VStack {
-				HStack {
-					VStack(spacing: 2) {
-						HStack {
-							Text("Total :")
-							Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
-							Spacer()
-						}
-						.font(.headline)
-						
-						HStack {
-							Text("Difference :")
-								.font(.callout)
-							Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
-							Spacer()
-						}
-						.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .black.opacity(0.6))
-					}
-				}
-			}
-			.padding(.horizontal, 16)
+			FooterCashRegister(cashRegisterData: cashRegisterData)
+			
 		}
 		.keyboardType(.decimalPad)
 

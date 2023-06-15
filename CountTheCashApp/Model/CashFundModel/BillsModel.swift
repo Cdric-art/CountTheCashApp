@@ -12,6 +12,5 @@ class Bills {
 	var five: Int?
 	var ten: Int?
 	var twenty: Int?
-	var fifty: Int?
 	
 }

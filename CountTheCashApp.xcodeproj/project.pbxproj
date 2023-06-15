@@ -22,6 +22,8 @@
 		A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D029A58DBD0068D95A /* BillsModel.swift */; };
 		A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D429A58F3D0068D95A /* AdditionResults.swift */; };
 		A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA7F262A28D30C0000C983 /* HomeView.swift */; };
+		A7E84D592A3B4E4B00C1B6EF /* FooterCashFundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E84D582A3B4E4B00C1B6EF /* FooterCashFundView.swift */; };
+		A7E84D5B2A3B4FBD00C1B6EF /* FooterCashRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E84D5A2A3B4FBD00C1B6EF /* FooterCashRegister.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		A79E84D029A58DBD0068D95A /* BillsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsModel.swift; sourceTree = "<group>"; };
 		A79E84D429A58F3D0068D95A /* AdditionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionResults.swift; sourceTree = "<group>"; };
 		A7CA7F262A28D30C0000C983 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A7E84D582A3B4E4B00C1B6EF /* FooterCashFundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCashFundView.swift; sourceTree = "<group>"; };
+		A7E84D5A2A3B4FBD00C1B6EF /* FooterCashRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCashRegister.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 				A72CD26E297364DD006B48BD /* TitleView.swift */,
 				A7903738298995C2005EC365 /* TitleSecondaryView.swift */,
 				A790373A29899748005EC365 /* NavigationLinkLabel.swift */,
+				A7E84D582A3B4E4B00C1B6EF /* FooterCashFundView.swift */,
+				A7E84D5A2A3B4FBD00C1B6EF /* FooterCashRegister.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */,
+				A7E84D592A3B4E4B00C1B6EF /* FooterCashFundView.swift in Sources */,
 				A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */,
 				A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */,
 				A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */,
@@ -231,6 +238,7 @@
 				A79A2E592972069C00C1CEFB /* App.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
+				A7E84D5B2A3B4FBD00C1B6EF /* FooterCashRegister.swift in Sources */,
 				A72CD26F297364DD006B48BD /* TitleView.swift in Sources */,
 				A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */,
 				A7903739298995C2005EC365 /* TitleSecondaryView.swift in Sources */,
