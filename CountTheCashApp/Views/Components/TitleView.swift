@@ -19,12 +19,12 @@ struct TitleView: View {
 				.frame(maxWidth: 300)
 				.multilineTextAlignment(.center)
 			
-			Image("Icon")
+			Image("Image")
 				.resizable()
 				.scaledToFit()
-				.cornerRadius(125)
+				.cornerRadius(25)
 				.frame(width: 125)
-				.shadow(color: Color(.sRGBLinear, white: 0.1, opacity: 0.1) ,radius: 1)
+				.shadow(color: Color(.sRGBLinear, white: 0.01, opacity: 0.3) ,radius: 6)
 		}
     }
 }

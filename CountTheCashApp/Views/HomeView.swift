@@ -13,7 +13,7 @@ struct HomeView: View {
 			
 			Spacer()
 			
-			TitleView(title: "Compte ta caisse")
+			TitleView(title: "Compte ta caisse.")
 			
 			Spacer()
 			
