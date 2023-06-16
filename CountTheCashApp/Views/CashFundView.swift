@@ -16,12 +16,10 @@ struct CashFundView: View {
 				TitleSecondaryView(title: "Fond de caisse")
 				TextField("Montant", value: $cashFund.textFieldCashFund, format: .number)
 					.keyboardType(.decimalPad)
+					.textFieldStyle(RoundedBorderTextFieldStyle())
 					.multilineTextAlignment(.center)
-					.frame(maxWidth: 100, minHeight: 36)
-					.overlay(content: {
-						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
-					})
+					.frame(maxWidth: 100)
+					.font(.callout)
 			}
 			
 			Divider()
@@ -49,10 +47,9 @@ struct CashFundView: View {
 					}
 					.padding(.horizontal, 16)
 					.padding(.vertical, 12)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 					
 					HStack {
@@ -76,10 +73,9 @@ struct CashFundView: View {
 					}
 					.padding(.horizontal, 16)
 					.padding(.vertical, 12)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 					
 					HStack {
@@ -103,10 +99,9 @@ struct CashFundView: View {
 					}
 					.padding(.horizontal, 16)
 					.padding(.vertical, 12)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 					
 					HStack {
@@ -130,10 +125,9 @@ struct CashFundView: View {
 					}
 					.padding(.horizontal, 16)
 					.padding(.vertical, 12)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 					
 					HStack {
@@ -160,7 +154,7 @@ struct CashFundView: View {
 					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 					
 					HStack {
@@ -184,10 +178,9 @@ struct CashFundView: View {
 					}
 					.padding(.horizontal, 16)
 					.padding(.vertical, 12)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 					
 					HStack {
@@ -211,10 +204,9 @@ struct CashFundView: View {
 					}
 					.padding(.horizontal, 16)
 					.padding(.vertical, 12)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 					
 					HStack {
@@ -238,10 +230,9 @@ struct CashFundView: View {
 					}
 					.padding(.horizontal, 16)
 					.padding(.vertical, 12)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
-							.stroke(Color.gray, lineWidth: 1)
+							.stroke(Color.gray.opacity(0.2), lineWidth: 1)
 					)
 				}
 				.keyboardType(.decimalPad)

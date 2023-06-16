@@ -18,21 +18,13 @@ struct CashRegisterView: View {
 			VStack(spacing: 12) {
 				HStack(spacing: 24) {
 					TextField("Rapport", value: $cashRegisterData.firstRapport, format: .number)
-						.frame(maxWidth: 100, minHeight: 36)
-						.background(RoundedRectangle(cornerRadius: 10).fill(.white))
-						.overlay(content: {
-							RoundedRectangle(cornerRadius: 10)
-								.stroke(Color.gray.opacity(0.5), lineWidth: 1)
-						})
+						.frame(maxWidth: 100)
 					TextField("Rapport", value: $cashRegisterData.secondRapport, format: .number)
-						.frame(maxWidth: 100, minHeight: 36)
-						.background(RoundedRectangle(cornerRadius: 10).fill(.white))
-						.overlay(content: {
-							RoundedRectangle(cornerRadius: 10)
-								.stroke(Color.gray.opacity(0.5), lineWidth: 1)
-						})
+						.frame(maxWidth: 100)
 				}
+				.font(.callout)
 				.multilineTextAlignment(.center)
+				.textFieldStyle(RoundedBorderTextFieldStyle())
 				
 				HStack {
 					Text("CA total :")
@@ -99,7 +91,6 @@ struct CbEmvView: View {
 					}
 				}
 				.padding(6)
-				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
 						.stroke(Color.purple, lineWidth: 1)
@@ -144,7 +135,6 @@ struct CbLessView: View {
 					}
 				}
 				.padding(6)
-				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
 						.stroke(Color.teal, lineWidth: 1)
@@ -188,7 +178,6 @@ struct AmexView: View {
 					}
 				}
 				.padding(6)
-				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
 						.stroke(.brown, lineWidth: 1)
@@ -232,7 +221,6 @@ struct AmexLessView: View {
 					}
 				}
 				.padding(6)
-				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
 						.stroke(.orange, lineWidth: 1)
@@ -277,7 +265,6 @@ struct TicketRestaurantView: View {
 					}
 				}
 				.padding(6)
-				.cornerRadius(10)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
 						.stroke(.mint, lineWidth: 1)
@@ -310,7 +297,6 @@ struct CashView: View {
 						cashRegister.saveTotal(type: .CASH)
 					}
 					.padding(6)
-					.cornerRadius(10)
 					.overlay(
 						RoundedRectangle(cornerRadius: 10)
 							.stroke(.red, lineWidth: 1)
