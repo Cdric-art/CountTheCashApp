@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD2692973572B006B48BD /* CashFundView.swift */; };
 		A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26B297358DC006B48BD /* CashRegisterView.swift */; };
-		A72CD26F297364DD006B48BD /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26E297364DD006B48BD /* TitleView.swift */; };
 		A72CD2772974B3F5006B48BD /* CashFundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD2762974B3F5006B48BD /* CashFundViewModel.swift */; };
 		A74A019F29785B2500E1FD5A /* CashRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A019E29785B2500E1FD5A /* CashRegisterViewModel.swift */; };
-		A7903739298995C2005EC365 /* TitleSecondaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7903738298995C2005EC365 /* TitleSecondaryView.swift */; };
 		A790373B29899748005EC365 /* NavigationLinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A790373A29899748005EC365 /* NavigationLinkLabel.swift */; };
 		A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A2E562972069C00C1CEFB /* CountTheCashAppApp.swift */; };
 		A79A2E592972069C00C1CEFB /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A2E582972069C00C1CEFB /* App.swift */; };
@@ -29,10 +27,8 @@
 /* Begin PBXFileReference section */
 		A72CD2692973572B006B48BD /* CashFundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundView.swift; sourceTree = "<group>"; };
 		A72CD26B297358DC006B48BD /* CashRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRegisterView.swift; sourceTree = "<group>"; };
-		A72CD26E297364DD006B48BD /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		A72CD2762974B3F5006B48BD /* CashFundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundViewModel.swift; sourceTree = "<group>"; };
 		A74A019E29785B2500E1FD5A /* CashRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRegisterViewModel.swift; sourceTree = "<group>"; };
-		A7903738298995C2005EC365 /* TitleSecondaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSecondaryView.swift; sourceTree = "<group>"; };
 		A790373A29899748005EC365 /* NavigationLinkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkLabel.swift; sourceTree = "<group>"; };
 		A79A2E532972069C00C1CEFB /* CountTheCashApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountTheCashApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79A2E562972069C00C1CEFB /* CountTheCashAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTheCashAppApp.swift; sourceTree = "<group>"; };
@@ -72,8 +68,6 @@
 		A72CD26D297364BC006B48BD /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A72CD26E297364DD006B48BD /* TitleView.swift */,
-				A7903738298995C2005EC365 /* TitleSecondaryView.swift */,
 				A790373A29899748005EC365 /* NavigationLinkLabel.swift */,
 				A7E84D582A3B4E4B00C1B6EF /* FooterCashFundView.swift */,
 				A7E84D5A2A3B4FBD00C1B6EF /* FooterCashRegister.swift */,
@@ -239,9 +233,7 @@
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
 				A7E84D5B2A3B4FBD00C1B6EF /* FooterCashRegister.swift in Sources */,
-				A72CD26F297364DD006B48BD /* TitleView.swift in Sources */,
 				A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */,
-				A7903739298995C2005EC365 /* TitleSecondaryView.swift in Sources */,
 				A790373B29899748005EC365 /* NavigationLinkLabel.swift in Sources */,
 				A72CD2772974B3F5006B48BD /* CashFundViewModel.swift in Sources */,
 			);

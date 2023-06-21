@@ -11,49 +11,49 @@ struct CashRegisterView: View {
 	@ObservedObject var cashRegisterData: CashRegisterViewModel
 	
 	var body: some View {
-		VStack {
-			
-			TitleSecondaryView(title: "Caisse")
-			
-			VStack(spacing: 12) {
-				HStack(spacing: 24) {
-					TextField("Rapport", value: $cashRegisterData.firstRapport, format: .number)
-						.frame(maxWidth: 100)
-					TextField("Rapport", value: $cashRegisterData.secondRapport, format: .number)
-						.frame(maxWidth: 100)
-				}
-				.font(.callout)
-				.multilineTextAlignment(.center)
-				.textFieldStyle(RoundedBorderTextFieldStyle())
-				
-				HStack {
-					Text("CA total :")
-					Text(cashRegisterData.totalRapport().formatted(.currency(code: "EUR")))
-				}
-				.font(.caption2)
-			}
-			
-			Divider()
-			
-			ScrollView {
-				CbEmvView(cashRegister: cashRegisterData)
-				CbLessView(cashRegister: cashRegisterData)
-				AmexView(cashRegister: cashRegisterData)
-				AmexLessView(cashRegister: cashRegisterData)
-				TicketRestaurantView(cashRegister: cashRegisterData)
-				CashView(cashRegister: cashRegisterData)
-			}
-			.padding(.horizontal, 24)
-			.padding(.top, 12)
-			.scrollDismissesKeyboard(.interactively)
-			
-			Divider()
-			
-			FooterCashRegister(cashRegisterData: cashRegisterData)
-			
-		}
-		.keyboardType(.decimalPad)
-
+        NavigationStack {
+            VStack {
+                VStack(spacing: 12) {
+                    HStack(spacing: 24) {
+                        TextField("Rapport", value: $cashRegisterData.firstRapport, format: .number)
+                            .frame(maxWidth: 100)
+                        TextField("Rapport", value: $cashRegisterData.secondRapport, format: .number)
+                            .frame(maxWidth: 100)
+                    }
+                    .font(.callout)
+                    .multilineTextAlignment(.center)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    HStack {
+                        Text("CA total :")
+                        Text(cashRegisterData.totalRapport().formatted(.currency(code: "EUR")))
+                    }
+                    .font(.caption2)
+                }
+                
+                Divider()
+                
+                ScrollView {
+                    CbEmvView(cashRegister: cashRegisterData)
+                    CbLessView(cashRegister: cashRegisterData)
+                    AmexView(cashRegister: cashRegisterData)
+                    AmexLessView(cashRegister: cashRegisterData)
+                    TicketRestaurantView(cashRegister: cashRegisterData)
+                    CashView(cashRegister: cashRegisterData)
+                }
+                .padding(.horizontal, 24)
+                .padding(.top, 12)
+                .scrollDismissesKeyboard(.interactively)
+                
+                Divider()
+                
+                FooterCashRegister(cashRegisterData: cashRegisterData)
+                
+            }
+            .keyboardType(.decimalPad)
+            .navigationTitle("Caisse")
+            .navigationBarTitleDisplayMode(.inline)
+        }
 	}
 }
 

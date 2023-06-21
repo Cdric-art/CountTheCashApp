@@ -13,7 +13,17 @@ struct HomeView: View {
 			
 			Spacer()
 			
-			TitleView(title: "Compte ta caisse.")
+            VStack {
+                Text("Compte ta caisse")
+                    .font(.system(size: 38))
+                    .fontWeight(.black)
+                    .frame(maxWidth: 300)
+                    .multilineTextAlignment(.center)
+                
+                Image("Image")
+                    .resizable()
+                    .scaledToFit()
+            }
 			
 			Spacer()
 			
