@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CashRegisterView: View {
-	@ObservedObject var cashRegisterData: CashRegisterViewModel
+	@StateObject var viewModel = CashRegisterViewModel()
 	
 	var body: some View {
         NavigationStack {
             VStack {
                 VStack(spacing: 12) {
                     HStack(spacing: 24) {
-                        TextField("Rapport", value: $cashRegisterData.firstRapport, format: .number)
+                        TextField("Rapport", value: $viewModel.firstRapport, format: .number)
                             .frame(maxWidth: 100)
-                        TextField("Rapport", value: $cashRegisterData.secondRapport, format: .number)
+                        TextField("Rapport", value: $viewModel.secondRapport, format: .number)
                             .frame(maxWidth: 100)
                     }
                     .font(.callout)
@@ -26,7 +26,7 @@ struct CashRegisterView: View {
                     
                     HStack {
                         Text("CA total :")
-                        Text(cashRegisterData.totalRapport().formatted(.currency(code: "EUR")))
+                        Text(viewModel.totalRapport().formatted(.currency(code: "EUR")))
                     }
                     .font(.caption2)
                 }
@@ -34,12 +34,12 @@ struct CashRegisterView: View {
                 Divider()
                 
                 ScrollView {
-                    CbEmvView(cashRegister: cashRegisterData)
-                    CbLessView(cashRegister: cashRegisterData)
-                    AmexView(cashRegister: cashRegisterData)
-                    AmexLessView(cashRegister: cashRegisterData)
-                    TicketRestaurantView(cashRegister: cashRegisterData)
-                    CashView(cashRegister: cashRegisterData)
+                    CbEmvView(cashRegister: viewModel)
+                    CbLessView(cashRegister: viewModel)
+                    AmexView(cashRegister: viewModel)
+                    AmexLessView(cashRegister: viewModel)
+                    TicketRestaurantView(cashRegister: viewModel)
+                    CashView(cashRegister: viewModel)
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 12)
@@ -47,7 +47,7 @@ struct CashRegisterView: View {
                 
                 Divider()
                 
-                FooterCashRegister(cashRegisterData: cashRegisterData)
+                FooterCashRegister(cashRegisterData: viewModel)
                 
             }
             .keyboardType(.decimalPad)
@@ -59,7 +59,7 @@ struct CashRegisterView: View {
 
 struct CashRegisterView_Previews: PreviewProvider {
 	static var previews: some View {
-		CashRegisterView(cashRegisterData: CashRegisterViewModel())
+		CashRegisterView(viewModel: CashRegisterViewModel())
 	}
 }
 

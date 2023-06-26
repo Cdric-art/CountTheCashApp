@@ -8,20 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-	@StateObject var cashFund = CashFundViewModel()
-	@StateObject var cashRegister = CashRegisterViewModel()
-	
 	var body: some View {
 		TabView {
 			HomeView()
 				.tabItem {
 					Label("Accueil", systemImage: "house.fill")
 				}
-			CashFundView(cashFund: cashFund)
+			CashFundView()
 				.tabItem {
 					Label("Fond de caisse", systemImage: "tray.fill")
 				}
-			CashRegisterView(cashRegisterData: cashRegister)
+			CashRegisterView()
 				.tabItem {
 					Label("Caisse", systemImage: "tray.and.arrow.up.fill")
 				}
@@ -32,6 +29,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView(cashFund: CashFundViewModel(), cashRegister: CashRegisterViewModel())
+		ContentView()
 	}
 }
