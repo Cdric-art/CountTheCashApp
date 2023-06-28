@@ -34,12 +34,12 @@ struct CashRegisterView: View {
                 Divider()
                 
                 ScrollView {
-                    CbEmvView(cashRegister: viewModel)
-                    CbLessView(cashRegister: viewModel)
-                    AmexView(cashRegister: viewModel)
-                    AmexLessView(cashRegister: viewModel)
-                    TicketRestaurantView(cashRegister: viewModel)
-                    CashView(cashRegister: viewModel)
+                    cbField()
+                    cbLessField()
+                    amexField()
+                    amexLessField()
+                    ticketRField()
+                    cashField()
                 }
                 .padding(.horizontal, 24)
                 .padding(.top, 12)
@@ -55,260 +55,243 @@ struct CashRegisterView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
 	}
+    
+    @ViewBuilder
+    func cbField() -> some View {
+        VStack(alignment: .leading) {
+            
+            Text("CB EMV")
+                .font(.caption)
+                .foregroundColor(.purple)
+            
+            ForEach(viewModel.cb_emv.indices, id: \.self) { i in
+                HStack {
+                    TextField("Montant", text: $viewModel.cb_emv[i])
+                        .onChange(of: viewModel.cb_emv[i]) { value in
+                            viewModel.cb_emv[i] = value.replacingOccurrences(of: ",", with: ".")
+                            viewModel.saveTotal(type: .CBEMV)
+                        }
+                    if i == 0 {
+                        Button {
+                            if viewModel.cb_emv[0] != "" {
+                                viewModel.cb_emv.append("")
+                            }
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                        }
+                    }
+                }
+                .padding(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.purple, lineWidth: 1)
+                )
+            }
+            
+            Text("Total: \(viewModel.totalCbEmv.formatted(.currency(code: "EUR")))")
+                .font(.caption2)
+                .foregroundColor(Color.purple)
+        }
+        .padding(.horizontal)
+        .padding(.top, 12)
+        .padding(.bottom, 4)
+    }
+    
+    @ViewBuilder
+    func cbLessField() -> some View {
+        VStack(alignment: .leading) {
+            
+            Text("CB LESS")
+                .font(.caption)
+                .foregroundColor(.teal)
+            
+            ForEach(viewModel.cb_less.indices, id: \.self) { i in
+                HStack {
+                    TextField("Montant", text: $viewModel.cb_less[i])
+                        .onChange(of: viewModel.cb_less[i]) { value in
+                            viewModel.cb_less[i] = value.replacingOccurrences(of: ",", with: ".")
+                            viewModel.saveTotal(type: .CBLESS)
+                        }
+                    if i == 0 {
+                        Button {
+                            if viewModel.cb_less[0] != "" {
+                                viewModel.cb_less.append("")
+                            }
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                        }
+                    }
+                }
+                .padding(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.teal, lineWidth: 1)
+                )
+            }
+            
+            Text("Total: \(viewModel.totalCbLess.formatted(.currency(code: "EUR")))")
+                .font(.caption2)
+                .foregroundColor(Color.teal)
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
+    }
+    
+    @ViewBuilder
+    func amexField() -> some View {
+        VStack(alignment: .leading) {
+            
+            Text("AMEX")
+                .font(.caption)
+                .foregroundColor(.brown)
+            
+            ForEach(viewModel.amex.indices, id: \.self) { i in
+                HStack {
+                    TextField("Montant", text: $viewModel.amex[i])
+                        .onChange(of: viewModel.amex[i]) { value in
+                            viewModel.amex[i] = value.replacingOccurrences(of: ",", with: ".")
+                            viewModel.saveTotal(type: .AMEX)
+                        }
+                    if i == 0 {
+                        Button {
+                            if viewModel.amex[0] != "" {
+                                viewModel.amex.append("")
+                            }
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                        }
+                    }
+                }
+                .padding(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.brown, lineWidth: 1)
+                )
+            }
+            
+            Text("Total: \(viewModel.totalAmex.formatted(.currency(code: "EUR")))")
+                .font(.caption2)
+                .foregroundColor(Color.brown)
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
+    }
+    
+    @ViewBuilder
+    func amexLessField() -> some View {
+        VStack(alignment: .leading) {
+            
+            Text("AMEX LESS")
+                .font(.caption)
+                .foregroundColor(.orange)
+            
+            ForEach(viewModel.amex_less.indices, id: \.self) { i in
+                HStack {
+                    TextField("Montant", text: $viewModel.amex_less[i])
+                        .onChange(of: viewModel.amex_less[i]) { value in
+                            viewModel.amex_less[i] = value.replacingOccurrences(of: ",", with: ".")
+                            viewModel.saveTotal(type: .AMEXLESS)
+                        }
+                    if i == 0 {
+                        Button {
+                            if viewModel.amex_less[0] != "" {
+                                viewModel.amex_less.append("")
+                            }
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                        }
+                    }
+                }
+                .padding(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.orange, lineWidth: 1)
+                )
+            }
+            
+            Text("Total: \(viewModel.totalAmexLess.formatted(.currency(code: "EUR")))")
+                .font(.caption2)
+                .foregroundColor(Color.orange)
+            
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
+    }
+    
+    @ViewBuilder
+    func ticketRField() -> some View {
+        VStack(alignment: .leading) {
+            
+            Text("T. RESTAURANT")
+                .foregroundColor(.mint)
+                .font(.caption)
+            
+            ForEach(viewModel.ticketRestaurant.indices, id: \.self) { i in
+                HStack {
+                    TextField("Montant", text: $viewModel.ticketRestaurant[i])
+                        .onChange(of: viewModel.ticketRestaurant[i]) { value in
+                            viewModel.ticketRestaurant[i] = value.replacingOccurrences(of: ",", with: ".")
+                            viewModel.saveTotal(type: .TICKETRESTAURANT)
+                        }
+                    if i == 0 {
+                        Button {
+                            if viewModel.ticketRestaurant[0] != "" {
+                                viewModel.ticketRestaurant.append("")
+                            }
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                        }
+                    }
+                }
+                .padding(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.mint, lineWidth: 1)
+                )
+            }
+            
+            Text("Total: \(viewModel.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
+                .font(.caption2)
+                .foregroundColor(Color.mint)
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 4)
+    }
+    
+    @ViewBuilder
+    func cashField() -> some View {
+        VStack(alignment: .leading) {
+            
+            Text("CASH")
+                .font(.caption)
+                .foregroundColor(.red)
+            
+            HStack {
+                TextField("Montant", text: $viewModel.cash[0])
+                    .onChange(of: viewModel.cash[0]) { value in
+                        viewModel.cash[0] = value.replacingOccurrences(of: ",", with: ".")
+                        viewModel.saveTotal(type: .CASH)
+                    }
+                    .padding(6)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.red, lineWidth: 1)
+                    )
+            }
+            
+            Text("Total: \(viewModel.totalCash.formatted(.currency(code: "EUR")))")
+                .font(.caption2)
+                .foregroundColor(Color.red)
+        }
+        .padding(.horizontal)
+        .padding(.top, 4)
+        .padding(.bottom, 12)
+    }
+    
 }
 
 struct CashRegisterView_Previews: PreviewProvider {
 	static var previews: some View {
 		CashRegisterView(viewModel: CashRegisterViewModel())
-	}
-}
-
-struct CbEmvView: View {
-	@ObservedObject var cashRegister: CashRegisterViewModel
-	
-	var body: some View {
-		VStack(alignment: .leading) {
-			
-			Text("CB EMV")
-				.font(.caption)
-				.foregroundColor(.purple)
-			
-			ForEach(cashRegister.cb_emv.indices, id: \.self) { i in
-				HStack {
-					TextField("Montant", text: $cashRegister.cb_emv[i])
-						.onChange(of: cashRegister.cb_emv[i]) { value in
-							cashRegister.cb_emv[i] = value.replacingOccurrences(of: ",", with: ".")
-							cashRegister.saveTotal(type: .CBEMV)
-						}
-					if i == 0 {
-						Button {
-							if cashRegister.cb_emv[0] != "" {
-								cashRegister.cb_emv.append("")
-							}
-						} label: {
-							Image(systemName: "plus.circle.fill")
-						}
-					}
-				}
-				.padding(6)
-				.overlay(
-					RoundedRectangle(cornerRadius: 10)
-						.stroke(Color.purple, lineWidth: 1)
-				)
-			}
-			
-			Text("Total: \(cashRegister.totalCbEmv.formatted(.currency(code: "EUR")))")
-				.font(.caption2)
-				.foregroundColor(Color.purple)
-		}
-		.padding(.horizontal)
-		.padding(.top, 12)
-		.padding(.bottom, 4)
-	}
-}
-
-struct CbLessView: View {
-	@ObservedObject var cashRegister: CashRegisterViewModel
-	
-	var body: some View {
-		VStack(alignment: .leading) {
-			
-			Text("CB LESS")
-				.font(.caption)
-				.foregroundColor(.teal)
-			
-			ForEach(cashRegister.cb_less.indices, id: \.self) { i in
-				HStack {
-					TextField("Montant", text: $cashRegister.cb_less[i])
-						.onChange(of: cashRegister.cb_less[i]) { value in
-							cashRegister.cb_less[i] = value.replacingOccurrences(of: ",", with: ".")
-							cashRegister.saveTotal(type: .CBLESS)
-						}
-					if i == 0 {
-						Button {
-							if cashRegister.cb_less[0] != "" {
-								cashRegister.cb_less.append("")
-							}
-						} label: {
-							Image(systemName: "plus.circle.fill")
-						}
-					}
-				}
-				.padding(6)
-				.overlay(
-					RoundedRectangle(cornerRadius: 10)
-						.stroke(Color.teal, lineWidth: 1)
-				)
-			}
-			
-			Text("Total: \(cashRegister.totalCbLess.formatted(.currency(code: "EUR")))")
-				.font(.caption2)
-				.foregroundColor(Color.teal)
-		}
-		.padding(.horizontal)
-		.padding(.vertical, 4)
-	}
-}
-
-struct AmexView: View {
-	@ObservedObject var cashRegister: CashRegisterViewModel
-	
-	var body: some View {
-		VStack(alignment: .leading) {
-			
-			Text("AMEX")
-				.font(.caption)
-				.foregroundColor(.brown)
-			
-			ForEach(cashRegister.amex.indices, id: \.self) { i in
-				HStack {
-					TextField("Montant", text: $cashRegister.amex[i])
-						.onChange(of: cashRegister.amex[i]) { value in
-							cashRegister.amex[i] = value.replacingOccurrences(of: ",", with: ".")
-							cashRegister.saveTotal(type: .AMEX)
-						}
-					if i == 0 {
-						Button {
-							if cashRegister.amex[0] != "" {
-								cashRegister.amex.append("")
-							}
-						} label: {
-							Image(systemName: "plus.circle.fill")
-						}
-					}
-				}
-				.padding(6)
-				.overlay(
-					RoundedRectangle(cornerRadius: 10)
-						.stroke(.brown, lineWidth: 1)
-				)
-			}
-			
-			Text("Total: \(cashRegister.totalAmex.formatted(.currency(code: "EUR")))")
-				.font(.caption2)
-				.foregroundColor(Color.brown)
-		}
-		.padding(.horizontal)
-		.padding(.vertical, 4)
-	}
-}
-
-struct AmexLessView: View {
-	@ObservedObject var cashRegister: CashRegisterViewModel
-	
-	var body: some View {
-		VStack(alignment: .leading) {
-			
-			Text("AMEX LESS")
-				.font(.caption)
-				.foregroundColor(.orange)
-			
-			ForEach(cashRegister.amex_less.indices, id: \.self) { i in
-				HStack {
-					TextField("Montant", text: $cashRegister.amex_less[i])
-						.onChange(of: cashRegister.amex_less[i]) { value in
-							cashRegister.amex_less[i] = value.replacingOccurrences(of: ",", with: ".")
-							cashRegister.saveTotal(type: .AMEXLESS)
-						}
-					if i == 0 {
-						Button {
-							if cashRegister.amex_less[0] != "" {
-								cashRegister.amex_less.append("")
-							}
-						} label: {
-							Image(systemName: "plus.circle.fill")
-						}
-					}
-				}
-				.padding(6)
-				.overlay(
-					RoundedRectangle(cornerRadius: 10)
-						.stroke(.orange, lineWidth: 1)
-				)
-			}
-			
-			Text("Total: \(cashRegister.totalAmexLess.formatted(.currency(code: "EUR")))")
-				.font(.caption2)
-				.foregroundColor(Color.orange)
-			
-		}
-		.padding(.horizontal)
-		.padding(.vertical, 4)
-	}
-}
-
-struct TicketRestaurantView: View {
-	@ObservedObject var cashRegister: CashRegisterViewModel
-	
-	var body: some View {
-		VStack(alignment: .leading) {
-			
-			Text("T. RESTAURANT")
-				.foregroundColor(.mint)
-				.font(.caption)
-			
-			ForEach(cashRegister.ticketRestaurant.indices, id: \.self) { i in
-				HStack {
-					TextField("Montant", text: $cashRegister.ticketRestaurant[i])
-						.onChange(of: cashRegister.ticketRestaurant[i]) { value in
-							cashRegister.ticketRestaurant[i] = value.replacingOccurrences(of: ",", with: ".")
-							cashRegister.saveTotal(type: .TICKETRESTAURANT)
-						}
-					if i == 0 {
-						Button {
-							if cashRegister.ticketRestaurant[0] != "" {
-								cashRegister.ticketRestaurant.append("")
-							}
-						} label: {
-							Image(systemName: "plus.circle.fill")
-						}
-					}
-				}
-				.padding(6)
-				.overlay(
-					RoundedRectangle(cornerRadius: 10)
-						.stroke(.mint, lineWidth: 1)
-				)
-			}
-			
-			Text("Total: \(cashRegister.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
-				.font(.caption2)
-				.foregroundColor(Color.mint)
-		}
-		.padding(.horizontal)
-		.padding(.vertical, 4)
-	}
-}
-
-struct CashView: View {
-	@ObservedObject var cashRegister: CashRegisterViewModel
-	
-	var body: some View {
-		VStack(alignment: .leading) {
-			
-			Text("CASH")
-				.font(.caption)
-				.foregroundColor(.red)
-			
-			HStack {
-				TextField("Montant", text: $cashRegister.cash[0])
-					.onChange(of: cashRegister.cash[0]) { value in
-						cashRegister.cash[0] = value.replacingOccurrences(of: ",", with: ".")
-						cashRegister.saveTotal(type: .CASH)
-					}
-					.padding(6)
-					.overlay(
-						RoundedRectangle(cornerRadius: 10)
-							.stroke(.red, lineWidth: 1)
-					)
-			}
-			
-			Text("Total: \(cashRegister.totalCash.formatted(.currency(code: "EUR")))")
-				.font(.caption2)
-				.foregroundColor(Color.red)
-		}
-		.padding(.horizontal)
-		.padding(.top, 4)
-		.padding(.bottom, 12)
 	}
 }
