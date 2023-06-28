@@ -31,9 +31,7 @@ struct CashRegisterView: View {
                     .font(.caption2)
                 }
                 
-                Divider()
-                
-                ScrollView {
+                List {
                     cbField()
                     cbLessField()
                     amexField()
@@ -41,8 +39,7 @@ struct CashRegisterView: View {
                     ticketRField()
                     cashField()
                 }
-                .padding(.horizontal, 24)
-                .padding(.top, 12)
+                .listStyle(.plain)
                 .scrollDismissesKeyboard(.interactively)
                 
                 Divider()
@@ -77,7 +74,7 @@ struct CashRegisterView: View {
                                 viewModel.cb_emv.append("")
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus.circle")
                         }
                     }
                 }
@@ -118,7 +115,7 @@ struct CashRegisterView: View {
                                 viewModel.cb_less.append("")
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus.circle")
                         }
                     }
                 }
@@ -158,7 +155,7 @@ struct CashRegisterView: View {
                                 viewModel.amex.append("")
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus.circle")
                         }
                     }
                 }
@@ -198,7 +195,7 @@ struct CashRegisterView: View {
                                 viewModel.amex_less.append("")
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus.circle")
                         }
                     }
                 }
@@ -239,7 +236,7 @@ struct CashRegisterView: View {
                                 viewModel.ticketRestaurant.append("")
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "plus.circle")
                         }
                     }
                 }
@@ -272,17 +269,23 @@ struct CashRegisterView: View {
                         viewModel.cash[0] = value.replacingOccurrences(of: ",", with: ".")
                         viewModel.saveTotal(type: .CASH)
                     }
-                    .padding(6)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(.red, lineWidth: 1)
-                    )
+                Button {
+                    viewModel.cash[0] = ""
+                } label: {
+                    Image(systemName: "trash.circle")
+                }
             }
+            .padding(6)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(.red, lineWidth: 1)
+            )
             
             Text("Total: \(viewModel.totalCash.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundColor(Color.red)
         }
+        .listRowSeparator(.hidden, edges: .bottom)
         .padding(.horizontal)
         .padding(.top, 4)
         .padding(.bottom, 12)
