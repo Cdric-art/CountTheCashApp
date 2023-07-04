@@ -9,34 +9,43 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-		VStack {
-			
-			Spacer()
-			
+		ZStack {
+            
+            BackgroundHomeView()
+            
             VStack {
-                Text("Compte ta caisse")
-                    .font(.system(size: 38))
-                    .fontWeight(.black)
-                    .frame(maxWidth: 300)
+                VStack(spacing: 80) {
+                    Image("Image")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 100)
+                        .padding(30)
+                        .background(.white)
+                        .clipShape(Circle())
+                        .shadow(color: .gray, radius: 2, x: 3, y: 3)
+                    
+                    Text("Compte ta caisse")
+                        .font(.system(size: 38))
+                        .fontWeight(.black)
+                        .frame(maxWidth: 300)
                     .multilineTextAlignment(.center)
+                }
+                .padding(.top, 32)
                 
-                Image("Image")
-                    .resizable()
-                    .scaledToFit()
+                Spacer()
+                
+                VStack(spacing: 12) {
+                    Text(Date(), style: .date)
+                        .font(.title2)
+                    Text(Date(), style: .time)
+                        .font(.title3)
+                }
+                
+                Spacer()
             }
-			
-			Spacer()
-			
-			VStack(spacing: 12) {
-				Text(Date(), style: .date)
-					.font(.title2)
-				Text(Date(), style: .time)
-					.font(.title3)
-			}
-			
-			Spacer()
-		}
-		.environment(\.locale, Locale(identifier: "fr"))
+            .environment(\.locale, Locale(identifier: "fr"))
+            
+            }
     }
 }
 
