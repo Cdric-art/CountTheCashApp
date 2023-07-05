@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CashRegisterView: View {
 	@StateObject var viewModel = CashRegisterViewModel()
+    @FocusState var isInputActive: Bool
 	
 	var body: some View {
         NavigationStack {
@@ -17,18 +18,14 @@ struct CashRegisterView: View {
                     HStack(spacing: 24) {
                         TextField("Rapport", value: $viewModel.firstRapport, format: .number)
                             .frame(maxWidth: 100)
+                            .focused($isInputActive)
                         TextField("Rapport", value: $viewModel.secondRapport, format: .number)
                             .frame(maxWidth: 100)
+                            .focused($isInputActive)
                     }
                     .font(.callout)
                     .multilineTextAlignment(.center)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    HStack {
-                        Text("CA total :")
-                        Text(viewModel.totalRapport().formatted(.currency(code: "EUR")))
-                    }
-                    .font(.caption2)
                 }
                 
                 List {
@@ -40,16 +37,25 @@ struct CashRegisterView: View {
                     cashField()
                 }
                 .listStyle(.plain)
-                .scrollDismissesKeyboard(.interactively)
                 
                 Divider()
                 
                 FooterCashRegister(cashRegisterData: viewModel)
                 
             }
-            .keyboardType(.decimalPad)
+            .frame(maxWidth: 500, maxHeight: 800)
             .navigationTitle("Caisse")
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard, content: {
+                    Spacer()
+                    Button(action: {
+                        isInputActive.toggle()
+                    }, label: {
+                        Image(systemName: "arrow.down.circle")
+                    })
+                })
+            }
         }
 	}
     
@@ -68,6 +74,7 @@ struct CashRegisterView: View {
                             viewModel.cb_emv[i] = value.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .CBEMV)
                         }
+                        .focused($isInputActive)
                     if i == 0 {
                         Button {
                             if viewModel.cb_emv[0] != "" {
@@ -109,6 +116,7 @@ struct CashRegisterView: View {
                             viewModel.cb_less[i] = value.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .CBLESS)
                         }
+                        .focused($isInputActive)
                     if i == 0 {
                         Button {
                             if viewModel.cb_less[0] != "" {
@@ -149,6 +157,7 @@ struct CashRegisterView: View {
                             viewModel.amex[i] = value.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .AMEX)
                         }
+                        .focused($isInputActive)
                     if i == 0 {
                         Button {
                             if viewModel.amex[0] != "" {
@@ -189,6 +198,7 @@ struct CashRegisterView: View {
                             viewModel.amex_less[i] = value.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .AMEXLESS)
                         }
+                        .focused($isInputActive)
                     if i == 0 {
                         Button {
                             if viewModel.amex_less[0] != "" {
@@ -230,6 +240,7 @@ struct CashRegisterView: View {
                             viewModel.ticketRestaurant[i] = value.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .TICKETRESTAURANT)
                         }
+                        .focused($isInputActive)
                     if i == 0 {
                         Button {
                             if viewModel.ticketRestaurant[0] != "" {
@@ -269,6 +280,7 @@ struct CashRegisterView: View {
                         viewModel.cash[0] = value.replacingOccurrences(of: ",", with: ".")
                         viewModel.saveTotal(type: .CASH)
                     }
+                    .focused($isInputActive)
                 Button {
                     viewModel.cash[0] = ""
                 } label: {

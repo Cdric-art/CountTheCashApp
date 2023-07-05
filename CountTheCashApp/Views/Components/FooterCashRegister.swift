@@ -32,7 +32,7 @@ struct FooterCashRegister: View {
 			}
 		}
 		.padding(.horizontal)
-		.padding(.vertical, 4)
+		.padding(.bottom, 4)
     }
 }
 

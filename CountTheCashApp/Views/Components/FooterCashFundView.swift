@@ -28,7 +28,7 @@ struct FooterCashFundView: View {
 			.foregroundColor(.black.opacity(0.6))
 		}
 		.padding(.horizontal)
-		.padding(.vertical, 4)
+		.padding(.bottom, 4)
     }
 }
 
