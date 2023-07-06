@@ -30,7 +30,7 @@ struct CashRegisterView: View {
                 
                 Divider()
                 
-                FooterCashRegister(cashRegisterData: viewModel)
+                HeaderCashRegister(cashRegisterData: viewModel)
                 
                 Divider()
                 

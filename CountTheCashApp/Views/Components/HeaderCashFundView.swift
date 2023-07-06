@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FooterCashFundView: View {
+struct HeaderCashFundView: View {
 	@ObservedObject var cashFund: CashFundViewModel
 	
     var body: some View {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FooterCashRegister: View {
+struct HeaderCashRegister: View {
 	@ObservedObject var cashRegisterData: CashRegisterViewModel
 
     var body: some View {

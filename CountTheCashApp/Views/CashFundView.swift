@@ -25,7 +25,7 @@ struct CashFundView: View {
                 
                 Divider()
                 
-                FooterCashFundView(cashFund: viewModel)
+                HeaderCashFundView(cashFund: viewModel)
                 
                 Divider()
                 
