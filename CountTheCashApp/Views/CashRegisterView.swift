@@ -28,6 +28,12 @@ struct CashRegisterView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 }
                 
+                Divider()
+                
+                FooterCashRegister(cashRegisterData: viewModel)
+                
+                Divider()
+                
                 List {
                     cbField()
                     cbLessField()
@@ -38,12 +44,7 @@ struct CashRegisterView: View {
                 }
                 .listStyle(.plain)
                 
-                Divider()
-                
-                FooterCashRegister(cashRegisterData: viewModel)
-                
             }
-            .frame(maxWidth: 500, maxHeight: 800)
             .navigationTitle("Caisse")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

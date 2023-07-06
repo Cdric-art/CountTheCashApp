@@ -26,7 +26,6 @@ struct ContentView: View {
 		.accentColor(.black)
         .keyboardType(.decimalPad)
         .scrollDismissesKeyboard(.interactively)
-
 	}
 }
 

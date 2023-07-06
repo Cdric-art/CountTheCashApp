@@ -23,6 +23,12 @@ struct CashFundView: View {
                         .font(.callout)
                 }
                 
+                Divider()
+                
+                FooterCashFundView(cashFund: viewModel)
+                
+                Divider()
+                
                 List {
                     twentyField()
                     tenField()
@@ -34,13 +40,8 @@ struct CashFundView: View {
                     tenCoinField()
                 }
                 .listStyle(.plain)
-                .padding(.top)
                 
-                Divider()
-                
-                FooterCashFundView(cashFund: viewModel)
             }
-            .frame(maxWidth: 500, maxHeight: 800)
             .navigationTitle("Fond de caisse")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
