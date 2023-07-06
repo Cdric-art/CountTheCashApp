@@ -14,14 +14,12 @@ struct CashFundView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                VStack {
-                    TextField("Montant", value: $viewModel.textFieldCashFund, format: .number)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .focused($isInputActive)
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: 100)
-                        .font(.callout)
-                }
+                TextField("Montant", value: $viewModel.textFieldCashFund, format: .number)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .focused($isInputActive)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 100)
+                    .font(.callout)
                 
                 Divider()
                 
@@ -29,17 +27,19 @@ struct CashFundView: View {
                 
                 Divider()
                 
-                List {
-                    twentyField()
-                    tenField()
-                    fiveField()
-                    twoCoinField()
-                    oneCoinField()
-                    fiftyCoinField()
-                    twentyCoinField()
-                    tenCoinField()
+                VStack {
+                    List {
+                        twentyField()
+                        tenField()
+                        fiveField()
+                        twoCoinField()
+                        oneCoinField()
+                        fiftyCoinField()
+                        twentyCoinField()
+                        tenCoinField()
+                    }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
                 
             }
             .navigationTitle("Fond de caisse")

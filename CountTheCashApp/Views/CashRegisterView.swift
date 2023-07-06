@@ -14,19 +14,17 @@ struct CashRegisterView: View {
 	var body: some View {
         NavigationStack {
             VStack {
-                VStack(spacing: 12) {
-                    HStack(spacing: 24) {
-                        TextField("Rapport", value: $viewModel.firstRapport, format: .number)
-                            .frame(maxWidth: 100)
-                            .focused($isInputActive)
-                        TextField("Rapport", value: $viewModel.secondRapport, format: .number)
-                            .frame(maxWidth: 100)
-                            .focused($isInputActive)
-                    }
-                    .font(.callout)
-                    .multilineTextAlignment(.center)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                HStack(spacing: 24) {
+                    TextField("Rapport", value: $viewModel.firstRapport, format: .number)
+                        .frame(maxWidth: 100)
+                        .focused($isInputActive)
+                    TextField("Rapport", value: $viewModel.secondRapport, format: .number)
+                        .frame(maxWidth: 100)
+                        .focused($isInputActive)
                 }
+                .font(.callout)
+                .multilineTextAlignment(.center)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 Divider()
                 
@@ -34,15 +32,17 @@ struct CashRegisterView: View {
                 
                 Divider()
                 
-                List {
-                    cbField()
-                    cbLessField()
-                    amexField()
-                    amexLessField()
-                    ticketRField()
-                    cashField()
+                VStack {
+                    List {
+                        cbField()
+                        cbLessField()
+                        amexField()
+                        amexLessField()
+                        ticketRField()
+                        cashField()
+                    }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
                 
             }
             .navigationTitle("Caisse")
