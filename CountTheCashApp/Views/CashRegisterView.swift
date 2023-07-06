@@ -41,6 +41,7 @@ struct CashRegisterView: View {
                     cashField()
                 }
                 .listStyle(.plain)
+                .frame(maxWidth: 600, maxHeight: 900)
                 
             }
             .navigationTitle("Caisse")

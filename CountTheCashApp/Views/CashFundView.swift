@@ -38,6 +38,7 @@ struct CashFundView: View {
                     tenCoinField()
                 }
                 .listStyle(.plain)
+                .frame(maxWidth: 600, maxHeight: 900)
                 
             }
             .navigationTitle("Fond de caisse")
