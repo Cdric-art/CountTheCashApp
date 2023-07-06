@@ -27,19 +27,17 @@ struct CashFundView: View {
                 
                 Divider()
                 
-                VStack {
-                    List {
-                        twentyField()
-                        tenField()
-                        fiveField()
-                        twoCoinField()
-                        oneCoinField()
-                        fiftyCoinField()
-                        twentyCoinField()
-                        tenCoinField()
-                    }
-                    .listStyle(.plain)
+                List {
+                    twentyField()
+                    tenField()
+                    fiveField()
+                    twoCoinField()
+                    oneCoinField()
+                    fiftyCoinField()
+                    twentyCoinField()
+                    tenCoinField()
                 }
+                .listStyle(.plain)
                 
             }
             .navigationTitle("Fond de caisse")

@@ -32,17 +32,15 @@ struct CashRegisterView: View {
                 
                 Divider()
                 
-                VStack {
-                    List {
-                        cbField()
-                        cbLessField()
-                        amexField()
-                        amexLessField()
-                        ticketRField()
-                        cashField()
-                    }
-                    .listStyle(.plain)
+                List {
+                    cbField()
+                    cbLessField()
+                    amexField()
+                    amexLessField()
+                    ticketRField()
+                    cashField()
                 }
+                .listStyle(.plain)
                 
             }
             .navigationTitle("Caisse")
