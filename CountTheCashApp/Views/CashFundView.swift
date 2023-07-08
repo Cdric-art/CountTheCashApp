@@ -13,21 +13,17 @@ struct CashFundView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                TextField("Montant", value: $viewModel.textFieldCashFund, format: .number)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .focused($isInputActive)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: 100)
-                    .font(.callout)
+            Form {
+                Section {
+                    TextField("0", value: $viewModel.textFieldCashFund, format: .number)
+                        .focused($isInputActive)
+                        .font(.callout)
+                } header: {
+                    Text("Montant du fond de caisse :")
+                }
+                .multilineTextAlignment(.center)
                 
-                Divider()
-                
-                HeaderCashFundView(cashFund: viewModel)
-                
-                Divider()
-                
-                List {
+                Section {
                     twentyField()
                     tenField()
                     fiveField()
@@ -36,14 +32,28 @@ struct CashFundView: View {
                     fiftyCoinField()
                     twentyCoinField()
                     tenCoinField()
+                } header: {
+                    Text("Billets et pieces :")
                 }
-                .listStyle(.plain)
-                .frame(maxWidth: 600, maxHeight: 900)
                 
             }
-            .navigationTitle("Fond de caisse")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Fond")
             .toolbar {
+                ToolbarItemGroup(placement: .navigationBarLeading, content: {
+                    HStack {
+                        Text("Total :")
+                        Text(viewModel.total.formatted(.currency(code: "EUR")))
+                    }
+                    .font(.caption)
+                })
+                ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                    HStack {
+                        Text("Différence :")
+                        Text(viewModel.differenceCalcul().formatted(.currency(code: "EUR")))
+                    }
+                    .foregroundColor(.black.opacity(0.6))
+                    .font(.caption)
+                })
                 ToolbarItemGroup(placement: .keyboard, content: {
                     Spacer()
                     Button(action: {
@@ -79,8 +89,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.purple, lineWidth: 1)
@@ -110,8 +119,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.cyan, lineWidth: 1)
@@ -141,8 +149,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.brown, lineWidth: 1)
@@ -172,8 +179,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .listRowSeparator(.hidden)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
@@ -204,8 +210,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.mint, lineWidth: 1)
@@ -235,8 +240,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.red, lineWidth: 1)
@@ -266,8 +270,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.green, lineWidth: 1)
@@ -297,8 +300,7 @@ struct CashFundView: View {
                 .frame(width: 100, alignment: .trailing)
         }
         .padding(.horizontal, 16)
-        .padding(.vertical, 12)
-        .listRowInsets(.init(top: 10, leading: 30, bottom: 10, trailing: 30))
+        .padding(.vertical, 10)
         .listRowSeparator(.hidden, edges: .bottom)
         .overlay(
             RoundedRectangle(cornerRadius: 10)

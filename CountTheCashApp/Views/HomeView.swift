@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-		ZStack {
+        ZStack {
             
             BackgroundHomeView()
             
@@ -28,7 +28,7 @@ struct HomeView: View {
                         .font(.system(size: 38))
                         .fontWeight(.black)
                         .frame(maxWidth: 300)
-                    .multilineTextAlignment(.center)
+                        .multilineTextAlignment(.center)
                 }
                 .padding(.top, 32)
                 
@@ -45,7 +45,7 @@ struct HomeView: View {
             }
             .environment(\.locale, Locale(identifier: "fr"))
             
-            }
+        }
     }
 }
 

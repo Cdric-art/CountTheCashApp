@@ -22,8 +22,6 @@
 		A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D429A58F3D0068D95A /* AdditionResults.swift */; };
 		A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA7F262A28D30C0000C983 /* HomeView.swift */; };
 		A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */; };
-		A7E84D592A3B4E4B00C1B6EF /* HeaderCashFundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E84D582A3B4E4B00C1B6EF /* HeaderCashFundView.swift */; };
-		A7E84D5B2A3B4FBD00C1B6EF /* HeaderCashRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E84D5A2A3B4FBD00C1B6EF /* HeaderCashRegister.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,8 +41,6 @@
 		A79E84D429A58F3D0068D95A /* AdditionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionResults.swift; sourceTree = "<group>"; };
 		A7CA7F262A28D30C0000C983 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundHomeView.swift; sourceTree = "<group>"; };
-		A7E84D582A3B4E4B00C1B6EF /* HeaderCashFundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCashFundView.swift; sourceTree = "<group>"; };
-		A7E84D5A2A3B4FBD00C1B6EF /* HeaderCashRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCashRegister.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				A790373A29899748005EC365 /* NavigationLinkLabel.swift */,
-				A7E84D582A3B4E4B00C1B6EF /* HeaderCashFundView.swift */,
-				A7E84D5A2A3B4FBD00C1B6EF /* HeaderCashRegister.swift */,
 				A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */,
 			);
 			path = Components;
@@ -230,7 +224,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */,
-				A7E84D592A3B4E4B00C1B6EF /* HeaderCashFundView.swift in Sources */,
 				A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */,
 				A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */,
 				A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */,
@@ -239,7 +232,6 @@
 				A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
-				A7E84D5B2A3B4FBD00C1B6EF /* HeaderCashRegister.swift in Sources */,
 				A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */,
 				A790373B29899748005EC365 /* NavigationLinkLabel.swift in Sources */,
 				A72CD2772974B3F5006B48BD /* CashFundViewModel.swift in Sources */,
@@ -376,7 +368,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;
@@ -396,7 +388,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -415,7 +407,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;
@@ -435,7 +427,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

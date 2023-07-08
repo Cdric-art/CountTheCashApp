@@ -11,28 +11,21 @@ struct HeaderCashRegister: View {
 	@ObservedObject var cashRegisterData: CashRegisterViewModel
 
     var body: some View {
-		VStack {
-			HStack {
-				VStack(spacing: 2) {
-					HStack {
-						Text("Total :")
-						Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
-						Spacer()
-					}
-					.font(.headline)
-					
-					HStack {
-						Text("Difference :")
-							.font(.callout)
-						Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
-						Spacer()
-					}
-					.foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .black.opacity(0.6))
-				}
-			}
-		}
-		.padding(.horizontal)
-		.padding(.bottom, 4)
+        HStack {
+            HStack {
+                Text("Total :")
+                Text(cashRegisterData.resultTotal().formatted(.currency(code: "EUR")))
+            }
+            
+            Spacer()
+            
+            HStack {
+                Text("Différence :")
+                Text(cashRegisterData.isPositiveDiff() ? "+\(cashRegisterData.diff().formatted(.currency(code: "EUR")))" : cashRegisterData.diff().formatted(.currency(code: "EUR")))
+            }
+            .foregroundColor(cashRegisterData.isPositiveDiff() ? .green : .black.opacity(0.6))
+        }
+        .font(.caption)
     }
 }
 
