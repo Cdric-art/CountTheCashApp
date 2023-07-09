@@ -14,14 +14,22 @@ struct ContentView: View {
 				.tabItem {
 					Label("Accueil", systemImage: "house.fill")
 				}
-			CashFundView()
-				.tabItem {
-					Label("Fond de caisse", systemImage: "tray.fill")
-				}
-			CashRegisterView()
-				.tabItem {
-					Label("Caisse", systemImage: "tray.and.arrow.up.fill")
-				}
+            
+            NavigationStack {
+                CashFundView()
+                    .navigationTitle("Fond")
+            }
+            .tabItem {
+                Label("Fond de caisse", systemImage: "tray.fill")
+            }
+            
+            NavigationStack {
+                CashRegisterView()
+                    .navigationTitle("Caisse")
+            }
+            .tabItem {
+                Label("Caisse", systemImage: "tray.and.arrow.up.fill")
+            }
 		}
 		.accentColor(.black)
         .keyboardType(.decimalPad)

@@ -11,54 +11,51 @@ struct CashFundView: View {
     @StateObject var viewModel = CashFundViewModel()
     
     var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    TextField("0", value: $viewModel.textFieldCashFund, format: .number)
-                        .font(.callout)
-                } header: {
-                    Text("Montant du fond de caisse :")
-                }
-                .multilineTextAlignment(.center)
-                
-                Section {
-                    twentyField()
-                    tenField()
-                    fiveField()
-                    twoCoinField()
-                    oneCoinField()
-                    fiftyCoinField()
-                    twentyCoinField()
-                    tenCoinField()
-                } header: {
-                    Text("Billets et pieces :")
-                }
-                
+        Form {
+            Section {
+                TextField("0", value: $viewModel.textFieldCashFund, format: .number)
+                    .font(.callout)
+            } header: {
+                Text("Montant du fond de caisse :")
             }
-            .navigationTitle("Fond")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading, content: {
-                    HStack {
-                        Text("Total :")
-                        Text(viewModel.total.formatted(.currency(code: "EUR")))
-                    }
-                    .font(.caption)
-                })
-                ToolbarItemGroup(placement: .navigationBarTrailing, content: {
-                    HStack {
-                        Text("Différence :")
-                        Text(viewModel.differenceCalcul().formatted(.currency(code: "EUR")))
-                    }
-                    .foregroundColor(.black.opacity(0.6))
-                    .font(.caption)
-                })
-                ToolbarItemGroup(placement: .keyboard, content: {
-                    Spacer()
-                    Button(action: {
-                        hideKeyboard()
-                    }, label: {
-                        Image(systemName: "arrow.down.circle")
-                    })
+            .multilineTextAlignment(.center)
+            
+            Section {
+                twentyField()
+                tenField()
+                fiveField()
+                twoCoinField()
+                oneCoinField()
+                fiftyCoinField()
+                twentyCoinField()
+                tenCoinField()
+            } header: {
+                Text("Billets et pieces :")
+            }
+        }
+        .scrollIndicators(.hidden)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading, content: {
+                HStack {
+                    Text("Total :")
+                    Text(viewModel.total.formatted(.currency(code: "EUR")))
+                }
+                .font(.caption)
+            })
+            ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                HStack {
+                    Text("Différence :")
+                    Text(viewModel.differenceCalcul().formatted(.currency(code: "EUR")))
+                }
+                .foregroundColor(.black.opacity(0.6))
+                .font(.caption)
+            })
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }, label: {
+                    Image(systemName: "arrow.down.circle")
                 })
             }
         }

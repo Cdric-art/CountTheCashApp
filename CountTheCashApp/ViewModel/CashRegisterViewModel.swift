@@ -13,6 +13,7 @@ enum TYPE_PAYEMENT {
 	case AMEX
 	case AMEXLESS
 	case TICKETRESTAURANT
+    case EXPENSES
 	case CASH
 }
 
@@ -26,6 +27,7 @@ class CashRegisterViewModel: ObservableObject {
 	@Published var amex: [String] = [""]
 	@Published var amex_less: [String] = [""]
 	@Published var ticketRestaurant: [String] = [""]
+    @Published var expenses: [String] = [""]
 	@Published var cash: [String] = [""]
 	
 	@Published var totalCbEmv: Double = 0
@@ -33,6 +35,7 @@ class CashRegisterViewModel: ObservableObject {
 	@Published var totalAmex: Double = 0
 	@Published var totalAmexLess: Double = 0
 	@Published var totalTicketRestaurant: Double = 0
+    @Published var totalExpenses: Double = 0
 	@Published var totalCash: Double = 0
 	
 	
@@ -48,13 +51,15 @@ class CashRegisterViewModel: ObservableObject {
 				totalAmexLess = arrayStringToDouble(from: amex_less)
 			case .TICKETRESTAURANT:
 				totalTicketRestaurant = arrayStringToDouble(from: ticketRestaurant)
+            case .EXPENSES:
+                totalExpenses = arrayStringToDouble(from: expenses)
 			case .CASH:
 				totalCash = arrayStringToDouble(from: cash)
 		}
 	}
 	
 	func resultTotal() -> Double {
-		return totalCbEmv + totalCbLess + totalAmex + totalAmexLess + totalTicketRestaurant + totalCash
+		return totalCbEmv + totalCbLess + totalAmex + totalAmexLess + totalTicketRestaurant + totalExpenses + totalCash
 	}
 	
 	func totalRapport() -> Double {

@@ -11,61 +11,59 @@ struct CashRegisterView: View {
 	@StateObject var viewModel = CashRegisterViewModel()
 	
 	var body: some View {
-        NavigationStack {
-            Form {
-                Section {
-                    HStack{
-                        TextField("0", value: $viewModel.firstRapport, format: .number)
-                            .frame(maxWidth: 100)
-                        Spacer()
-                        Divider()
-                        Spacer()
-                        TextField("0", value: $viewModel.secondRapport, format: .number)
-                            .frame(maxWidth: 100)
-                    }
-                    .font(.callout)
-                    .multilineTextAlignment(.center)
-                } header: {
-                    Text("Montant du ou des rapports de caisses :")
-                }
-                
-                Section {
-                    cbField()
-                    cbLessField()
-                    amexField()
-                    amexLessField()
-                    ticketRField()
-                    cashField()
-                } header: {
-                    Text("Montants des moyens de paiment :")
-                }
-                
-            }
-            .navigationTitle("Caisse")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarLeading, content: {
-                    HStack {
-                        Text("Total :")
-                        Text(viewModel.resultTotal().formatted(.currency(code: "EUR")))
-                    }
-                    .font(.caption)
-                })
-                ToolbarItemGroup(placement: .navigationBarTrailing, content: {
-                    HStack {
-                        Text("Différence :")
-                        Text(viewModel.isPositiveDiff() ? "+\(viewModel.diff().formatted(.currency(code: "EUR")))" : viewModel.diff().formatted(.currency(code: "EUR")))
-                    }
-                    .foregroundColor(viewModel.isPositiveDiff() ? .green : .black.opacity(0.6))
-                    .font(.caption)
-                })
-                ToolbarItemGroup(placement: .keyboard, content: {
+        Form {
+            Section {
+                HStack{
+                    TextField("0", value: $viewModel.firstRapport, format: .number)
+                        .frame(maxWidth: 100)
                     Spacer()
-                    Button(action: {
-//                        isInputActive.toggle()
-                        hideKeyboard()
-                    }, label: {
-                        Image(systemName: "arrow.down.circle")
-                    })
+                    Divider()
+                    Spacer()
+                    TextField("0", value: $viewModel.secondRapport, format: .number)
+                        .frame(maxWidth: 100)
+                }
+                .font(.callout)
+                .multilineTextAlignment(.center)
+            } header: {
+                Text("Montant du ou des rapports de caisses :")
+            }
+            
+            Section {
+                cbField()
+                cbLessField()
+                amexField()
+                amexLessField()
+                ticketRField()
+                expensesField()
+                cashField()
+            } header: {
+                Text("Montants des moyens de paiment :")
+            }
+            
+        }
+        .scrollIndicators(.hidden)
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarLeading, content: {
+                HStack {
+                    Text("Total :")
+                    Text(viewModel.resultTotal().formatted(.currency(code: "EUR")))
+                }
+                .font(.caption)
+            })
+            ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+                HStack {
+                    Text("Différence :")
+                    Text(viewModel.isPositiveDiff() ? "+\(viewModel.diff().formatted(.currency(code: "EUR")))" : viewModel.diff().formatted(.currency(code: "EUR")))
+                }
+                .foregroundColor(viewModel.isPositiveDiff() ? .green : .black.opacity(0.6))
+                .font(.caption)
+            })
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }, label: {
+                    Image(systemName: "arrow.down.circle")
                 })
             }
         }
@@ -259,6 +257,44 @@ struct CashRegisterView: View {
             Text("Total: \(viewModel.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundColor(Color.mint)
+        }
+    }
+    
+    @ViewBuilder
+    func expensesField() -> some View {
+        VStack(alignment: .leading) {
+            
+            Text("DEPENSES")
+                .foregroundColor(.yellow)
+                .font(.caption)
+            
+            ForEach(viewModel.expenses.indices, id: \.self) { i in
+                HStack {
+                    TextField("0", text: $viewModel.expenses[i])
+                        .onChange(of: viewModel.expenses[i]) { value in
+                            viewModel.expenses[i] = value.replacingOccurrences(of: ",", with: ".")
+                            viewModel.saveTotal(type: .EXPENSES)
+                        }
+                    if i == 0 {
+                        Button {
+                            if viewModel.expenses[0] != "" {
+                                viewModel.expenses.append("")
+                            }
+                        } label: {
+                            Image(systemName: "plus.circle")
+                        }
+                    }
+                }
+                .padding(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.yellow, lineWidth: 1)
+                )
+            }
+            
+            Text("Total: \(viewModel.totalExpenses.formatted(.currency(code: "EUR")))")
+                .font(.caption2)
+                .foregroundColor(Color.yellow)
         }
     }
     
