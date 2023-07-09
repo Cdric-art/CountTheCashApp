@@ -9,14 +9,12 @@ import SwiftUI
 
 struct CashFundView: View {
     @StateObject var viewModel = CashFundViewModel()
-    @FocusState var isInputActive: Bool
     
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     TextField("0", value: $viewModel.textFieldCashFund, format: .number)
-                        .focused($isInputActive)
                         .font(.callout)
                 } header: {
                     Text("Montant du fond de caisse :")
@@ -57,7 +55,7 @@ struct CashFundView: View {
                 ToolbarItemGroup(placement: .keyboard, content: {
                     Spacer()
                     Button(action: {
-                        isInputActive.toggle()
+                        hideKeyboard()
                     }, label: {
                         Image(systemName: "arrow.down.circle")
                     })
@@ -79,7 +77,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text("20")
@@ -109,7 +106,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text("10")
@@ -139,7 +135,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text(" 5")
@@ -169,7 +164,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text(" 2")
@@ -200,7 +194,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text(" 1")
@@ -230,7 +223,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text("0.50")
@@ -260,7 +252,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text("0.20")
@@ -290,7 +281,6 @@ struct CashFundView: View {
                         viewModel.totalAddition()
                     }
                 }
-                .focused($isInputActive)
                 .frame(maxWidth: 50)
             Text("x")
             Text("0.10")

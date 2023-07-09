@@ -12,6 +12,7 @@
 		A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26B297358DC006B48BD /* CashRegisterView.swift */; };
 		A72CD2772974B3F5006B48BD /* CashFundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD2762974B3F5006B48BD /* CashFundViewModel.swift */; };
 		A74A019F29785B2500E1FD5A /* CashRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74A019E29785B2500E1FD5A /* CashRegisterViewModel.swift */; };
+		A77288CE2A5AC7D300CB2587 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77288CD2A5AC7D300CB2587 /* HideKeyboard.swift */; };
 		A790373B29899748005EC365 /* NavigationLinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A790373A29899748005EC365 /* NavigationLinkLabel.swift */; };
 		A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A2E562972069C00C1CEFB /* CountTheCashAppApp.swift */; };
 		A79A2E592972069C00C1CEFB /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A2E582972069C00C1CEFB /* App.swift */; };
@@ -30,6 +31,7 @@
 		A72CD26B297358DC006B48BD /* CashRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRegisterView.swift; sourceTree = "<group>"; };
 		A72CD2762974B3F5006B48BD /* CashFundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundViewModel.swift; sourceTree = "<group>"; };
 		A74A019E29785B2500E1FD5A /* CashRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRegisterViewModel.swift; sourceTree = "<group>"; };
+		A77288CD2A5AC7D300CB2587 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		A790373A29899748005EC365 /* NavigationLinkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLinkLabel.swift; sourceTree = "<group>"; };
 		A79A2E532972069C00C1CEFB /* CountTheCashApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountTheCashApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A79A2E562972069C00C1CEFB /* CountTheCashAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountTheCashAppApp.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A77288CC2A5AC7BD00CB2587 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A77288CD2A5AC7D300CB2587 /* HideKeyboard.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A79A2E4A2972069C00C1CEFB = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		A79A2E552972069C00C1CEFB /* CountTheCashApp */ = {
 			isa = PBXGroup;
 			children = (
+				A77288CC2A5AC7BD00CB2587 /* Extensions */,
 				A79E84CD29A58D750068D95A /* Model */,
 				A72CD2752974B3B9006B48BD /* ViewModel */,
 				A72CD268297356F3006B48BD /* Views */,
@@ -231,6 +242,7 @@
 				A79A2E592972069C00C1CEFB /* App.swift in Sources */,
 				A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
+				A77288CE2A5AC7D300CB2587 /* HideKeyboard.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
 				A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */,
 				A790373B29899748005EC365 /* NavigationLinkLabel.swift in Sources */,
