@@ -23,6 +23,11 @@
 		A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D429A58F3D0068D95A /* AdditionResults.swift */; };
 		A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA7F262A28D30C0000C983 /* HomeView.swift */; };
 		A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */; };
+		A7FD4D882A5EF368006B6322 /* OffWhiteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D872A5EF368006B6322 /* OffWhiteStyle.swift */; };
+		A7FD4D8A2A5EF3A3006B6322 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D892A5EF3A3006B6322 /* NeumorphicStyle.swift */; };
+		A7FD4D8C2A5EF3C8006B6322 /* TextGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D8B2A5EF3C8006B6322 /* TextGradient.swift */; };
+		A7FD4D8E2A5EF444006B6322 /* LightCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D8D2A5EF444006B6322 /* LightCalculatorViewModel.swift */; };
+		A7FD4D902A5EF475006B6322 /* LightCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D8F2A5EF475006B6322 /* LightCalculatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,11 @@
 		A79E84D429A58F3D0068D95A /* AdditionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionResults.swift; sourceTree = "<group>"; };
 		A7CA7F262A28D30C0000C983 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundHomeView.swift; sourceTree = "<group>"; };
+		A7FD4D872A5EF368006B6322 /* OffWhiteStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffWhiteStyle.swift; sourceTree = "<group>"; };
+		A7FD4D892A5EF3A3006B6322 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
+		A7FD4D8B2A5EF3C8006B6322 /* TextGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextGradient.swift; sourceTree = "<group>"; };
+		A7FD4D8D2A5EF444006B6322 /* LightCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCalculatorViewModel.swift; sourceTree = "<group>"; };
+		A7FD4D8F2A5EF475006B6322 /* LightCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCalculatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,7 @@
 				A72CD2692973572B006B48BD /* CashFundView.swift */,
 				A72CD26B297358DC006B48BD /* CashRegisterView.swift */,
 				A7CA7F262A28D30C0000C983 /* HomeView.swift */,
+				A7FD4D8F2A5EF475006B6322 /* LightCalculatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -81,6 +92,7 @@
 			children = (
 				A72CD2762974B3F5006B48BD /* CashFundViewModel.swift */,
 				A74A019E29785B2500E1FD5A /* CashRegisterViewModel.swift */,
+				A7FD4D8D2A5EF444006B6322 /* LightCalculatorViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -96,6 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				A77288CD2A5AC7D300CB2587 /* HideKeyboard.swift */,
+				A7FD4D872A5EF368006B6322 /* OffWhiteStyle.swift */,
+				A7FD4D892A5EF3A3006B6322 /* NeumorphicStyle.swift */,
+				A7FD4D8B2A5EF3C8006B6322 /* TextGradient.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -234,19 +249,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7FD4D8C2A5EF3C8006B6322 /* TextGradient.swift in Sources */,
 				A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */,
 				A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */,
 				A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */,
 				A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */,
 				A74A019F29785B2500E1FD5A /* CashRegisterViewModel.swift in Sources */,
+				A7FD4D882A5EF368006B6322 /* OffWhiteStyle.swift in Sources */,
+				A7FD4D8E2A5EF444006B6322 /* LightCalculatorViewModel.swift in Sources */,
 				A79A2E592972069C00C1CEFB /* App.swift in Sources */,
 				A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
+				A7FD4D902A5EF475006B6322 /* LightCalculatorView.swift in Sources */,
 				A77288CE2A5AC7D300CB2587 /* HideKeyboard.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
 				A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */,
 				A790373B29899748005EC365 /* NavigationLinkLabel.swift in Sources */,
 				A72CD2772974B3F5006B48BD /* CashFundViewModel.swift in Sources */,
+				A7FD4D8A2A5EF3A3006B6322 /* NeumorphicStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,7 +400,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;
@@ -400,7 +420,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -419,7 +439,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;
@@ -439,7 +459,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

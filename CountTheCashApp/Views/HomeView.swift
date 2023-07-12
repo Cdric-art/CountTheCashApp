@@ -20,9 +20,10 @@ struct HomeView: View {
                         .scaledToFit()
                         .frame(width: 100)
                         .padding(30)
-                        .background(.white)
+                        .background(Color.offWhite)
                         .clipShape(Circle())
-                        .shadow(color: .gray, radius: 2, x: 3, y: 3)
+                        .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 10)
+                        .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
                     
                     Text("Compte ta caisse")
                         .font(.system(size: 38))
@@ -46,6 +47,7 @@ struct HomeView: View {
             .environment(\.locale, Locale(identifier: "fr"))
             
         }
+        .background(Color.offWhite)
     }
 }
 
