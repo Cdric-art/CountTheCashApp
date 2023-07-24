@@ -40,7 +40,7 @@ struct CashFundView: View {
                     Text("Total :")
                     Text(viewModel.total.formatted(.currency(code: "EUR")))
                 }
-                .font(.caption)
+                .font(.callout)
             })
             ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                 HStack {

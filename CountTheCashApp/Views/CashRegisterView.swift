@@ -17,7 +17,9 @@ struct CashRegisterView: View {
                     TextField("0", value: $viewModel.firstRapport, format: .number)
                         .frame(maxWidth: 100)
                     Spacer()
-                    Divider()
+                    Image(systemName: "plus")
+                        .foregroundColor(.black.opacity(0.2))
+                        .bold()
                     Spacer()
                     TextField("0", value: $viewModel.secondRapport, format: .number)
                         .frame(maxWidth: 100)
@@ -26,6 +28,15 @@ struct CashRegisterView: View {
                 .multilineTextAlignment(.center)
             } header: {
                 Text("Montant du ou des rapports de caisses :")
+            }
+            
+            Section {
+                HStack {
+                    Text("\(viewModel.totalRapport().formatted(.currency(code: "EUR")))")
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+            } header: {
+                Text("Total CA :")
             }
             
             Section {
@@ -48,7 +59,7 @@ struct CashRegisterView: View {
                     Text("Total :")
                     Text(viewModel.resultTotal().formatted(.currency(code: "EUR")))
                 }
-                .font(.caption)
+                .font(.callout)
             })
             ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                 HStack {
@@ -149,7 +160,7 @@ struct CashRegisterView: View {
     func amexField() -> some View {
         VStack(alignment: .leading) {
             
-            Text("AMEX")
+            Text("AMEX CONTACT")
                 .font(.caption)
                 .foregroundColor(.brown)
             
@@ -187,7 +198,7 @@ struct CashRegisterView: View {
     func amexLessField() -> some View {
         VStack(alignment: .leading) {
             
-            Text("AMEX LESS")
+            Text("AMEX EXPRESS")
                 .font(.caption)
                 .foregroundColor(.orange)
             

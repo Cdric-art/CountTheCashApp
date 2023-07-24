@@ -17,7 +17,8 @@ struct LightCalculatorView: View {
             
             VStack {
                 Text("\(viewModel.result.formatted())")
-                    .textGradientStyle(value: "\(viewModel.result.formatted())", size: 80)
+                    .font(.system(size: 70).bold())
+                    .padding()
                     .neumorphicStyle()
             }
             
@@ -27,6 +28,7 @@ struct LightCalculatorView: View {
                     .foregroundColor(.gray)
             }
             .frame(maxWidth: .infinity, minHeight: 80, alignment: .trailing)
+            .padding(.top)
             
             Divider()
             
@@ -56,7 +58,7 @@ struct LightCalculatorView: View {
                     Button(action: {
                         viewModel.reset()
                     }, label: {
-                        rowLabel(text: "C", color: .orange)
+                        rowLabel(text: "C", color: .red)
                     })
                 }
                 .font(.system(size: 50, design: .rounded))
@@ -95,7 +97,7 @@ struct LightCalculatorView: View {
                             viewModel.isOperatorSelected = true
                         }
                     }, label: {
-                        rowLabel(text: "-", color: .orange)
+                        rowLabel(text: "-", color: .cyan)
                     })
                 }
                 .font(.system(size: 50, weight: .semibold, design: .rounded))
@@ -134,7 +136,7 @@ struct LightCalculatorView: View {
                             viewModel.isOperatorSelected = true
                         }
                     }, label: {
-                        rowLabel(text: "+", color: .orange)
+                        rowLabel(text: "+", color: .green)
                     })
                 }
                 .font(.system(size: 50, weight: .semibold, design: .rounded))
@@ -160,12 +162,13 @@ struct LightCalculatorView: View {
                     Button(action: {
                         viewModel.calcul()
                     }, label: {
-                        rowLabel(text: "=", color: .orange)
+                        rowLabel(text: "=", color: .yellow)
                     })
                 }
                 .font(.system(size: 50, weight: .semibold, design: .rounded))
                 .foregroundColor(.white)
             }
+            .padding(.bottom)
             
         }
         .padding()
