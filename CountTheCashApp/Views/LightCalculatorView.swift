@@ -10,16 +10,37 @@ import SwiftUI
 struct LightCalculatorView: View {
     @StateObject var viewModel = LightCalculatorViewModel()
     
+    @State private var isCopied: Bool = false
+    private let clipboard = UIPasteboard.general
+    
     var body: some View {
         VStack {
             
             Spacer()
             
-            VStack {
+            ZStack {
                 Text("\(viewModel.result.formatted())")
                     .font(.system(size: 70).bold())
                     .padding()
                     .neumorphicStyle()
+                Image(systemName: "doc.on.doc")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(isCopied ? .green : .gray)
+                    .frame(width: isCopied ? 18 : 16)
+                    .frame(maxWidth: .infinity, alignment: .topTrailing)
+                    .offset(x: -10, y: -30)
+                    .onTapGesture {
+                        clipboard.string = viewModel.result.formatted()
+                        withAnimation {
+                            isCopied = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                            withAnimation {
+                                isCopied = false
+                            }
+                        })
+                    }
             }
             
             VStack {
