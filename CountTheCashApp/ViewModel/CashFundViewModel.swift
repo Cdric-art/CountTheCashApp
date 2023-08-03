@@ -9,7 +9,7 @@ import Foundation
 
 class CashFundViewModel: ObservableObject {
 	
-	@Published var textFieldCashFund: Int?
+	@Published var textFieldCashFund: Double?
 	
 	@Published var coins = Coins()
 	@Published var bills = Bills()
@@ -24,10 +24,7 @@ class CashFundViewModel: ObservableObject {
 	}
 	
 	func differenceCalcul() -> Double {
-		if textFieldCashFund != nil {
-			return total - (Double(textFieldCashFund ?? 0))
-		}
-		return 0
+        return total - (textFieldCashFund ?? 0)
 	}
 	
 }

@@ -16,7 +16,7 @@ struct CashFundView: View {
                 TextField("0", value: $viewModel.textFieldCashFund, format: .number)
                     .font(.callout)
             } header: {
-                Text("Montant du fond de caisse :")
+                Text("Montant initial du fond de caisse :")
             }
             .multilineTextAlignment(.center)
             

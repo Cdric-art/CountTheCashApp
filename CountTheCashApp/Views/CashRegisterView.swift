@@ -198,7 +198,7 @@ struct CashRegisterView: View {
     func amexLessField() -> some View {
         VStack(alignment: .leading) {
             
-            Text("AMEX EXPRESS")
+            Text("AMEX EXPRESSPAY")
                 .font(.caption)
                 .foregroundColor(.orange)
             
@@ -313,7 +313,7 @@ struct CashRegisterView: View {
     func cashField() -> some View {
         VStack(alignment: .leading) {
             
-            Text("CASH")
+            Text("ESPECES")
                 .font(.caption)
                 .foregroundColor(.red)
             
