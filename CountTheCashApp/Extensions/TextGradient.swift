@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func textGradientStyle(value: String, color: Color = .black, size: CGFloat = 50) -> some View {
+    func textGradientStyle(value: String, color: Color = .accentColor, size: CGFloat = 50) -> some View {
         self.font(.system(size: size, weight: .semibold, design: .rounded))
             .padding(16)
             .overlay {

@@ -193,11 +193,11 @@ struct LightCalculatorView: View {
             
         }
         .padding()
-        .background(Color.offWhite)
+        .background(Color("OffWhiteTheme"))
     }
     
     @ViewBuilder
-    func rowLabel(text: String, color: Color = .black) -> some View {
+    func rowLabel(text: String, color: Color = .accentColor) -> some View {
         if text == "0" {
             ZStack {
                 RoundedRectangle(cornerRadius: 43)

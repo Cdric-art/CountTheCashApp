@@ -66,7 +66,7 @@ struct CashRegisterView: View {
                     Text("Différence :")
                     Text(viewModel.diff)
                 }
-                .foregroundColor(viewModel.isPositiveDiff ? .green : .black.opacity(0.6))
+                .foregroundColor(viewModel.isPositiveDiff ? .green : .accentColor)
                 .font(.caption)
             })
             ToolbarItemGroup(placement: .keyboard) {

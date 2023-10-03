@@ -43,9 +43,8 @@ struct ContentView: View {
                     }
                 }
             }
-            .toolbarBackground(Color.offWhite, for: .tabBar)
+            .toolbarBackground(Color("OffWhiteTheme"), for: .tabBar)
 		}
-		.accentColor(.black)
         .keyboardType(.decimalPad)
         .scrollDismissesKeyboard(.interactively)
 	}

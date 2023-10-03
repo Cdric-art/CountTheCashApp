@@ -50,7 +50,7 @@ struct CashFundView: View {
                     Text("Différence :")
                     Text(viewModel.differenceCalcul)
                 }
-                .foregroundColor(.black.opacity(0.6))
+                .foregroundColor(Color.accentColor)
                 .font(.caption)
             })
             ToolbarItemGroup(placement: .keyboard) {

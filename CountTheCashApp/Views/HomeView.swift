@@ -20,7 +20,7 @@ struct HomeView: View {
                         .scaledToFit()
                         .frame(width: 100)
                         .padding(30)
-                        .background(Color.offWhite)
+                        .background(Color("OffWhiteTheme"))
                         .clipShape(Circle())
                         .shadow(color: Color.black.opacity(0.1), radius: 10, x: 10, y: 10)
                         .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
@@ -47,7 +47,6 @@ struct HomeView: View {
             .environment(\.locale, Locale(identifier: "fr"))
             
         }
-        .background(Color.offWhite)
     }
 }
 
