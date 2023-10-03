@@ -58,22 +58,25 @@ class CashRegisterViewModel: ObservableObject {
 		}
 	}
 	
-	func resultTotal() -> Double {
+    var totalCaisse: Double {
 		return totalCbEmv + totalCbLess + totalAmex + totalAmexLess + totalTicketRestaurant + totalExpenses + totalCash
 	}
 	
-	func totalRapport() -> Double {
+    var totalRapport: Double {
 		let totalRapport = (firstRapport ?? 0) + (secondRapport ?? 0)
 		return totalRapport
 	}
+    
+    private var totaux: Double {
+        return totalCaisse - totalRapport
+    }
 	
-	func diff() -> Double {
-		let total = resultTotal() - totalRapport()
-		return total
+    var diff: String {
+        return totaux.formatted(.currency(code: "EUR"))
 	}
 	
-	func isPositiveDiff()  -> Bool {
-		return diff() > 0
+    var isPositiveDiff: Bool {
+		return totaux > 0
 	}
 	
 	private func arrayStringToDouble(from: [String]) -> Double {

@@ -16,6 +16,9 @@ struct AdditionResults {
 	var fiftyCentCoin: Double
 	var twentyCentCoin: Double
 	var tenCentCoin: Double
+    var fiveCentCoin: Double
+    var twoCentCoin: Double
+    var oneCentCoin: Double
 	
     init(
         twentyBill: Double = 0,
@@ -25,7 +28,10 @@ struct AdditionResults {
         oneCoin: Double = 0,
         fiftyCentCoin: Double = 0,
         twentyCentCoin: Double = 0,
-        tenCentCoin: Double = 0
+        tenCentCoin: Double = 0,
+        fiveCentCoin: Double = 0,
+        twoCentCoin: Double = 0,
+        oneCentCoin: Double = 0
     ) {
         self.twentyBill = twentyBill
         self.tenBill = tenBill
@@ -35,5 +41,8 @@ struct AdditionResults {
         self.fiftyCentCoin = fiftyCentCoin
         self.twentyCentCoin = twentyCentCoin
         self.tenCentCoin = tenCentCoin
+        self.fiveCentCoin = fiveCentCoin
+        self.twoCentCoin = twoCentCoin
+        self.oneCentCoin = oneCentCoin
     }
 }

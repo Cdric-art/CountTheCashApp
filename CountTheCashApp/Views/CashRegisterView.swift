@@ -32,7 +32,7 @@ struct CashRegisterView: View {
             
             Section {
                 HStack {
-                    Text("\(viewModel.totalRapport().formatted(.currency(code: "EUR")))")
+                    Text("\(viewModel.totalRapport.formatted(.currency(code: "EUR")))")
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
             } header: {
@@ -57,16 +57,16 @@ struct CashRegisterView: View {
             ToolbarItemGroup(placement: .navigationBarLeading, content: {
                 HStack {
                     Text("Total :")
-                    Text(viewModel.resultTotal().formatted(.currency(code: "EUR")))
+                    Text(viewModel.totalCaisse.formatted(.currency(code: "EUR")))
                 }
                 .font(.callout)
             })
             ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                 HStack {
                     Text("Différence :")
-                    Text(viewModel.isPositiveDiff() ? "+\(viewModel.diff().formatted(.currency(code: "EUR")))" : viewModel.diff().formatted(.currency(code: "EUR")))
+                    Text(viewModel.diff)
                 }
-                .foregroundColor(viewModel.isPositiveDiff() ? .green : .black.opacity(0.6))
+                .foregroundColor(viewModel.isPositiveDiff ? .green : .black.opacity(0.6))
                 .font(.caption)
             })
             ToolbarItemGroup(placement: .keyboard) {

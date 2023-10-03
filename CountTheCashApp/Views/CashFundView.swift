@@ -29,6 +29,9 @@ struct CashFundView: View {
                 fiftyCoinField()
                 twentyCoinField()
                 tenCoinField()
+                fiveCentCoinField()
+                twoCentCoinField()
+                oneCentCoinField()
             } header: {
                 Text("Billets et pieces :")
             }
@@ -45,7 +48,7 @@ struct CashFundView: View {
             ToolbarItemGroup(placement: .navigationBarTrailing, content: {
                 HStack {
                     Text("Différence :")
-                    Text(viewModel.differenceCalcul().formatted(.currency(code: "EUR")))
+                    Text(viewModel.differenceCalcul)
                 }
                 .foregroundColor(.black.opacity(0.6))
                 .font(.caption)
@@ -292,6 +295,96 @@ struct CashFundView: View {
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.indigo, lineWidth: 1)
+        )
+    }
+    
+    @ViewBuilder
+    func fiveCentCoinField() -> some View {
+        HStack {
+            TextField("0", value: $viewModel.coins.fiveCent, format: .number)
+                .onChange(of: viewModel.coins.fiveCent)  { _ in
+                    if viewModel.coins.fiveCent == 0 {
+                        viewModel.additionResults.fiveCentCoin = 0
+                        viewModel.totalAddition()
+                    } else {
+                        viewModel.additionResults.fiveCentCoin = Double(viewModel.coins.fiveCent ?? 0) * 0.05
+                        viewModel.totalAddition()
+                    }
+                }
+                .frame(maxWidth: 50)
+            Text("x")
+            Text("0.05")
+            Spacer()
+            Text("=")
+            Text(viewModel.additionResults.fiveCentCoin.formatted(.currency(code: "EUR")))
+                .frame(width: 100, alignment: .trailing)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .listRowSeparator(.hidden, edges: .bottom)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.secondary, lineWidth: 1)
+        )
+    }
+    
+    @ViewBuilder
+    func twoCentCoinField() -> some View {
+        HStack {
+            TextField("0", value: $viewModel.coins.twoCent, format: .number)
+                .onChange(of: viewModel.coins.twoCent)  { _ in
+                    if viewModel.coins.twoCent == 0 {
+                        viewModel.additionResults.twoCentCoin = 0
+                        viewModel.totalAddition()
+                    } else {
+                        viewModel.additionResults.twoCentCoin = Double(viewModel.coins.twoCent ?? 0) * 0.02
+                        viewModel.totalAddition()
+                    }
+                }
+                .frame(maxWidth: 50)
+            Text("x")
+            Text("0.02")
+            Spacer()
+            Text("=")
+            Text(viewModel.additionResults.twoCentCoin.formatted(.currency(code: "EUR")))
+                .frame(width: 100, alignment: .trailing)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .listRowSeparator(.hidden, edges: .bottom)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.teal, lineWidth: 1)
+        )
+    }
+    
+    @ViewBuilder
+    func oneCentCoinField() -> some View {
+        HStack {
+            TextField("0", value: $viewModel.coins.oneCent, format: .number)
+                .onChange(of: viewModel.coins.oneCent)  { _ in
+                    if viewModel.coins.oneCent == 0 {
+                        viewModel.additionResults.oneCentCoin = 0
+                        viewModel.totalAddition()
+                    } else {
+                        viewModel.additionResults.oneCentCoin = Double(viewModel.coins.oneCent ?? 0) * 0.01
+                        viewModel.totalAddition()
+                    }
+                }
+                .frame(maxWidth: 50)
+            Text("x")
+            Text("0.01")
+            Spacer()
+            Text("=")
+            Text(viewModel.additionResults.oneCentCoin.formatted(.currency(code: "EUR")))
+                .frame(width: 100, alignment: .trailing)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .listRowSeparator(.hidden, edges: .bottom)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.orange, lineWidth: 1)
         )
     }
 }
