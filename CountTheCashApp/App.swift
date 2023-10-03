@@ -11,10 +11,12 @@ struct ContentView: View {
 	var body: some View {
 		TabView {
             Group {
-                HomeView()
-                    .tabItem {
-                        Label("Accueil", systemImage: "house.fill")
-                    }
+                NavigationStack {
+                    HomeView()
+                }
+                .tabItem {
+                    Label("Accueil", systemImage: "house.fill")
+                }
                 
                 NavigationStack {
                     CashFundView()
@@ -41,7 +43,6 @@ struct ContentView: View {
                     Label("Calculette", systemImage: "plusminus")
                 }
             }
-            .toolbarBackground(Color("OffWhiteTheme"), for: .tabBar)
 		}
         .keyboardType(.decimalPad)
         .scrollDismissesKeyboard(.interactively)
