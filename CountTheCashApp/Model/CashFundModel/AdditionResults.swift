@@ -7,15 +7,33 @@
 
 import Foundation
 
-class AdditionResults {
+struct AdditionResults {
+	var twentyBill: Double
+	var tenBill: Double
+	var fiveBill: Double
+	var twoCoin: Double
+	var oneCoin: Double
+	var fiftyCentCoin: Double
+	var twentyCentCoin: Double
+	var tenCentCoin: Double
 	
-	var twentyBill: Double = 0
-	var tenBill: Double = 0
-	var fiveBill: Double = 0
-	var twoCoin: Double = 0
-	var oneCoin: Double = 0
-	var fiftyCentCoin: Double = 0
-	var twentyCentCoin: Double = 0
-	var tenCentCoin: Double = 0
-	
+    init(
+        twentyBill: Double = 0,
+        tenBill: Double = 0,
+        fiveBill: Double = 0,
+        twoCoin: Double = 0,
+        oneCoin: Double = 0,
+        fiftyCentCoin: Double = 0,
+        twentyCentCoin: Double = 0,
+        tenCentCoin: Double = 0
+    ) {
+        self.twentyBill = twentyBill
+        self.tenBill = tenBill
+        self.fiveBill = fiveBill
+        self.twoCoin = twoCoin
+        self.oneCoin = oneCoin
+        self.fiftyCentCoin = fiftyCentCoin
+        self.twentyCentCoin = twentyCentCoin
+        self.tenCentCoin = tenCentCoin
+    }
 }

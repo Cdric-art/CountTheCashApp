@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A704A0D82A54463700B82B90 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A704A0D72A54463700B82B90 /* Launch Screen.storyboard */; };
 		A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD2692973572B006B48BD /* CashFundView.swift */; };
 		A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD26B297358DC006B48BD /* CashRegisterView.swift */; };
 		A72CD2772974B3F5006B48BD /* CashFundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72CD2762974B3F5006B48BD /* CashFundViewModel.swift */; };
@@ -31,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A704A0D72A54463700B82B90 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A72CD2692973572B006B48BD /* CashFundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundView.swift; sourceTree = "<group>"; };
 		A72CD26B297358DC006B48BD /* CashRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashRegisterView.swift; sourceTree = "<group>"; };
 		A72CD2762974B3F5006B48BD /* CashFundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundViewModel.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 		A79A2E4A2972069C00C1CEFB = {
 			isa = PBXGroup;
 			children = (
-				A704A0D72A54463700B82B90 /* Launch Screen.storyboard */,
 				A79A2E552972069C00C1CEFB /* CountTheCashApp */,
 				A79A2E542972069C00C1CEFB /* Products */,
 				A76F1DD629B7AFC70013396B /* Frameworks */,
@@ -236,7 +233,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A704A0D82A54463700B82B90 /* Launch Screen.storyboard in Resources */,
 				A79A2E5E2972069E00C1CEFB /* Preview Assets.xcassets in Resources */,
 				A79A2E5B2972069E00C1CEFB /* Assets.xcassets in Resources */,
 			);
@@ -400,7 +396,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;
@@ -411,7 +407,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -420,7 +416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -439,7 +435,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;
@@ -450,7 +446,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -459,7 +455,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
