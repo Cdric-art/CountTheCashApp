@@ -237,7 +237,7 @@ struct CashRegisterView: View {
     func ticketRField() -> some View {
         VStack(alignment: .leading) {
             
-            Text("T. RESTAURANT")
+            Text("TICKETS RESTAURANT")
                 .foregroundColor(.mint)
                 .font(.caption)
             
