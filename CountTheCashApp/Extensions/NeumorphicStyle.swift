@@ -9,7 +9,7 @@ import SwiftUI
 
 extension View {
     func neumorphicStyle() -> some View {
-        self.frame(maxWidth: .infinity)
+        self.frame(maxWidth: 380)
             .background(Color("OffWhiteTheme"))
             .cornerRadius(20)
             .shadow(color: Color.black.opacity(0.05), radius: 6, x: 8, y: 8)

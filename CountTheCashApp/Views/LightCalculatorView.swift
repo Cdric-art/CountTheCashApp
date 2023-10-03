@@ -12,6 +12,7 @@ struct LightCalculatorView: View {
     
     @State private var isCopied: Bool = false
     private let clipboard = UIPasteboard.general
+    private let offSetX = UIDevice.current.userInterfaceIdiom == .phone ? -10.0 : -220.0
     
     var body: some View {
         VStack {
@@ -29,7 +30,7 @@ struct LightCalculatorView: View {
                     .foregroundColor(isCopied ? .green : .gray)
                     .frame(width: isCopied ? 18 : 16)
                     .frame(maxWidth: .infinity, alignment: .topTrailing)
-                    .offset(x: -10, y: -30)
+                    .offset(x: offSetX, y: -30)
                     .onTapGesture {
                         clipboard.string = viewModel.result.formatted()
                         withAnimation {
@@ -52,6 +53,7 @@ struct LightCalculatorView: View {
             .padding(.top)
             
             Divider()
+                .frame(maxWidth: 400)
             
             VStack {
                 HStack {
@@ -190,6 +192,10 @@ struct LightCalculatorView: View {
                 .foregroundColor(.white)
             }
             .padding(.bottom)
+            
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                Spacer()
+            }
             
         }
         .padding()

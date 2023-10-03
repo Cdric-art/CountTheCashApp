@@ -174,7 +174,6 @@ struct CashFundView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .listRowSeparator(.hidden)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.orange, lineWidth: 1)
@@ -291,7 +290,6 @@ struct CashFundView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .listRowSeparator(.hidden, edges: .bottom)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.indigo, lineWidth: 1)
@@ -321,7 +319,6 @@ struct CashFundView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .listRowSeparator(.hidden, edges: .bottom)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.secondary, lineWidth: 1)
@@ -351,7 +348,6 @@ struct CashFundView: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
-        .listRowSeparator(.hidden, edges: .bottom)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.teal, lineWidth: 1)

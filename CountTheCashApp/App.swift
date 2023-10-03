@@ -32,15 +32,13 @@ struct ContentView: View {
                     Label("Caisse", systemImage: "tray.and.arrow.up.fill")
                 }
                 
-                if UIDevice.current.userInterfaceIdiom != .pad {
-                    NavigationStack {
-                        LightCalculatorView()
-                            .navigationTitle("Calculette")
-                            .navigationBarTitleDisplayMode(.inline)
-                    }
-                    .tabItem {
-                        Label("Calculette", systemImage: "plusminus")
-                    }
+                NavigationStack {
+                    LightCalculatorView()
+                        .navigationTitle("Calculette")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                .tabItem {
+                    Label("Calculette", systemImage: "plusminus")
                 }
             }
             .toolbarBackground(Color("OffWhiteTheme"), for: .tabBar)
