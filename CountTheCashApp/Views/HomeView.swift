@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    
     var body: some View {
+        let symbol = isDarkMode ? "sun.max.circle" : "moon.stars.circle"
+        
         ZStack {
             
             BackgroundHomeView()
@@ -45,7 +49,19 @@ struct HomeView: View {
                 Spacer()
             }
             .environment(\.locale, Locale(identifier: "fr"))
-            
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing, content: {
+                Button(action: {
+                    isDarkMode.toggle()
+                }, label: {
+                    Image(systemName: symbol)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24)
+                })
+                .tint(isDarkMode ? .white : .black)
+            })
         }
     }
 }
