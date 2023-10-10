@@ -27,7 +27,7 @@ struct LightCalculatorView: View {
                 Image(systemName: "doc.on.doc")
                     .resizable()
                     .scaledToFit()
-                    .foregroundColor(isCopied ? .green : .gray)
+                    .foregroundStyle(isCopied ? .green : .gray)
                     .frame(width: isCopied ? 18 : 16)
                     .frame(maxWidth: .infinity, alignment: .topTrailing)
                     .offset(x: offSetX, y: -30)
@@ -47,7 +47,7 @@ struct LightCalculatorView: View {
             VStack {
                 Text(viewModel.placeHolder)
                     .font(.system(size: 32, weight: .semibold, design: .rounded))
-                    .foregroundColor(.gray)
+                    .foregroundStyle(.gray)
             }
             .frame(maxWidth: .infinity, minHeight: 80, alignment: .trailing)
             .padding(.top)
@@ -85,7 +85,7 @@ struct LightCalculatorView: View {
                     })
                 }
                 .font(.system(size: 50, design: .rounded))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
             }
             
             VStack {
@@ -124,7 +124,7 @@ struct LightCalculatorView: View {
                     })
                 }
                 .font(.system(size: 50, weight: .semibold, design: .rounded))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
             }
             
             VStack {
@@ -163,7 +163,7 @@ struct LightCalculatorView: View {
                     })
                 }
                 .font(.system(size: 50, weight: .semibold, design: .rounded))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
             }
             
             VStack {
@@ -189,7 +189,7 @@ struct LightCalculatorView: View {
                     })
                 }
                 .font(.system(size: 50, weight: .semibold, design: .rounded))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
             }
             .padding(.bottom)
             

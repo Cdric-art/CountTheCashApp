@@ -18,7 +18,7 @@ struct CashRegisterView: View {
                         .frame(maxWidth: 100)
                     Spacer()
                     Image(systemName: "plus")
-                        .foregroundColor(.black.opacity(0.2))
+                        .foregroundStyle(.black.opacity(0.2))
                         .bold()
                     Spacer()
                     TextField("0", value: $viewModel.secondRapport, format: .number)
@@ -66,7 +66,7 @@ struct CashRegisterView: View {
                     Text("Différence :")
                     Text(viewModel.diff)
                 }
-                .foregroundColor(viewModel.isPositiveDiff ? .green : .accentColor)
+                .foregroundStyle(viewModel.isPositiveDiff ? .green : .accentColor)
                 .font(.caption)
             })
         }
@@ -78,7 +78,7 @@ struct CashRegisterView: View {
             
             Text("CB EMV")
                 .font(.caption)
-                .foregroundColor(.purple)
+                .foregroundStyle(.purple)
             
             ForEach(viewModel.cb_emv.indices, id: \.self) { i in
                 HStack {
@@ -106,7 +106,7 @@ struct CashRegisterView: View {
             
             Text("Total: \(viewModel.totalCbEmv.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundColor(Color.purple)
+                .foregroundStyle(Color.purple)
         }
     }
     
@@ -116,7 +116,7 @@ struct CashRegisterView: View {
             
             Text("CB LESS")
                 .font(.caption)
-                .foregroundColor(.teal)
+                .foregroundStyle(.teal)
             
             ForEach(viewModel.cb_less.indices, id: \.self) { i in
                 HStack {
@@ -144,7 +144,7 @@ struct CashRegisterView: View {
             
             Text("Total: \(viewModel.totalCbLess.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundColor(Color.teal)
+                .foregroundStyle(Color.teal)
         }
     }
     
@@ -154,7 +154,7 @@ struct CashRegisterView: View {
             
             Text("AMEX CONTACT")
                 .font(.caption)
-                .foregroundColor(.brown)
+                .foregroundStyle(.brown)
             
             ForEach(viewModel.amex.indices, id: \.self) { i in
                 HStack {
@@ -182,7 +182,7 @@ struct CashRegisterView: View {
             
             Text("Total: \(viewModel.totalAmex.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundColor(Color.brown)
+                .foregroundStyle(Color.brown)
         }
     }
     
@@ -192,7 +192,7 @@ struct CashRegisterView: View {
             
             Text("AMEX EXPRESSPAY")
                 .font(.caption)
-                .foregroundColor(.orange)
+                .foregroundStyle(.orange)
             
             ForEach(viewModel.amex_less.indices, id: \.self) { i in
                 HStack {
@@ -220,7 +220,7 @@ struct CashRegisterView: View {
             
             Text("Total: \(viewModel.totalAmexLess.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundColor(Color.orange)
+                .foregroundStyle(Color.orange)
             
         }
     }
@@ -230,7 +230,7 @@ struct CashRegisterView: View {
         VStack(alignment: .leading) {
             
             Text("TICKETS RESTAURANT")
-                .foregroundColor(.mint)
+                .foregroundStyle(.mint)
                 .font(.caption)
             
             ForEach(viewModel.ticketRestaurant.indices, id: \.self) { i in
@@ -259,7 +259,7 @@ struct CashRegisterView: View {
             
             Text("Total: \(viewModel.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundColor(Color.mint)
+                .foregroundStyle(Color.mint)
         }
     }
     
@@ -268,7 +268,7 @@ struct CashRegisterView: View {
         VStack(alignment: .leading) {
             
             Text("DEPENSES")
-                .foregroundColor(.yellow)
+                .foregroundStyle(.yellow)
                 .font(.caption)
             
             ForEach(viewModel.expenses.indices, id: \.self) { i in
@@ -297,7 +297,7 @@ struct CashRegisterView: View {
             
             Text("Total: \(viewModel.totalExpenses.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundColor(Color.yellow)
+                .foregroundStyle(Color.yellow)
         }
     }
     
@@ -307,7 +307,7 @@ struct CashRegisterView: View {
             
             Text("ESPECES")
                 .font(.caption)
-                .foregroundColor(.red)
+                .foregroundStyle(.red)
             
             HStack {
                 TextField("0", text: $viewModel.cash[0])
@@ -329,7 +329,7 @@ struct CashRegisterView: View {
             
             Text("Total: \(viewModel.totalCash.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundColor(Color.red)
+                .foregroundStyle(Color.red)
         }
     }
     

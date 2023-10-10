@@ -24,7 +24,7 @@ struct NavigationLinkLabel: View {
 		}
 		.frame(width: 140, height: 80)
 		.padding()
-		.foregroundColor(.black)
+		.foregroundStyle(.black)
 		.cornerRadius(24)
 		.overlay(content: {
 			RoundedRectangle(cornerRadius: 10)

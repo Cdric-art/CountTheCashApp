@@ -50,7 +50,7 @@ struct CashFundView: View {
                     Text("Différence :")
                     Text(viewModel.differenceCalcul)
                 }
-                .foregroundColor(viewModel.isPositiveDiff ? .green : .accentColor)
+                .foregroundStyle(viewModel.isPositiveDiff ? .green : .accentColor)
                 .font(.caption)
             })
         }
