@@ -27,5 +27,10 @@ class CashFundViewModel: ObservableObject {
         let result = total - (textFieldCashFund ?? 0)
         return result.formatted(.currency(code: "EUR"))
     }
+    
+    var isPositiveDiff: Bool {
+        let result = total - (textFieldCashFund ?? 0)
+        return result > 0
+    }
 	
 }

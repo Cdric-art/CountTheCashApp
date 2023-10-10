@@ -83,8 +83,8 @@ struct CashRegisterView: View {
             ForEach(viewModel.cb_emv.indices, id: \.self) { i in
                 HStack {
                     TextField("0", text: $viewModel.cb_emv[i])
-                        .onChange(of: viewModel.cb_emv[i]) { value in
-                            viewModel.cb_emv[i] = value.replacingOccurrences(of: ",", with: ".")
+                        .onChange(of: viewModel.cb_emv[i]) { _, newState in
+                            viewModel.cb_emv[i] = newState.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .CBEMV)
                         }
                     if i == 0 {
@@ -121,8 +121,8 @@ struct CashRegisterView: View {
             ForEach(viewModel.cb_less.indices, id: \.self) { i in
                 HStack {
                     TextField("0", text: $viewModel.cb_less[i])
-                        .onChange(of: viewModel.cb_less[i]) { value in
-                            viewModel.cb_less[i] = value.replacingOccurrences(of: ",", with: ".")
+                        .onChange(of: viewModel.cb_less[i]) { _, newState in
+                            viewModel.cb_less[i] = newState.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .CBLESS)
                         }
                     if i == 0 {
@@ -159,8 +159,8 @@ struct CashRegisterView: View {
             ForEach(viewModel.amex.indices, id: \.self) { i in
                 HStack {
                     TextField("0", text: $viewModel.amex[i])
-                        .onChange(of: viewModel.amex[i]) { value in
-                            viewModel.amex[i] = value.replacingOccurrences(of: ",", with: ".")
+                        .onChange(of: viewModel.amex[i]) { _, newState in
+                            viewModel.amex[i] = newState.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .AMEX)
                         }
                     if i == 0 {
@@ -197,8 +197,8 @@ struct CashRegisterView: View {
             ForEach(viewModel.amex_less.indices, id: \.self) { i in
                 HStack {
                     TextField("0", text: $viewModel.amex_less[i])
-                        .onChange(of: viewModel.amex_less[i]) { value in
-                            viewModel.amex_less[i] = value.replacingOccurrences(of: ",", with: ".")
+                        .onChange(of: viewModel.amex_less[i]) { _, newState in
+                            viewModel.amex_less[i] = newState.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .AMEXLESS)
                         }
                     if i == 0 {
@@ -236,8 +236,8 @@ struct CashRegisterView: View {
             ForEach(viewModel.ticketRestaurant.indices, id: \.self) { i in
                 HStack {
                     TextField("0", text: $viewModel.ticketRestaurant[i])
-                        .onChange(of: viewModel.ticketRestaurant[i]) { value in
-                            viewModel.ticketRestaurant[i] = value.replacingOccurrences(of: ",", with: ".")
+                        .onChange(of: viewModel.ticketRestaurant[i]) { _, newState in
+                            viewModel.ticketRestaurant[i] = newState.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .TICKETRESTAURANT)
                         }
                     if i == 0 {
@@ -274,8 +274,8 @@ struct CashRegisterView: View {
             ForEach(viewModel.expenses.indices, id: \.self) { i in
                 HStack {
                     TextField("0", text: $viewModel.expenses[i])
-                        .onChange(of: viewModel.expenses[i]) { value in
-                            viewModel.expenses[i] = value.replacingOccurrences(of: ",", with: ".")
+                        .onChange(of: viewModel.expenses[i]) { _, newState in
+                            viewModel.expenses[i] = newState.replacingOccurrences(of: ",", with: ".")
                             viewModel.saveTotal(type: .EXPENSES)
                         }
                     if i == 0 {
@@ -311,8 +311,8 @@ struct CashRegisterView: View {
             
             HStack {
                 TextField("0", text: $viewModel.cash[0])
-                    .onChange(of: viewModel.cash[0]) { value in
-                        viewModel.cash[0] = value.replacingOccurrences(of: ",", with: ".")
+                    .onChange(of: viewModel.cash[0]) { _, newState in
+                        viewModel.cash[0] = newState.replacingOccurrences(of: ",", with: ".")
                         viewModel.saveTotal(type: .CASH)
                     }
                 Button {

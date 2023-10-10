@@ -50,7 +50,7 @@ struct CashFundView: View {
                     Text("Différence :")
                     Text(viewModel.differenceCalcul)
                 }
-                .foregroundColor(Color.accentColor)
+                .foregroundColor(viewModel.isPositiveDiff ? .green : .accentColor)
                 .font(.caption)
             })
         }
@@ -60,7 +60,7 @@ struct CashFundView: View {
     func twentyField() -> some View {
         HStack {
             TextField("0", value: $viewModel.bills.twenty, format: .number)
-                .onChange(of: viewModel.bills.twenty)  { _ in
+                .onChange(of: viewModel.bills.twenty) {
                     if viewModel.bills.twenty == 0 {
                         viewModel.additionResults.twentyBill = 0
                         viewModel.totalAddition()
@@ -89,7 +89,7 @@ struct CashFundView: View {
     func tenField() -> some View {
         HStack {
             TextField("0", value: $viewModel.bills.ten, format: .number)
-                .onChange(of: viewModel.bills.ten)  { _ in
+                .onChange(of: viewModel.bills.ten) {
                     if viewModel.bills.ten == 0 {
                         viewModel.additionResults.tenBill = 0
                         viewModel.totalAddition()
@@ -118,7 +118,7 @@ struct CashFundView: View {
     func fiveField() -> some View {
         HStack {
             TextField("0", value: $viewModel.bills.five, format: .number)
-                .onChange(of: viewModel.bills.five)  { _ in
+                .onChange(of: viewModel.bills.five) {
                     if viewModel.bills.five == 0 {
                         viewModel.additionResults.fiveBill = 0
                         viewModel.totalAddition()
@@ -147,7 +147,7 @@ struct CashFundView: View {
     func twoCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.two, format: .number)
-                .onChange(of: viewModel.coins.two)  { _ in
+                .onChange(of: viewModel.coins.two) {
                     if viewModel.coins.two == 0 {
                         viewModel.additionResults.twoCoin = 0
                         viewModel.totalAddition()
@@ -176,7 +176,7 @@ struct CashFundView: View {
     func oneCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.one, format: .number)
-                .onChange(of: viewModel.coins.one)  { _ in
+                .onChange(of: viewModel.coins.one) {
                     if viewModel.coins.one == 0 {
                         viewModel.additionResults.oneCoin = 0
                         viewModel.totalAddition()
@@ -205,7 +205,7 @@ struct CashFundView: View {
     func fiftyCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.fifty, format: .number)
-                .onChange(of: viewModel.coins.fifty)  { _ in
+                .onChange(of: viewModel.coins.fifty) {
                     if viewModel.coins.fifty == 0 {
                         viewModel.additionResults.fiftyCentCoin = 0
                         viewModel.totalAddition()
@@ -234,7 +234,7 @@ struct CashFundView: View {
     func twentyCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.twenty, format: .number)
-                .onChange(of: viewModel.coins.twenty)  { _ in
+                .onChange(of: viewModel.coins.twenty) {
                     if viewModel.coins.twenty == 0 {
                         viewModel.additionResults.twentyCentCoin = 0
                         viewModel.totalAddition()
@@ -263,7 +263,7 @@ struct CashFundView: View {
     func tenCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.ten, format: .number)
-                .onChange(of: viewModel.coins.ten)  { _ in
+                .onChange(of: viewModel.coins.ten) {
                     if viewModel.coins.ten == 0 {
                         viewModel.additionResults.tenCentCoin = 0
                         viewModel.totalAddition()
@@ -292,7 +292,7 @@ struct CashFundView: View {
     func fiveCentCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.fiveCent, format: .number)
-                .onChange(of: viewModel.coins.fiveCent)  { _ in
+                .onChange(of: viewModel.coins.fiveCent) {
                     if viewModel.coins.fiveCent == 0 {
                         viewModel.additionResults.fiveCentCoin = 0
                         viewModel.totalAddition()
@@ -321,7 +321,7 @@ struct CashFundView: View {
     func twoCentCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.twoCent, format: .number)
-                .onChange(of: viewModel.coins.twoCent)  { _ in
+                .onChange(of: viewModel.coins.twoCent) {
                     if viewModel.coins.twoCent == 0 {
                         viewModel.additionResults.twoCentCoin = 0
                         viewModel.totalAddition()
@@ -350,7 +350,7 @@ struct CashFundView: View {
     func oneCentCoinField() -> some View {
         HStack {
             TextField("0", value: $viewModel.coins.oneCent, format: .number)
-                .onChange(of: viewModel.coins.oneCent)  { _ in
+                .onChange(of: viewModel.coins.oneCent) {
                     if viewModel.coins.oneCent == 0 {
                         viewModel.additionResults.oneCentCoin = 0
                         viewModel.totalAddition()
