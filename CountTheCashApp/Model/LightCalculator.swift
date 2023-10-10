@@ -1,20 +1,22 @@
 //
-//  LightCalculatorViewModel.swift
+//  LightCalculator.swift
 //  CountTheCashApp
 //
 //  Created by Cédric Evrard on 12/07/2023.
 //
 
 import Foundation
+import Observation
 
-class LightCalculatorViewModel: ObservableObject {
-    @Published var placeHolder: String = ""
-    @Published var firstNumber: String = ""
-    @Published var secondNumber: String = ""
-    @Published var result: Double = 0
+@Observable
+class LightCalculator {
+    var placeHolder: String = ""
+    var firstNumber: String = ""
+    var secondNumber: String = ""
+    var result: Double = 0
     
-    @Published var isOperatorSelected: Bool = false
-    @Published var selectedOperator: Operator = .null
+    var isOperatorSelected: Bool = false
+    var selectedOperator: Operator = .null
     
     func saveNumber(value: String) {
         if !isOperatorSelected {

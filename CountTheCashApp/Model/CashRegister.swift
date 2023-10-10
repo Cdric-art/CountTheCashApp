@@ -1,42 +1,34 @@
 //
-//  CashRegisterModel.swift
+//  CashRegister.swift
 //  CountTheCashApp
 //
 //  Created by Cédric Evrard on 18/01/2023.
 //
 
 import Foundation
+import Observation
 
-enum TYPE_PAYEMENT {
-	case CBEMV
-	case CBLESS
-	case AMEX
-	case AMEXLESS
-	case TICKETRESTAURANT
-    case EXPENSES
-	case CASH
-}
-
-class CashRegisterViewModel: ObservableObject {
+@Observable
+class CashRegister {
 	
-	@Published var firstRapport: Double?
-	@Published var secondRapport: Double?
+	var firstRapport: Double?
+	var secondRapport: Double?
 	
-	@Published var cb_emv: [String] = [""]
-	@Published var cb_less: [String] = [""]
-	@Published var amex: [String] = [""]
-	@Published var amex_less: [String] = [""]
-	@Published var ticketRestaurant: [String] = [""]
-    @Published var expenses: [String] = [""]
-	@Published var cash: [String] = [""]
+	var cb_emv: [String] = [""]
+	var cb_less: [String] = [""]
+	var amex: [String] = [""]
+	var amex_less: [String] = [""]
+	var ticketRestaurant: [String] = [""]
+    var expenses: [String] = [""]
+	var cash: [String] = [""]
 	
-	@Published var totalCbEmv: Double = 0
-	@Published var totalCbLess: Double = 0
-	@Published var totalAmex: Double = 0
-	@Published var totalAmexLess: Double = 0
-	@Published var totalTicketRestaurant: Double = 0
-    @Published var totalExpenses: Double = 0
-	@Published var totalCash: Double = 0
+	var totalCbEmv: Double = 0
+	var totalCbLess: Double = 0
+	var totalAmex: Double = 0
+	var totalAmexLess: Double = 0
+	var totalTicketRestaurant: Double = 0
+    var totalExpenses: Double = 0
+	var totalCash: Double = 0
 	
 	
 	func saveTotal(type: TYPE_PAYEMENT) {
@@ -88,4 +80,14 @@ class CashRegisterViewModel: ObservableObject {
 		
 		return arrDouble.reduce(0, +)
 	}
+}
+
+enum TYPE_PAYEMENT {
+    case CBEMV
+    case CBLESS
+    case AMEX
+    case AMEXLESS
+    case TICKETRESTAURANT
+    case EXPENSES
+    case CASH
 }

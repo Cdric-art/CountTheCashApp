@@ -1,76 +1,87 @@
-	//
-	//  CashRegisterView.swift
-	//  CountTheCashApp
-	//
-	//  Created by Cédric Evrard on 14/01/2023.
-	//
+//
+//  CashRegisterView.swift
+//  CountTheCashApp
+//
+//  Created by Cédric Evrard on 14/01/2023.
+//
 
 import SwiftUI
 
 struct CashRegisterView: View {
-	@StateObject var viewModel = CashRegisterViewModel()
-	
-	var body: some View {
-        Form {
-            Section {
-                HStack{
-                    TextField("0", value: $viewModel.firstRapport, format: .number)
-                        .frame(maxWidth: 100)
+    @Bindable var cashRegister: CashRegister
+    
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    HStack{
+                        TextField("0", value: $cashRegister.firstRapport, format: .number)
+                            .frame(maxWidth: 100)
+                        Spacer()
+                        Image(systemName: "plus")
+                            .foregroundStyle(.black.opacity(0.2))
+                            .bold()
+                        Spacer()
+                        TextField("0", value: $cashRegister.secondRapport, format: .number)
+                            .frame(maxWidth: 100)
+                    }
+                    .font(.callout)
+                    .multilineTextAlignment(.center)
+                } header: {
+                    Text("Montant du ou des rapports de caisses :")
+                }
+                
+                Section {
+                    HStack {
+                        Text("\(cashRegister.totalRapport.formatted(.currency(code: "EUR")))")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                } header: {
+                    Text("Total CA :")
+                }
+                
+                Section {
+                    cbField()
+                    cbLessField()
+                    amexField()
+                    amexLessField()
+                    ticketRField()
+                    expensesField()
+                    cashField()
+                } header: {
+                    Text("Montants des moyens de paiment :")
+                }
+                
+            }
+            .navigationTitle("Caisse")
+            .scrollIndicators(.hidden)
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
-                    Image(systemName: "plus")
-                        .foregroundStyle(.black.opacity(0.2))
-                        .bold()
-                    Spacer()
-                    TextField("0", value: $viewModel.secondRapport, format: .number)
-                        .frame(maxWidth: 100)
+                    Button(action: {
+                        hideKeyboard()
+                    }, label: {
+                        Image(systemName: "arrow.down.circle")
+                    })
                 }
-                .font(.callout)
-                .multilineTextAlignment(.center)
-            } header: {
-                Text("Montant du ou des rapports de caisses :")
+                ToolbarItemGroup(placement: .topBarLeading, content: {
+                    HStack {
+                        Text("Total :")
+                        Text(cashRegister.totalCaisse.formatted(.currency(code: "EUR")))
+                    }
+                    .font(.callout)
+                })
+                ToolbarItemGroup(placement: .topBarTrailing, content: {
+                    HStack {
+                        Text("Différence :")
+                        Text(cashRegister.diff)
+                    }
+                    .foregroundStyle(cashRegister.isPositiveDiff ? .green : .accentColor)
+                    .font(.caption)
+                })
             }
-            
-            Section {
-                HStack {
-                    Text("\(viewModel.totalRapport.formatted(.currency(code: "EUR")))")
-                }
-                .frame(maxWidth: .infinity, alignment: .center)
-            } header: {
-                Text("Total CA :")
-            }
-            
-            Section {
-                cbField()
-                cbLessField()
-                amexField()
-                amexLessField()
-                ticketRField()
-                expensesField()
-                cashField()
-            } header: {
-                Text("Montants des moyens de paiment :")
-            }
-            
         }
-        .scrollIndicators(.hidden)
-        .toolbar {
-            ToolbarItemGroup(placement: .topBarLeading, content: {
-                HStack {
-                    Text("Total :")
-                    Text(viewModel.totalCaisse.formatted(.currency(code: "EUR")))
-                }
-                .font(.callout)
-            })
-            ToolbarItemGroup(placement: .topBarTrailing, content: {
-                HStack {
-                    Text("Différence :")
-                    Text(viewModel.diff)
-                }
-                .foregroundStyle(viewModel.isPositiveDiff ? .green : .accentColor)
-                .font(.caption)
-            })
-        }
-	}
+    }
     
     @ViewBuilder
     func cbField() -> some View {
@@ -80,17 +91,17 @@ struct CashRegisterView: View {
                 .font(.caption)
                 .foregroundStyle(.purple)
             
-            ForEach(viewModel.cb_emv.indices, id: \.self) { i in
+            ForEach(cashRegister.cb_emv.indices, id: \.self) { i in
                 HStack {
-                    TextField("0", text: $viewModel.cb_emv[i])
-                        .onChange(of: viewModel.cb_emv[i]) { _, newState in
-                            viewModel.cb_emv[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            viewModel.saveTotal(type: .CBEMV)
+                    TextField("0", text: $cashRegister.cb_emv[i])
+                        .onChange(of: cashRegister.cb_emv[i]) { _, newState in
+                            cashRegister.cb_emv[i] = newState.replacingOccurrences(of: ",", with: ".")
+                            cashRegister.saveTotal(type: .CBEMV)
                         }
                     if i == 0 {
                         Button {
-                            if viewModel.cb_emv[0] != "" {
-                                viewModel.cb_emv.append("")
+                            if cashRegister.cb_emv[0] != "" {
+                                cashRegister.cb_emv.append("")
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -104,7 +115,7 @@ struct CashRegisterView: View {
                 )
             }
             
-            Text("Total: \(viewModel.totalCbEmv.formatted(.currency(code: "EUR")))")
+            Text("Total: \(cashRegister.totalCbEmv.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundStyle(Color.purple)
         }
@@ -118,17 +129,17 @@ struct CashRegisterView: View {
                 .font(.caption)
                 .foregroundStyle(.teal)
             
-            ForEach(viewModel.cb_less.indices, id: \.self) { i in
+            ForEach(cashRegister.cb_less.indices, id: \.self) { i in
                 HStack {
-                    TextField("0", text: $viewModel.cb_less[i])
-                        .onChange(of: viewModel.cb_less[i]) { _, newState in
-                            viewModel.cb_less[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            viewModel.saveTotal(type: .CBLESS)
+                    TextField("0", text: $cashRegister.cb_less[i])
+                        .onChange(of: cashRegister.cb_less[i]) { _, newState in
+                            cashRegister.cb_less[i] = newState.replacingOccurrences(of: ",", with: ".")
+                            cashRegister.saveTotal(type: .CBLESS)
                         }
                     if i == 0 {
                         Button {
-                            if viewModel.cb_less[0] != "" {
-                                viewModel.cb_less.append("")
+                            if cashRegister.cb_less[0] != "" {
+                                cashRegister.cb_less.append("")
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -142,7 +153,7 @@ struct CashRegisterView: View {
                 )
             }
             
-            Text("Total: \(viewModel.totalCbLess.formatted(.currency(code: "EUR")))")
+            Text("Total: \(cashRegister.totalCbLess.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundStyle(Color.teal)
         }
@@ -156,17 +167,17 @@ struct CashRegisterView: View {
                 .font(.caption)
                 .foregroundStyle(.brown)
             
-            ForEach(viewModel.amex.indices, id: \.self) { i in
+            ForEach(cashRegister.amex.indices, id: \.self) { i in
                 HStack {
-                    TextField("0", text: $viewModel.amex[i])
-                        .onChange(of: viewModel.amex[i]) { _, newState in
-                            viewModel.amex[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            viewModel.saveTotal(type: .AMEX)
+                    TextField("0", text: $cashRegister.amex[i])
+                        .onChange(of: cashRegister.amex[i]) { _, newState in
+                            cashRegister.amex[i] = newState.replacingOccurrences(of: ",", with: ".")
+                            cashRegister.saveTotal(type: .AMEX)
                         }
                     if i == 0 {
                         Button {
-                            if viewModel.amex[0] != "" {
-                                viewModel.amex.append("")
+                            if cashRegister.amex[0] != "" {
+                                cashRegister.amex.append("")
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -180,7 +191,7 @@ struct CashRegisterView: View {
                 )
             }
             
-            Text("Total: \(viewModel.totalAmex.formatted(.currency(code: "EUR")))")
+            Text("Total: \(cashRegister.totalAmex.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundStyle(Color.brown)
         }
@@ -194,17 +205,17 @@ struct CashRegisterView: View {
                 .font(.caption)
                 .foregroundStyle(.orange)
             
-            ForEach(viewModel.amex_less.indices, id: \.self) { i in
+            ForEach(cashRegister.amex_less.indices, id: \.self) { i in
                 HStack {
-                    TextField("0", text: $viewModel.amex_less[i])
-                        .onChange(of: viewModel.amex_less[i]) { _, newState in
-                            viewModel.amex_less[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            viewModel.saveTotal(type: .AMEXLESS)
+                    TextField("0", text: $cashRegister.amex_less[i])
+                        .onChange(of: cashRegister.amex_less[i]) { _, newState in
+                            cashRegister.amex_less[i] = newState.replacingOccurrences(of: ",", with: ".")
+                            cashRegister.saveTotal(type: .AMEXLESS)
                         }
                     if i == 0 {
                         Button {
-                            if viewModel.amex_less[0] != "" {
-                                viewModel.amex_less.append("")
+                            if cashRegister.amex_less[0] != "" {
+                                cashRegister.amex_less.append("")
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -218,7 +229,7 @@ struct CashRegisterView: View {
                 )
             }
             
-            Text("Total: \(viewModel.totalAmexLess.formatted(.currency(code: "EUR")))")
+            Text("Total: \(cashRegister.totalAmexLess.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundStyle(Color.orange)
             
@@ -233,17 +244,17 @@ struct CashRegisterView: View {
                 .foregroundStyle(.mint)
                 .font(.caption)
             
-            ForEach(viewModel.ticketRestaurant.indices, id: \.self) { i in
+            ForEach(cashRegister.ticketRestaurant.indices, id: \.self) { i in
                 HStack {
-                    TextField("0", text: $viewModel.ticketRestaurant[i])
-                        .onChange(of: viewModel.ticketRestaurant[i]) { _, newState in
-                            viewModel.ticketRestaurant[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            viewModel.saveTotal(type: .TICKETRESTAURANT)
+                    TextField("0", text: $cashRegister.ticketRestaurant[i])
+                        .onChange(of: cashRegister.ticketRestaurant[i]) { _, newState in
+                            cashRegister.ticketRestaurant[i] = newState.replacingOccurrences(of: ",", with: ".")
+                            cashRegister.saveTotal(type: .TICKETRESTAURANT)
                         }
                     if i == 0 {
                         Button {
-                            if viewModel.ticketRestaurant[0] != "" {
-                                viewModel.ticketRestaurant.append("")
+                            if cashRegister.ticketRestaurant[0] != "" {
+                                cashRegister.ticketRestaurant.append("")
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -257,7 +268,7 @@ struct CashRegisterView: View {
                 )
             }
             
-            Text("Total: \(viewModel.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
+            Text("Total: \(cashRegister.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundStyle(Color.mint)
         }
@@ -271,17 +282,17 @@ struct CashRegisterView: View {
                 .foregroundStyle(.yellow)
                 .font(.caption)
             
-            ForEach(viewModel.expenses.indices, id: \.self) { i in
+            ForEach(cashRegister.expenses.indices, id: \.self) { i in
                 HStack {
-                    TextField("0", text: $viewModel.expenses[i])
-                        .onChange(of: viewModel.expenses[i]) { _, newState in
-                            viewModel.expenses[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            viewModel.saveTotal(type: .EXPENSES)
+                    TextField("0", text: $cashRegister.expenses[i])
+                        .onChange(of: cashRegister.expenses[i]) { _, newState in
+                            cashRegister.expenses[i] = newState.replacingOccurrences(of: ",", with: ".")
+                            cashRegister.saveTotal(type: .EXPENSES)
                         }
                     if i == 0 {
                         Button {
-                            if viewModel.expenses[0] != "" {
-                                viewModel.expenses.append("")
+                            if cashRegister.expenses[0] != "" {
+                                cashRegister.expenses.append("")
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -295,7 +306,7 @@ struct CashRegisterView: View {
                 )
             }
             
-            Text("Total: \(viewModel.totalExpenses.formatted(.currency(code: "EUR")))")
+            Text("Total: \(cashRegister.totalExpenses.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundStyle(Color.yellow)
         }
@@ -310,13 +321,13 @@ struct CashRegisterView: View {
                 .foregroundStyle(.red)
             
             HStack {
-                TextField("0", text: $viewModel.cash[0])
-                    .onChange(of: viewModel.cash[0]) { _, newState in
-                        viewModel.cash[0] = newState.replacingOccurrences(of: ",", with: ".")
-                        viewModel.saveTotal(type: .CASH)
+                TextField("0", text: $cashRegister.cash[0])
+                    .onChange(of: cashRegister.cash[0]) { _, newState in
+                        cashRegister.cash[0] = newState.replacingOccurrences(of: ",", with: ".")
+                        cashRegister.saveTotal(type: .CASH)
                     }
                 Button {
-                    viewModel.cash[0] = ""
+                    cashRegister.cash[0] = ""
                 } label: {
                     Image(systemName: "trash.circle")
                 }
@@ -327,7 +338,7 @@ struct CashRegisterView: View {
                     .stroke(.red, lineWidth: 1)
             )
             
-            Text("Total: \(viewModel.totalCash.formatted(.currency(code: "EUR")))")
+            Text("Total: \(cashRegister.totalCash.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
                 .foregroundStyle(Color.red)
         }
@@ -336,7 +347,7 @@ struct CashRegisterView: View {
 }
 
 struct CashRegisterView_Previews: PreviewProvider {
-	static var previews: some View {
-		CashRegisterView(viewModel: CashRegisterViewModel())
-	}
+    static var previews: some View {
+        CashRegisterView(cashRegister: CashRegister())
+    }
 }

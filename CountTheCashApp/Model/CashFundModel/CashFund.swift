@@ -1,23 +1,25 @@
 //
-//  CashFundModel.swift
+//  CashFund.swift
 //  CountTheCashApp
 //
 //  Created by Cédric Evrard on 15/01/2023.
 //
 
 import Foundation
+import Observation
 
-class CashFundViewModel: ObservableObject {
+@Observable
+class CashFund {
 	
-	@Published var textFieldCashFund: Double?
+	var textFieldCashFund: Double?
 	
-	@Published var coins = Coins()
-	@Published var bills = Bills()
+	var coins = Coins()
+	var bills = Bills()
 	
-	@Published var additionResults = AdditionResults()
+	var additionResults = AdditionResults()
 	
-	@Published var total: Double = 0
-	@Published var difference: Double = 0
+	var total: Double = 0
+	var difference: Double = 0
 	
 	func totalAddition() {
         total = additionResults.twentyBill + additionResults.tenBill + additionResults.fiveBill + additionResults.twoCoin + additionResults.oneCoin + additionResults.fiftyCentCoin + additionResults.twentyCentCoin + additionResults.tenCentCoin + additionResults.fiveCentCoin + additionResults.twoCentCoin + additionResults.oneCentCoin
