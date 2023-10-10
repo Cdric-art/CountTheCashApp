@@ -38,14 +38,14 @@ struct CashFundView: View {
         }
         .scrollIndicators(.hidden)
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading, content: {
+            ToolbarItemGroup(placement: .topBarLeading, content: {
                 HStack {
                     Text("Total :")
                     Text(viewModel.total.formatted(.currency(code: "EUR")))
                 }
                 .font(.callout)
             })
-            ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+            ToolbarItemGroup(placement: .topBarTrailing, content: {
                 HStack {
                     Text("Différence :")
                     Text(viewModel.differenceCalcul)
@@ -53,14 +53,6 @@ struct CashFundView: View {
                 .foregroundColor(Color.accentColor)
                 .font(.caption)
             })
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button(action: {
-                    hideKeyboard()
-                }, label: {
-                    Image(systemName: "arrow.down.circle")
-                })
-            }
         }
     }
     

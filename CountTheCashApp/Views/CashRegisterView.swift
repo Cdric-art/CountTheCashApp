@@ -54,14 +54,14 @@ struct CashRegisterView: View {
         }
         .scrollIndicators(.hidden)
         .toolbar {
-            ToolbarItemGroup(placement: .navigationBarLeading, content: {
+            ToolbarItemGroup(placement: .topBarLeading, content: {
                 HStack {
                     Text("Total :")
                     Text(viewModel.totalCaisse.formatted(.currency(code: "EUR")))
                 }
                 .font(.callout)
             })
-            ToolbarItemGroup(placement: .navigationBarTrailing, content: {
+            ToolbarItemGroup(placement: .topBarTrailing, content: {
                 HStack {
                     Text("Différence :")
                     Text(viewModel.diff)
@@ -69,14 +69,6 @@ struct CashRegisterView: View {
                 .foregroundColor(viewModel.isPositiveDiff ? .green : .accentColor)
                 .font(.caption)
             })
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button(action: {
-                    hideKeyboard()
-                }, label: {
-                    Image(systemName: "arrow.down.circle")
-                })
-            }
         }
 	}
     

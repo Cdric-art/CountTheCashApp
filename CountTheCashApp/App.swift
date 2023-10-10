@@ -47,6 +47,16 @@ struct ContentView: View {
         .tint(isDarkMode ? .white : .black)
         .keyboardType(.decimalPad)
         .scrollDismissesKeyboard(.interactively)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(action: {
+                    hideKeyboard()
+                }, label: {
+                    Image(systemName: "arrow.down.circle")
+                })
+            }
+        }
 	}
 }
 
