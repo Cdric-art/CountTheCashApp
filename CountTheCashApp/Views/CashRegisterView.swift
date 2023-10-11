@@ -83,7 +83,6 @@ struct CashRegisterView: View {
         }
     }
     
-    @ViewBuilder
     func cbField() -> some View {
         VStack(alignment: .leading) {
             
@@ -121,7 +120,6 @@ struct CashRegisterView: View {
         }
     }
     
-    @ViewBuilder
     func cbLessField() -> some View {
         VStack(alignment: .leading) {
             
@@ -159,7 +157,6 @@ struct CashRegisterView: View {
         }
     }
     
-    @ViewBuilder
     func amexField() -> some View {
         VStack(alignment: .leading) {
             
@@ -197,7 +194,6 @@ struct CashRegisterView: View {
         }
     }
     
-    @ViewBuilder
     func amexLessField() -> some View {
         VStack(alignment: .leading) {
             
@@ -236,7 +232,6 @@ struct CashRegisterView: View {
         }
     }
     
-    @ViewBuilder
     func ticketRField() -> some View {
         VStack(alignment: .leading) {
             
@@ -274,7 +269,6 @@ struct CashRegisterView: View {
         }
     }
     
-    @ViewBuilder
     func expensesField() -> some View {
         VStack(alignment: .leading) {
             
@@ -312,7 +306,6 @@ struct CashRegisterView: View {
         }
     }
     
-    @ViewBuilder
     func cashField() -> some View {
         VStack(alignment: .leading) {
             
