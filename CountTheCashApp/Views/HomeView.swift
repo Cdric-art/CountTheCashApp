@@ -52,11 +52,12 @@ struct HomeView: View {
                     
                     Text("Version : 2.0")
                         .font(.caption2)
+                        .padding()
                 }
                 .environment(\.locale, Locale(identifier: "fr"))
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing, content: {
+                ToolbarItem(placement: .topBarLeading, content: {
                     Button(action: {
                         withAnimation {
                             isDarkMode.toggle()

@@ -28,11 +28,15 @@ struct ResetButton: View {
                 wait(time: 0.3, fn: { isTapGesture.toggle() }, animated: true)
                 
             }, label: {
-                HStack {
-                    Image(systemName: "trash.circle")
+                HStack(spacing: 16) {
                     Text("Tout effacer")
-                        .font(.system(size: 16))
+                        .font(.system(size: 14))
                         .padding(.vertical, 10)
+                    Image(systemName: "trash.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 18)
+                        .opacity(0.8)
                 }
             })
             .neumorphicStyle()
