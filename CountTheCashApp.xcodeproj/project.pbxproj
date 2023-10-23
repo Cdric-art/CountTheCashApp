@@ -19,6 +19,8 @@
 		A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84CE29A58D910068D95A /* CoinsModel.swift */; };
 		A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D029A58DBD0068D95A /* BillsModel.swift */; };
 		A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D429A58F3D0068D95A /* AdditionResults.swift */; };
+		A7BFF7562AE6976F00EA1821 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BFF7552AE6976F00EA1821 /* ResetButton.swift */; };
+		A7BFF7592AE6993500EA1821 /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BFF7582AE6993500EA1821 /* Wait.swift */; };
 		A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA7F262A28D30C0000C983 /* HomeView.swift */; };
 		A7D7648D2AD6A5C7005CE191 /* CashFundFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D7648C2AD6A5C7005CE191 /* CashFundFieldView.swift */; };
 		A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */; };
@@ -43,6 +45,8 @@
 		A79E84CE29A58D910068D95A /* CoinsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsModel.swift; sourceTree = "<group>"; };
 		A79E84D029A58DBD0068D95A /* BillsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsModel.swift; sourceTree = "<group>"; };
 		A79E84D429A58F3D0068D95A /* AdditionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionResults.swift; sourceTree = "<group>"; };
+		A7BFF7552AE6976F00EA1821 /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
+		A7BFF7582AE6993500EA1821 /* Wait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
 		A7CA7F262A28D30C0000C983 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A7D7648C2AD6A5C7005CE191 /* CashFundFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundFieldView.swift; sourceTree = "<group>"; };
 		A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundHomeView.swift; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 			children = (
 				A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */,
 				A7D7648C2AD6A5C7005CE191 /* CashFundFieldView.swift */,
+				A7BFF7552AE6976F00EA1821 /* ResetButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 		A79A2E552972069C00C1CEFB /* CountTheCashApp */ = {
 			isa = PBXGroup;
 			children = (
+				A7BFF7572AE6992300EA1821 /* Utils */,
 				A77288CC2A5AC7BD00CB2587 /* Extensions */,
 				A79E84CD29A58D750068D95A /* Model */,
 				A72CD268297356F3006B48BD /* Views */,
@@ -161,6 +167,14 @@
 				A79E84D029A58DBD0068D95A /* BillsModel.swift */,
 			);
 			path = CashFundModel;
+			sourceTree = "<group>";
+		};
+		A7BFF7572AE6992300EA1821 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A7BFF7582AE6993500EA1821 /* Wait.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +253,7 @@
 			files = (
 				A7FD4D8C2A5EF3C8006B6322 /* TextGradient.swift in Sources */,
 				A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */,
+				A7BFF7592AE6993500EA1821 /* Wait.swift in Sources */,
 				A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */,
 				A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */,
 				A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */,
@@ -248,6 +263,7 @@
 				A79A2E592972069C00C1CEFB /* App.swift in Sources */,
 				A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
+				A7BFF7562AE6976F00EA1821 /* ResetButton.swift in Sources */,
 				A7D7648D2AD6A5C7005CE191 /* CashFundFieldView.swift in Sources */,
 				A7FD4D902A5EF475006B6322 /* LightCalculatorView.swift in Sources */,
 				A77288CE2A5AC7D300CB2587 /* HideKeyboard.swift in Sources */,
@@ -388,7 +404,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;
@@ -426,7 +442,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CountTheCashApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 6XLSH22S8R;
 				ENABLE_PREVIEWS = YES;

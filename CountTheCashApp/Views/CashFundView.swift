@@ -14,6 +14,8 @@ enum TypeValue {
 struct CashFundView: View {
     @Bindable var cashfund: CashFund
     
+    @State private var isTapGesture: Bool = false
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -40,6 +42,11 @@ struct CashFundView: View {
                 } header: {
                     Text("Billets et pieces :")
                 }
+                
+                ResetButton(isTapGesture: $isTapGesture, dataReset: {
+                    cashfund.reset()
+                })
+                
             }
             .navigationTitle("Fond")
             .scrollIndicators(.hidden)

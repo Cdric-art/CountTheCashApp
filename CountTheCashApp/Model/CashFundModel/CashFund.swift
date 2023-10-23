@@ -34,5 +34,12 @@ class CashFund {
         let result = total - (textFieldCashFund ?? 0)
         return result > 0
     }
+    
+    func reset() {
+        textFieldCashFund = nil
+        coins = Coins()
+        bills = Bills()
+        additionResults = AdditionResults()
+    }
 	
 }
