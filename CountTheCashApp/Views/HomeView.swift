@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
+    @State private var effectBounce = 0
     
     var body: some View {
         let symbol = isDarkMode ? "sun.max.circle" : "moon.stars.circle"
@@ -54,7 +55,10 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing, content: {
                     Button(action: {
-                        isDarkMode.toggle()
+                        withAnimation {
+                            isDarkMode.toggle()
+                            effectBounce += 1
+                        }
                     }, label: {
                         Image(systemName: symbol)
                             .resizable()
@@ -62,6 +66,7 @@ struct HomeView: View {
                             .frame(width: 24)
                     })
                     .tint(isDarkMode ? .white : .black)
+                    .symbolEffect(.bounce.up.byLayer, value: effectBounce)
                 })
             }
         }
