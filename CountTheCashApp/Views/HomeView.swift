@@ -49,6 +49,9 @@ struct HomeView: View {
                     }
                     
                     Spacer()
+                    
+                    Text("Version : 2.0")
+                        .font(.caption2)
                 }
                 .environment(\.locale, Locale(identifier: "fr"))
             }
