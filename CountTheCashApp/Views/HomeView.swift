@@ -122,7 +122,7 @@ struct HomeView: View {
             }
             .task {
                 do {
-                    try await self.blog = getBlog()
+                    self.blog = try await getBlog()
                 } catch {
                     print("Error", error)
                 }
