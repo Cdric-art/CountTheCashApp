@@ -8,7 +8,7 @@
 import Foundation
 
 func getBlog() async throws -> Blog? {
-    guard let url = URL(string: "https://newsapi.org/v2/everything?q=(hôtellerie OR restaurant)&searchIn=title&pageSize=8&domains=francetvinfo.fr,ouest-france.fr,marianne.net,lesechos.fr,konbini.com,leparisien.fr&apiKey=0c0a8b23304e4447ac47e0603e073e78") else {
+    guard let url = URL(string: "https://newsapi.org/v2/everything?q=(hôtellerie OR restaurant)&searchIn=title&pageSize=8&sortBy=publishedAt&domains=francetvinfo.fr,ouest-france.fr,marianne.net,lesechos.fr,konbini.com,leparisien.fr&apiKey=0c0a8b23304e4447ac47e0603e073e78") else {
         print("Missing URL")
         return nil
     }

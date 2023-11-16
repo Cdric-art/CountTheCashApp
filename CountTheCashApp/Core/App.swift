@@ -12,29 +12,46 @@ struct ContentView: View {
     @State private var cashRegister = CashRegister()
     @State private var lightCalculator = LightCalculator()
     
+    @State private var selectedTag = 0
+    
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     
     var body: some View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label("Accueil", systemImage: "house.fill")
+                    Image(systemName: selectedTag == 0 ? "house.fill" : "house")
+                        .environment(\.symbolVariants, selectedTag == 0 ? .fill : .none)
+                    Text("Accueil")
                 }
+                .tag(0)
+                .onAppear { selectedTag = 0 }
             
             CashFundView(cashfund: cashFund)
                 .tabItem {
-                    Label("Fond de caisse", systemImage: "tray.fill")
+                    Image(systemName: selectedTag == 1 ? "tray.fill" : "tray")
+                        .environment(\.symbolVariants, selectedTag == 1 ? .fill : .none)
+                    Text("Fond de caisse")
                 }
+                .tag(1)
+                .onAppear { selectedTag = 1 }
             
             CashRegisterView(cashRegister: cashRegister)
                 .tabItem {
-                    Label("Caisse", systemImage: "tray.and.arrow.up.fill")
+                    Image(systemName: selectedTag == 2 ? "tray.and.arrow.up.fill" : "tray.and.arrow.up")
+                        .environment(\.symbolVariants, selectedTag == 2 ? .fill : .none)
+                    Text("Caisse")
                 }
+                .tag(2)
+                .onAppear { selectedTag = 2 }
             
             LightCalculatorView(lightCalculator: lightCalculator)
                 .tabItem {
-                    Label("Calculette", systemImage: "plusminus")
+                    Image(systemName: "plusminus")
+                    Text("Calculette")
                 }
+                .tag(3)
+                .onAppear { selectedTag = 3 }
         }
         .tint(isDarkMode ? .white : .black)
         .keyboardType(.decimalPad)

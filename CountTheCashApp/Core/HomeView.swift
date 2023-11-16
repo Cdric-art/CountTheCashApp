@@ -51,43 +51,47 @@ struct HomeView: View {
                     Spacer()
                     
                     if let blog = blog {
+                        Text("Actualités :")
+                            .font(.callout)
+                            .underline()
+                            .frame(maxWidth: 350, alignment: .leading)
                         ScrollView(.horizontal) {
-                            HStack(spacing: 0) {
+                            LazyHStack(spacing: 0) {
                                 ForEach(blog.articles, id: \.url) { article in
-                                    HStack(alignment: .top) {
+                                    HStack {
                                         VStack(alignment: .leading) {
                                             Text(article.title)
-                                                .font(.caption2)
+                                                .font(.subheadline)
                                                 .bold()
                                             
                                             HStack {
                                                 AsyncImage(url: URL(string: article.urlToImage ?? "")) { img in
                                                     img.image?.resizable()
                                                         .scaledToFill()
-                                                        .frame(width: 80)
+                                                        .frame(width: 120)
                                                         .clipShape(RoundedRectangle(cornerRadius: 12))
                                                 }
                                                 Text(article.description)
-                                                    .font(.system(size: 10))
+                                                    .font(.caption)
                                             }
                                             
                                             if let url = URL(string: article.url) {
                                                 Link("Voir plus", destination: url)
                                                     .tint(.blue)
-                                                    .font(.system(size: 9))
+                                                    .font(.caption2)
                                                     .padding(.horizontal, 6)
                                             }
                                         }
-                                        .padding(10)
-                                        .neumorphicStyle()
+                                        .padding(16)
                                     }
-                                    .padding(16)
-                                    .frame(width: 300, alignment: .topLeading)
+                                    .neumorphicStyle()
+                                    .cornerRadius(20)
                                 }
                             }
+                            .scrollTargetLayout()
                         }
-                        .frame(width: 360, height: 200)
-                        .scrollIndicators(.hidden)
+                        .frame(width: 380, height: 200)
+                        .scrollTargetBehavior(.paging)
                     } else {
                         VStack {
                             ProgressView()
@@ -97,7 +101,7 @@ struct HomeView: View {
                 
                     Spacer()
                     
-                    Text("Version : 2.0")
+                    Text("Version : 2.1")
                         .font(.caption2)
                         .padding(.bottom)
                 }
