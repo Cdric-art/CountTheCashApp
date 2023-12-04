@@ -75,9 +75,9 @@
 		A72CD26D297364BC006B48BD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A7BFF7552AE6976F00EA1821 /* ResetButton.swift */,
 				A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */,
 				A7D7648C2AD6A5C7005CE191 /* CashFundFieldView.swift */,
-				A7BFF7552AE6976F00EA1821 /* ResetButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -439,7 +439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -477,7 +477,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

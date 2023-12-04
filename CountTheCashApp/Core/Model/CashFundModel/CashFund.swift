@@ -22,7 +22,7 @@ class CashFund {
 	var difference: Double = 0
 	
 	func totalAddition() {
-        total = additionResults.twentyBill + additionResults.tenBill + additionResults.fiveBill + additionResults.twoCoin + additionResults.oneCoin + additionResults.fiftyCentCoin + additionResults.twentyCentCoin + additionResults.tenCentCoin + additionResults.fiveCentCoin + additionResults.twoCentCoin + additionResults.oneCentCoin
+        total = additionResults.hundredBill + additionResults.fiftyBill + additionResults.twentyBill + additionResults.tenBill + additionResults.fiveBill + additionResults.twoCoin + additionResults.oneCoin + additionResults.fiftyCentCoin + additionResults.twentyCentCoin + additionResults.tenCentCoin + additionResults.fiveCentCoin + additionResults.twoCentCoin + additionResults.oneCentCoin
 	}
 	
     var differenceCalcul: String {

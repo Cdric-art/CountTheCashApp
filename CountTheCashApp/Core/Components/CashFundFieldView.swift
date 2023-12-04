@@ -15,6 +15,10 @@ struct CashFundFieldView: View {
     
     var filteredTypeValueBinding: Binding<Int?> {
         switch typeValue {
+            case .HUNDRED:
+                return $cashfund.bills.hundred
+            case .FIFTY:
+                return $cashfund.bills.fifty
             case .TWENTY:
                 return $cashfund.bills.twenty
             case .TEN:
@@ -42,6 +46,10 @@ struct CashFundFieldView: View {
     
     var filteredTypeValue: Int? {
         switch typeValue {
+            case .HUNDRED:
+                return cashfund.bills.hundred
+            case .FIFTY:
+                return cashfund.bills.fifty
             case .TWENTY:
                 return cashfund.bills.twenty
             case .TEN:
@@ -69,6 +77,10 @@ struct CashFundFieldView: View {
     
     var additionResultReset: Void {
         switch typeValue {
+            case .HUNDRED:
+                cashfund.additionResults.hundredBill = 0
+            case .FIFTY:
+                cashfund.additionResults.fiftyBill = 0
             case .TWENTY:
                 cashfund.additionResults.twentyBill = 0
             case .TEN:
@@ -96,6 +108,10 @@ struct CashFundFieldView: View {
     
     var additionResult: Void {
         switch typeValue {
+            case .HUNDRED:
+                cashfund.additionResults.hundredBill = Double(filteredTypeValue ?? 0) * value
+            case .FIFTY:
+                cashfund.additionResults.fiftyBill = Double(filteredTypeValue ?? 0) * value
             case .TWENTY:
                 cashfund.additionResults.twentyBill = Double(filteredTypeValue ?? 0) * value
             case .TEN:
@@ -123,6 +139,10 @@ struct CashFundFieldView: View {
     
     var additionResultString: String {
         switch typeValue {
+            case .HUNDRED:
+                cashfund.additionResults.hundredBill.formatted(.currency(code: "EUR"))
+            case .FIFTY:
+                cashfund.additionResults.fiftyBill.formatted(.currency(code: "EUR"))
             case .TWENTY:
                 cashfund.additionResults.twentyBill.formatted(.currency(code: "EUR"))
             case .TEN:

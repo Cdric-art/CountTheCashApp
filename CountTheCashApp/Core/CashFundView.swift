@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum TypeValue {
-    case TWENTY, TEN, FIVE, TWO, ONE, FIFTYCOIN, TWENTYCOIN, TENCOIN, FIVECENTCOIN, TWOCENTCOIN, ONECENTCOIN
+    case HUNDRED, FIFTY, TWENTY, TEN, FIVE, TWO, ONE, FIFTYCOIN, TWENTYCOIN, TENCOIN, FIVECENTCOIN, TWOCENTCOIN, ONECENTCOIN
 }
 
 struct CashFundView: View {
@@ -28,6 +28,8 @@ struct CashFundView: View {
                 .multilineTextAlignment(.center)
                 
                 Section {
+                    CashFundFieldView(cashfund: cashfund, typeValue: .HUNDRED, value: 100, color: .yellow)
+                    CashFundFieldView(cashfund: cashfund, typeValue: .FIFTY, value: 50, color: .blue)
                     CashFundFieldView(cashfund: cashfund, typeValue: .TWENTY, value: 20, color: .purple)
                     CashFundFieldView(cashfund: cashfund, typeValue: .TEN, value: 10, color: .cyan)
                     CashFundFieldView(cashfund: cashfund, typeValue: .FIVE, value: 5, color: .brown)
