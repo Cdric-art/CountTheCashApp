@@ -44,23 +44,13 @@ struct ContentView: View {
                 }
                 .tag(2)
                 .onAppear { selectedTag = 2 }
-            
-            LightCalculatorView(lightCalculator: lightCalculator)
-                .tabItem {
-                    Image(systemName: "plusminus")
-                    Text("Calculette")
-                }
-                .tag(3)
-                .onAppear { selectedTag = 3 }
         }
-        .tint(isDarkMode ? .white : .black)
+        .tint(Color("TextColor"))
         .keyboardType(.decimalPad)
         .scrollDismissesKeyboard(.interactively)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,17 +20,12 @@
 		A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D029A58DBD0068D95A /* BillsModel.swift */; };
 		A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79E84D429A58F3D0068D95A /* AdditionResults.swift */; };
 		A7B402B82AE80D1000CDB18A /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B402B72AE80D1000CDB18A /* Blog.swift */; };
-		A7B402BA2AE813B200CDB18A /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B402B92AE813B200CDB18A /* Fetch.swift */; };
+		A7B402BA2AE813B200CDB18A /* GetBlog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B402B92AE813B200CDB18A /* GetBlog.swift */; };
 		A7BFF7562AE6976F00EA1821 /* ResetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BFF7552AE6976F00EA1821 /* ResetButton.swift */; };
 		A7BFF7592AE6993500EA1821 /* Wait.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BFF7582AE6993500EA1821 /* Wait.swift */; };
 		A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CA7F262A28D30C0000C983 /* HomeView.swift */; };
 		A7D7648D2AD6A5C7005CE191 /* CashFundFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D7648C2AD6A5C7005CE191 /* CashFundFieldView.swift */; };
-		A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */; };
-		A7FD4D882A5EF368006B6322 /* OffWhiteStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D872A5EF368006B6322 /* OffWhiteStyle.swift */; };
-		A7FD4D8A2A5EF3A3006B6322 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D892A5EF3A3006B6322 /* NeumorphicStyle.swift */; };
-		A7FD4D8C2A5EF3C8006B6322 /* TextGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D8B2A5EF3C8006B6322 /* TextGradient.swift */; };
 		A7FD4D8E2A5EF444006B6322 /* LightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D8D2A5EF444006B6322 /* LightCalculator.swift */; };
-		A7FD4D902A5EF475006B6322 /* LightCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FD4D8F2A5EF475006B6322 /* LightCalculatorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,18 +43,17 @@
 		A79E84D029A58DBD0068D95A /* BillsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillsModel.swift; sourceTree = "<group>"; };
 		A79E84D429A58F3D0068D95A /* AdditionResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionResults.swift; sourceTree = "<group>"; };
 		A7B402B72AE80D1000CDB18A /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
-		A7B402B92AE813B200CDB18A /* Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
+		A7B402B92AE813B200CDB18A /* GetBlog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBlog.swift; sourceTree = "<group>"; };
 		A7BFF7552AE6976F00EA1821 /* ResetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButton.swift; sourceTree = "<group>"; };
 		A7BFF7582AE6993500EA1821 /* Wait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wait.swift; sourceTree = "<group>"; };
 		A7CA7F262A28D30C0000C983 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A7D7648C2AD6A5C7005CE191 /* CashFundFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFundFieldView.swift; sourceTree = "<group>"; };
-		A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundHomeView.swift; sourceTree = "<group>"; };
-		A7FD4D872A5EF368006B6322 /* OffWhiteStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffWhiteStyle.swift; sourceTree = "<group>"; };
-		A7FD4D892A5EF3A3006B6322 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
-		A7FD4D8B2A5EF3C8006B6322 /* TextGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextGradient.swift; sourceTree = "<group>"; };
 		A7FD4D8D2A5EF444006B6322 /* LightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCalculator.swift; sourceTree = "<group>"; };
-		A7FD4D8F2A5EF475006B6322 /* LightCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightCalculatorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0A97B7062CFF23D600D1C2B4 /* HomeView */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HomeView; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A79A2E502972069C00C1CEFB /* Frameworks */ = {
@@ -75,8 +69,8 @@
 		A72CD26D297364BC006B48BD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0A97B7062CFF23D600D1C2B4 /* HomeView */,
 				A7BFF7552AE6976F00EA1821 /* ResetButton.swift */,
-				A7DFC5402A51B0F40028229B /* BackgroundHomeView.swift */,
 				A7D7648C2AD6A5C7005CE191 /* CashFundFieldView.swift */,
 			);
 			path = Components;
@@ -93,9 +87,6 @@
 			isa = PBXGroup;
 			children = (
 				A77288CD2A5AC7D300CB2587 /* HideKeyboard.swift */,
-				A7FD4D872A5EF368006B6322 /* OffWhiteStyle.swift */,
-				A7FD4D892A5EF3A3006B6322 /* NeumorphicStyle.swift */,
-				A7FD4D8B2A5EF3C8006B6322 /* TextGradient.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -115,7 +106,6 @@
 				A72CD2692973572B006B48BD /* CashFundView.swift */,
 				A72CD26B297358DC006B48BD /* CashRegisterView.swift */,
 				A7CA7F262A28D30C0000C983 /* HomeView.swift */,
-				A7FD4D8F2A5EF475006B6322 /* LightCalculatorView.swift */,
 				A72CD26D297364BC006B48BD /* Components */,
 				A79E84CD29A58D750068D95A /* Model */,
 			);
@@ -186,7 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				A7BFF7582AE6993500EA1821 /* Wait.swift */,
-				A7B402B92AE813B200CDB18A /* Fetch.swift */,
+				A7B402B92AE813B200CDB18A /* GetBlog.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -206,6 +196,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				0A97B7062CFF23D600D1C2B4 /* HomeView */,
+			);
 			name = CountTheCashApp;
 			packageProductDependencies = (
 			);
@@ -221,7 +214,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					A79A2E522972069C00C1CEFB = {
 						CreatedOnToolsVersion = 14.2;
@@ -265,28 +258,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7B402BA2AE813B200CDB18A /* Fetch.swift in Sources */,
-				A7FD4D8C2A5EF3C8006B6322 /* TextGradient.swift in Sources */,
+				A7B402BA2AE813B200CDB18A /* GetBlog.swift in Sources */,
 				A79E84CF29A58D910068D95A /* CoinsModel.swift in Sources */,
 				A7BFF7592AE6993500EA1821 /* Wait.swift in Sources */,
 				A72CD26C297358DC006B48BD /* CashRegisterView.swift in Sources */,
 				A7CA7F272A28D30C0000C983 /* HomeView.swift in Sources */,
 				A79E84D129A58DBD0068D95A /* BillsModel.swift in Sources */,
 				A74A019F29785B2500E1FD5A /* CashRegister.swift in Sources */,
-				A7FD4D882A5EF368006B6322 /* OffWhiteStyle.swift in Sources */,
 				A7FD4D8E2A5EF444006B6322 /* LightCalculator.swift in Sources */,
 				A79A2E592972069C00C1CEFB /* App.swift in Sources */,
-				A7DFC5412A51B0F40028229B /* BackgroundHomeView.swift in Sources */,
 				A72CD26A2973572B006B48BD /* CashFundView.swift in Sources */,
 				A7BFF7562AE6976F00EA1821 /* ResetButton.swift in Sources */,
 				A7D7648D2AD6A5C7005CE191 /* CashFundFieldView.swift in Sources */,
-				A7FD4D902A5EF475006B6322 /* LightCalculatorView.swift in Sources */,
 				A7B402B82AE80D1000CDB18A /* Blog.swift in Sources */,
 				A77288CE2A5AC7D300CB2587 /* HideKeyboard.swift in Sources */,
 				A79A2E572972069C00C1CEFB /* CountTheCashAppApp.swift in Sources */,
 				A79E84D529A58F3D0068D95A /* AdditionResults.swift in Sources */,
 				A72CD2772974B3F5006B48BD /* CashFund.swift in Sources */,
-				A7FD4D8A2A5EF3A3006B6322 /* NeumorphicStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -360,6 +349,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -434,12 +424,12 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -472,12 +462,12 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = "me.cdric-art.CountTheCashApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -39,7 +39,11 @@ struct ResetButton: View {
                         .opacity(0.8)
                 }
             })
-            .neumorphicStyle()
+            .frame(maxWidth: 380)
+            .background(Color.base)
+            .cornerRadius(20)
+            .shadow(color: Color.black.opacity(0.05), radius: 6, x: 8, y: 8)
+            .shadow(color: Color.white.opacity(0.7), radius: 6, x: -3, y: -3)
             .frame(width: 180)
             .scaleEffect(isTapGesture ? CGSize(width: 1.06, height: 1.05) : CGSize(width: 1.0, height: 1.0))
             .blur(radius: isTapGesture ? 1.0 : 0)
