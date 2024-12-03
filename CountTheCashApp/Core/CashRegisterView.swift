@@ -13,48 +13,96 @@ struct CashRegisterView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section {
-                    HStack{
-                        TextField("0", value: $cashRegister.firstRapport, format: .number)
+                Section(header: Text("Montant du ou des rapports de caisses :")) {
+                    HStack {
+                        TextField("0", value: Binding(
+                            get: { cashRegister.firstRapport },
+                            set: { cashRegister.firstRapport = $0 }
+                        ), format: .number)
                             .frame(maxWidth: 100)
                         Spacer()
                         Image(systemName: "plus")
                             .foregroundStyle(.black.opacity(0.2))
                             .bold()
                         Spacer()
-                        TextField("0", value: $cashRegister.secondRapport, format: .number)
+                        TextField("0", value: Binding(
+                            get: { cashRegister.secondRapport },
+                            set: { cashRegister.secondRapport = $0 }
+                        ), format: .number)
                             .frame(maxWidth: 100)
                     }
                     .font(.callout)
                     .multilineTextAlignment(.center)
-                } header: {
-                    Text("Montant du ou des rapports de caisses :")
                 }
+                .listRowBackground(Color.secondaryBackground)
                 
-                Section {
+                Section(header: Text("Total CA :")) {
                     HStack {
                         Text("\(cashRegister.totalRapport.formatted(.currency(code: "EUR")))")
                     }
+                    .listRowBackground(Color.secondaryBackground)
                     .frame(maxWidth: .infinity, alignment: .center)
-                } header: {
-                    Text("Total CA :")
                 }
                 
-                Section {
-                    cbField()
-                    cbLessField()
-                    amexField()
-                    amexLessField()
-                    ticketRField()
-                    expensesField()
-                    cashField()
-                } header: {
-                    Text("Montants des moyens de paiment :")
+                Section(header: Text("Montants des moyens de paiment :")) {
+                    paymentMethodField(
+                        title: "CB EMV", 
+                        color: Color("MauveCat"),
+                        values: $cashRegister.cb_emv,
+                        totalValue: cashRegister.totalCbEmv, 
+                        paymentType: .CBEMV
+                    )
+                    paymentMethodField(
+                        title: "CB LESS", 
+                        color: Color("PrimaryAccentColor"),
+                        values: $cashRegister.cb_less,
+                        totalValue: cashRegister.totalCbLess, 
+                        paymentType: .CBLESS
+                    )
+                    paymentMethodField(
+                        title: "AMEX CONTACT", 
+                        color: Color("MaroonCat"),
+                        values: $cashRegister.amex,
+                        totalValue: cashRegister.totalAmex, 
+                        paymentType: .AMEX
+                    )
+                    paymentMethodField(
+                        title: "AMEX EXPRESSPAY", 
+                        color: Color("Flamingo"),
+                        values: $cashRegister.amex_less,
+                        totalValue: cashRegister.totalAmexLess, 
+                        paymentType: .AMEXLESS
+                    )
+                    paymentMethodField(
+                        title: "TICKETS RESTAURANT", 
+                        color: Color("YellowCat"),
+                        values: $cashRegister.ticketRestaurant,
+                        totalValue: cashRegister.totalTicketRestaurant, 
+                        paymentType: .TICKETRESTAURANT
+                    )
+                    paymentMethodField(
+                        title: "DEPENSES", 
+                        color: Color("GreenCat"),
+                        values: $cashRegister.expenses,
+                        totalValue: cashRegister.totalExpenses, 
+                        paymentType: .EXPENSES
+                    )
+                    paymentMethodField(
+                        title: "ESPECES", 
+                        color: Color("PeachCat"),
+                        values: $cashRegister.cash,
+                        totalValue: cashRegister.totalCash, 
+                        paymentType: .CASH
+                    )
                 }
-                
+                .listRowBackground(Color.secondaryBackground)
+
             }
             .navigationTitle("Caisse")
             .scrollIndicators(.hidden)
+            .background(Color.base)
+            .foregroundStyle(Color("TextColor"))
+            .scrollContentBackground(.hidden)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
@@ -80,28 +128,28 @@ struct CashRegisterView: View {
                     .font(.caption)
                 })
             }
+            .toolbarBackground(Color.base, for: .navigationBar)
+            .toolbarBackground(Color.base, for: .tabBar)
         }
     }
     
-    @ViewBuilder
-    func cbField() -> some View {
+    private func paymentMethodField(title: String, color: Color, values: Binding<[String]>, totalValue: Double, paymentType: TYPE_PAYEMENT) -> some View {
         VStack(alignment: .leading) {
-            
-            Text("CB EMV")
+            Text(title)
                 .font(.caption)
-                .foregroundStyle(.purple)
+                .foregroundStyle(color)
             
-            ForEach(cashRegister.cb_emv.indices, id: \.self) { i in
+            ForEach(values.wrappedValue.indices, id: \.self) { i in
                 HStack {
-                    TextField("0", text: $cashRegister.cb_emv[i])
-                        .onChange(of: cashRegister.cb_emv[i]) { _, newState in
-                            cashRegister.cb_emv[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            cashRegister.saveTotal(type: .CBEMV)
+                    TextField("0", text: values[i])
+                        .onChange(of: values.wrappedValue[i]) { _, newState in
+                            values.wrappedValue[i] = newState.replacingOccurrences(of: ",", with: ".")
+                            cashRegister.saveTotal(type: paymentType)
                         }
                     if i == 0 {
                         Button {
-                            if cashRegister.cb_emv[0] != "" {
-                                cashRegister.cb_emv.append("")
+                            if values.wrappedValue[0] != "" {
+                                values.wrappedValue.append("")
                             }
                         } label: {
                             Image(systemName: "plus.circle")
@@ -111,243 +159,18 @@ struct CashRegisterView: View {
                 .padding(6)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.purple, lineWidth: 1)
+                        .stroke(color, lineWidth: 1)
                 )
             }
             
-            Text("Total: \(cashRegister.totalCbEmv.formatted(.currency(code: "EUR")))")
+            Text("Total: \(totalValue.formatted(.currency(code: "EUR")))")
                 .font(.caption2)
-                .foregroundStyle(Color.purple)
-        }
-    }
-    
-    @ViewBuilder
-    func cbLessField() -> some View {
-        VStack(alignment: .leading) {
-            
-            Text("CB LESS")
-                .font(.caption)
-                .foregroundStyle(.teal)
-            
-            ForEach(cashRegister.cb_less.indices, id: \.self) { i in
-                HStack {
-                    TextField("0", text: $cashRegister.cb_less[i])
-                        .onChange(of: cashRegister.cb_less[i]) { _, newState in
-                            cashRegister.cb_less[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            cashRegister.saveTotal(type: .CBLESS)
-                        }
-                    if i == 0 {
-                        Button {
-                            if cashRegister.cb_less[0] != "" {
-                                cashRegister.cb_less.append("")
-                            }
-                        } label: {
-                            Image(systemName: "plus.circle")
-                        }
-                    }
-                }
-                .padding(6)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.teal, lineWidth: 1)
-                )
-            }
-            
-            Text("Total: \(cashRegister.totalCbLess.formatted(.currency(code: "EUR")))")
-                .font(.caption2)
-                .foregroundStyle(Color.teal)
-        }
-    }
-    
-    @ViewBuilder
-    func amexField() -> some View {
-        VStack(alignment: .leading) {
-            
-            Text("AMEX CONTACT")
-                .font(.caption)
-                .foregroundStyle(.brown)
-            
-            ForEach(cashRegister.amex.indices, id: \.self) { i in
-                HStack {
-                    TextField("0", text: $cashRegister.amex[i])
-                        .onChange(of: cashRegister.amex[i]) { _, newState in
-                            cashRegister.amex[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            cashRegister.saveTotal(type: .AMEX)
-                        }
-                    if i == 0 {
-                        Button {
-                            if cashRegister.amex[0] != "" {
-                                cashRegister.amex.append("")
-                            }
-                        } label: {
-                            Image(systemName: "plus.circle")
-                        }
-                    }
-                }
-                .padding(6)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.brown, lineWidth: 1)
-                )
-            }
-            
-            Text("Total: \(cashRegister.totalAmex.formatted(.currency(code: "EUR")))")
-                .font(.caption2)
-                .foregroundStyle(Color.brown)
-        }
-    }
-    
-    @ViewBuilder
-    func amexLessField() -> some View {
-        VStack(alignment: .leading) {
-            
-            Text("AMEX EXPRESSPAY")
-                .font(.caption)
-                .foregroundStyle(.orange)
-            
-            ForEach(cashRegister.amex_less.indices, id: \.self) { i in
-                HStack {
-                    TextField("0", text: $cashRegister.amex_less[i])
-                        .onChange(of: cashRegister.amex_less[i]) { _, newState in
-                            cashRegister.amex_less[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            cashRegister.saveTotal(type: .AMEXLESS)
-                        }
-                    if i == 0 {
-                        Button {
-                            if cashRegister.amex_less[0] != "" {
-                                cashRegister.amex_less.append("")
-                            }
-                        } label: {
-                            Image(systemName: "plus.circle")
-                        }
-                    }
-                }
-                .padding(6)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.orange, lineWidth: 1)
-                )
-            }
-            
-            Text("Total: \(cashRegister.totalAmexLess.formatted(.currency(code: "EUR")))")
-                .font(.caption2)
-                .foregroundStyle(Color.orange)
-            
-        }
-    }
-    
-    @ViewBuilder
-    func ticketRField() -> some View {
-        VStack(alignment: .leading) {
-            
-            Text("TICKETS RESTAURANT")
-                .foregroundStyle(.mint)
-                .font(.caption)
-            
-            ForEach(cashRegister.ticketRestaurant.indices, id: \.self) { i in
-                HStack {
-                    TextField("0", text: $cashRegister.ticketRestaurant[i])
-                        .onChange(of: cashRegister.ticketRestaurant[i]) { _, newState in
-                            cashRegister.ticketRestaurant[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            cashRegister.saveTotal(type: .TICKETRESTAURANT)
-                        }
-                    if i == 0 {
-                        Button {
-                            if cashRegister.ticketRestaurant[0] != "" {
-                                cashRegister.ticketRestaurant.append("")
-                            }
-                        } label: {
-                            Image(systemName: "plus.circle")
-                        }
-                    }
-                }
-                .padding(6)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.mint, lineWidth: 1)
-                )
-            }
-            
-            Text("Total: \(cashRegister.totalTicketRestaurant.formatted(.currency(code: "EUR")))")
-                .font(.caption2)
-                .foregroundStyle(Color.mint)
-        }
-    }
-    
-    @ViewBuilder
-    func expensesField() -> some View {
-        VStack(alignment: .leading) {
-            
-            Text("DEPENSES")
-                .foregroundStyle(.yellow)
-                .font(.caption)
-            
-            ForEach(cashRegister.expenses.indices, id: \.self) { i in
-                HStack {
-                    TextField("0", text: $cashRegister.expenses[i])
-                        .onChange(of: cashRegister.expenses[i]) { _, newState in
-                            cashRegister.expenses[i] = newState.replacingOccurrences(of: ",", with: ".")
-                            cashRegister.saveTotal(type: .EXPENSES)
-                        }
-                    if i == 0 {
-                        Button {
-                            if cashRegister.expenses[0] != "" {
-                                cashRegister.expenses.append("")
-                            }
-                        } label: {
-                            Image(systemName: "plus.circle")
-                        }
-                    }
-                }
-                .padding(6)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.yellow, lineWidth: 1)
-                )
-            }
-            
-            Text("Total: \(cashRegister.totalExpenses.formatted(.currency(code: "EUR")))")
-                .font(.caption2)
-                .foregroundStyle(Color.yellow)
-        }
-    }
-    
-    @ViewBuilder
-    func cashField() -> some View {
-        VStack(alignment: .leading) {
-            
-            Text("ESPECES")
-                .font(.caption)
-                .foregroundStyle(.red)
-            
-            HStack {
-                TextField("0", text: $cashRegister.cash[0])
-                    .onChange(of: cashRegister.cash[0]) { _, newState in
-                        cashRegister.cash[0] = newState.replacingOccurrences(of: ",", with: ".")
-                        cashRegister.saveTotal(type: .CASH)
-                    }
-                Button {
-                    cashRegister.cash[0] = ""
-                } label: {
-                    Image(systemName: "trash.circle")
-                }
-            }
-            .padding(6)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(.red, lineWidth: 1)
-            )
-            
-            Text("Total: \(cashRegister.totalCash.formatted(.currency(code: "EUR")))")
-                .font(.caption2)
-                .foregroundStyle(Color.red)
+                .foregroundStyle(color)
         }
     }
     
 }
 
-struct CashRegisterView_Previews: PreviewProvider {
-    static var previews: some View {
-        CashRegisterView(cashRegister: CashRegister())
-    }
+#Preview {
+    CashRegisterView(cashRegister: CashRegister())
 }

@@ -11,8 +11,8 @@ import Observation
 @Observable
 class CashRegister {
     
-    var firstRapport: Double?
-    var secondRapport: Double?
+    var firstRapport: Double = 0
+    var secondRapport: Double = 0
     
     var cb_emv: [String] = [""]
     var cb_less: [String] = [""]
@@ -30,22 +30,31 @@ class CashRegister {
     var totalExpenses: Double = 0
     var totalCash: Double = 0
     
+    private var _memoizedTotals: [TYPE_PAYEMENT: Double] = [:]
+    
     func saveTotal(type: TYPE_PAYEMENT) {
         switch type {
-            case .CBEMV:
-                totalCbEmv = arrayStringToDouble(from: cb_emv)
-            case .CBLESS:
-                totalCbLess = arrayStringToDouble(from: cb_less)
-            case .AMEX:
-                totalAmex = arrayStringToDouble(from: amex)
-            case .AMEXLESS:
-                totalAmexLess = arrayStringToDouble(from: amex_less)
-            case .TICKETRESTAURANT:
-                totalTicketRestaurant = arrayStringToDouble(from: ticketRestaurant)
-            case .EXPENSES:
-                totalExpenses = arrayStringToDouble(from: expenses)
-            case .CASH:
-                totalCash = arrayStringToDouble(from: cash)
+        case .CBEMV:
+            _memoizedTotals[.CBEMV] = arrayStringToDouble(from: cb_emv)
+            totalCbEmv = _memoizedTotals[.CBEMV] ?? 0
+        case .CBLESS:
+            _memoizedTotals[.CBLESS] = arrayStringToDouble(from: cb_less)
+            totalCbLess = _memoizedTotals[.CBLESS] ?? 0
+        case .AMEX:
+            _memoizedTotals[.AMEX] = arrayStringToDouble(from: amex)
+            totalAmex = _memoizedTotals[.AMEX] ?? 0
+        case .AMEXLESS:
+            _memoizedTotals[.AMEXLESS] = arrayStringToDouble(from: amex_less)
+            totalAmexLess = _memoizedTotals[.AMEXLESS] ?? 0
+        case .TICKETRESTAURANT:
+            _memoizedTotals[.TICKETRESTAURANT] = arrayStringToDouble(from: ticketRestaurant)
+            totalTicketRestaurant = _memoizedTotals[.TICKETRESTAURANT] ?? 0
+        case .EXPENSES:
+            _memoizedTotals[.EXPENSES] = arrayStringToDouble(from: expenses)
+            totalExpenses = _memoizedTotals[.EXPENSES] ?? 0
+        case .CASH:
+            _memoizedTotals[.CASH] = arrayStringToDouble(from: cash)
+            totalCash = _memoizedTotals[.CASH] ?? 0
         }
     }
     
@@ -54,7 +63,7 @@ class CashRegister {
     }
     
     var totalRapport: Double {
-        let totalRapport = (firstRapport ?? 0) + (secondRapport ?? 0)
+        let totalRapport = firstRapport + secondRapport
         return totalRapport
     }
     
@@ -71,13 +80,7 @@ class CashRegister {
     }
     
     private func arrayStringToDouble(from: [String]) -> Double {
-        var arrDouble: [Double] = []
-        
-        for i in from.indices {
-            arrDouble.append(Double(from[i]) ?? 0)
-        }
-        
-        return arrDouble.reduce(0, +)
+        return from.compactMap { Double($0.replacingOccurrences(of: ",", with: ".")) }.reduce(0, +)
     }
 
 }

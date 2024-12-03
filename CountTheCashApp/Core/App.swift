@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     @State private var cashFund = CashFund()
     @State private var cashRegister = CashRegister()
-    @State private var lightCalculator = LightCalculator()
     
     @State private var selectedTag = 0
     
